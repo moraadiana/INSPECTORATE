@@ -1,0 +1,196 @@
+﻿@{
+    ViewBag.Title = "Create Account";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+<form class="login-form" autocomplete="off" action="@Url.Action("createaccount", "Account")" method="post">
+    <p>Create Account.</p>
+    <div class="alert alert-danger display-hide">
+        <button class="close" data-close="alert"></button>
+        <span> Fill all the required fields </span>
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Initials</label>
+        <select name="Initials" class="form-control" placeholder ="Initials">
+            <option value="" disabled selected>-- Select Initails--</option>
+            <option value="0">Mr.</option>
+            <option value="1">Miss.</option>
+            <option value="2">Mrs.</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">First Name</label>
+        <input type="text" name="FirstName" class="form-control placeholder-no-fix" placeholder="First Name" value="" />
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Middle Name</label>
+        <input type="text" name="MiddleName" class="form-control placeholder-no-fix" placeholder="Middle Name" value="" />
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Last Name</label>
+        <input type="text" name="LastName" class="form-control placeholder-no-fix" placeholder="Last Name" required value="" />
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">ID Number</label>
+        <input type="text" name="IdNumber" class="form-control placeholder-no-fix" placeholder="ID Number" required value="" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Phone Number</label>
+        <input type="text" name="PhoneNumber" class="form-control placeholder-no-fix" placeholder="Phone Number" required value="" />
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Gender</label>
+        <select name="Gender" class="form-control placeholder-no-fix">
+            <option value="" disabled selected>-- Select Gender --</option> 
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+            <option value="2">Other</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Marital Status</label>
+        <select name="MaritalStatus" class="form-control placeholder-no-fix">
+            <option value="" disabled selected>-- Select Marital Status --</option>
+            <option value="0">Single</option>
+            <option value="1">Married</option>
+            <option value="2">Separated</option>
+            <option value="3">Divorced</option>
+            <option value="4">Widow(er)</option>
+            <option value="5">Other</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Postal Code</label>
+        <input type="text" name="PostalCode" class="form-control placeholder-no-fix" placeholder="Postal Code" required value="" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Postal Address</label>
+        <input type="text" name="PostalAddress" class="form-control placeholder-no-fix" placeholder="Postal Address" required value="" />
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Date of Birth</label>
+        <input type="date" id="txtDoB" name="BirthDate" class="form-control placeholder-no-fix" placeholder="Date of Birth" required value="" />
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Citizenship</label>
+        <select name="Citizenship" class="form-control select2 placeholder-no-fix">
+            @foreach (var country in @Model.CitizenshipList)
+            {
+                <option value="" disabled selected>-- Select Citizenship --</option>
+                <option value="@country.Code">@country.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Applicant Type</label>
+        <select name="ApplicantType" class="form-control placeholder-no-fix">
+            <option value="" disabled selected>-- Select Applicant Type--</option>
+            <option value="0">External</option>
+            <option value="1">Internal</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Disability</label>
+        <select name="Disability" class="form-control placeholder-no-fix">
+            <option value="" disabled selected>-- Select Disability --</option>
+            <option value="1">No</option>
+            <option value="2">Yes</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Email Address</label>
+        <div class="input-icon">
+            <i class="icon-lock"></i>
+            <input class="form-control placeholder-no-fix" type="email" autocomplete="off" placeholder="Email Address" name="EmailAddress" required value="" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Password</label>
+        <div class="input-icon">
+            <i class="icon-lock"></i>
+            <input class="form-control placeholder-no-fix" id="password" type="password" autocomplete="off" placeholder="Password" name="Password" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-icon">
+            <i class="icon-lock"></i>
+            <label class="control-label visible-ie8 visible-ie9">Confirm Password</label>
+            <input type="password" id="confirm-password" name="ConfirmPassword" class="form-control placeholder-no-fix" placeholder="Confirm Password" value="" />
+        </div>
+    </div>
+
+    <label class="mt-checkbox mt-checkbox-outline">
+        <input type="checkbox" onclick="showPassword()" /> Show Password
+        <span></span>
+    </label>
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="@Url.Action("login", "Account")" class="btn green pull-left"> <i class="icon-question"> Back</i></a>
+            </div>
+            <div class="col-md-6">
+                @*<button type="submit" class="btn green pull-right" onclick="return validatePasswords()"> <i class="icon-login"> Create Account</i></button>*@
+                <button type="submit" class="btn green pull-right" onclick="return validateForm()"> <i class="icon-login"> Create Account</i></button>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    const password = document.getElementById('password');
+    const initials = document.getElementById('input[name="Initials"]');
+    const maritalStatus = document.getElementById('input[name= "MaritalStatus"]')
+    const confirmPassword = document.getElementById('confirm-password');
+    const idNumber = document.querySelector('input[name="IdNumber"]');
+    const firstName = document.querySelector('input[name="FirstName"]');
+    const middleName = document.querySelector('input[name="MiddleName"]');
+    const lastName = document.querySelector('input[name="LastName"]');
+    const emailAddress = document.querySelector('input[name="EmailAddress"]');
+
+    const showPassword = function () {
+        if (password.type == 'password') password.type = 'text';
+        else password.type = 'password';
+
+        if (confirmPassword.type == 'password') confirmPassword.type = 'text';
+        else confirmPassword.type = 'password';
+    }
+
+
+    const validatePasswords = function () {
+        if (password.value !== confirmPassword.value) {
+            alert('Passwords do not match!');
+            return false;
+        } else return true;
+    }
+
+    const validateIdNumber = function () {
+        if (idNumber.value.trim() === '' || isNaN(idNumber.value || idNumber.value.length < 7 || idNumber.value.length > 8)) {
+            alert('Please enter a valid ID Number.');
+            return false;
+        }
+
+        return true;
+    }
+    const validateName = function (name, fieldName) {
+        if (name.value.trim() === '' || !/^[A-Za-z\s]+$/.test(name.value)) {
+            alert(`Please enter  ${fieldName}.`);
+            return false;
+        }
+        return true;
+    }
+    const validateForm = function () {
+        return validateIdNumber() &&
+            validateName(firstName, 'First Name') &&
+            validateName(lastName, 'Last Name') &&
+            validateEmail() &&
+            validatePasswords();
+    }
+
+
+</script>

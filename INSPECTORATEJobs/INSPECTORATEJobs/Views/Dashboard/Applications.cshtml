@@ -1,0 +1,72 @@
+﻿@model IEnumerable<INSPECTORATEJobs.ViewModels.MyApplication>
+@{
+    ViewBag.Title = "My Applications";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("Notification")
+
+<<div class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light portlet-fit bordered">
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger">
+                        <button class="close" data-close="alert"></button>
+                        <span>@TempData["Error"]</span>
+                    </div>
+                }
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success">
+                        <button class="close" data-close="alert"></button>
+                        <span>@TempData["Success"]</span>
+                    </div>
+                }
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-list"></i>
+                        <span class="caption-subject font-red sbold uppercase">
+                            Step : My Job Applications
+                        </span>
+                    </div>
+
+                </div>
+                <div class="portlet-body">
+
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>#No</th>
+                                <th>Application No.</th>
+                                <th>Job ID</th>
+                                <th>Job Title</th>
+                                <th>Date Applied</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var job in @Model)
+                            {
+                                <tr>
+                                    <td>@job.Counter</td>
+                                    <td>@job.JobApplicationNo</td>
+                                    <td>@job.JobId</td>
+                                    <td>@job.JobTitle</td>
+                                    <td>@Convert.ToDateTime(job.DateApplied).ToString("MMMM dd, yyyy")</td>
+                                    <td>@job.Status</td>
+                                    <td><a href="@Url.Action("generalinformation", "jobapplication", new {jobId=job.JobId, refNo=job.JobRefNo})">View</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

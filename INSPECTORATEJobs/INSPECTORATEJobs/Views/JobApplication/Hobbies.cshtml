@@ -1,0 +1,96 @@
+﻿@model INSPECTORATEJobs.Models.Hobby
+@{
+    ViewBag.Title = "Applicant Hobbies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("Notification")
+
+<div class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light portlet-fit bordered">
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger">
+                        <button class="close" data-close="alert"></button>
+                        <span>@TempData["Error"]</span>
+                    </div>
+                }
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success">
+                        <button class="close" data-close="alert"></button>
+                        <span>@TempData["Success"]</span>
+                    </div>
+                }
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-list"></i>
+                        <span class="caption-subject font-red sbold uppercase">
+                            Step  : Hobbies
+                        </span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+
+                    <form action="/jobapplication/hobbies" method="post">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Hobbies</label>
+                                    <input type="text" name="ApplicantHobby" placeholder="Hobby" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-linkedin"><i class="fa fa-pencil-square"></i>&nbsp;Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            @if (@Model.ApplicantHobbies.Count > 0)
+                            {
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#No</th>
+                                            <th>Hobby</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var hobby in @Model.ApplicantHobbies)
+                                        {
+                                            <tr>
+                                                <td>@hobby.Counter</td>
+                                                <td>@hobby.Hobbies</td>
+                                                <td><a href="@Url.Action("removehobby","jobapplication",new {hobby = hobby.Hobbies})" class="label label-danger"><i class="fa fa-trash"></i></a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                            else
+                            {
+                                <p class="text-danger">No records</p>
+                            }
+
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="@Url.Action("complete","jobapplication")" class="btn btn-primary pull-right"><i class="fa fa-paper-plane"></i>&nbsp;Complete</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
