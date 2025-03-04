@@ -1,0 +1,69 @@
+{
+  "id": "ceb52461-e36e-4c64-933d-08355583aedf",
+  "name": "COMMON",
+  "publisher": "Default publisher",
+  "version": "1.0.0.0",
+}
+
+{
+      "id": "4c6fb72b-01d8-477a-ad15-631dd9c335c2",
+      "name": "STUDENTMANAGEMENT",
+      "publisher": "Default publisher",
+      "version": "1.0.0.0"
+    }
+
+{
+      "id": "3266b6ec-807f-47c1-b64c-6b7568fc6b38",
+  "name": "FIN-PROC",
+  "publisher": "Default publisher",
+  "version": "1.0.0.0"
+     }
+
+{
+            "name": "Rolecenters",
+            "request": "launch",
+            "type": "al",
+            "environmentType": "OnPrem",
+            "server": "http://198.154.112.39:8080/UGUNJA_TVC",
+            "serverInstance": "UGUNJA_TVC",
+            "authentication": "UserPassword",
+            "port": 9149,
+            "startupObjectType": "Page",
+            "breakOnError": true,
+            //"schemaUpdateMode": "ForceSync",
+            "enableLongRunningSqlStatements": true,
+            "enableSqlInformationDebugger": true,
+            "tenant": "default"
+        }
+
+{
+  "id": "38c50efb-be81-4ff4-a981-3daeb2810751",
+  "name": "HR MANAGER",
+  "publisher": "Default publisher",
+  "version": "1.0.0.0"
+}
+
+{
+      "id": "8b8f9e33-dba5-4029-88c1-a0e6db66a7c6",
+  "name": "BASE EXTENSIONS",
+  "publisher": "Default publisher",
+  "version": "1.0.0.0"
+    }
+
+{
+                
+                "name": "LOCALHOST",
+                "request": "launch",
+                "type": "al",
+                "environmentType": "OnPrem",
+                "server": "http://198.154.112.39:8080/UGUNJA_TVC",
+                "serverInstance": "UGUNJA_TVC",
+                "authentication": "UserPassword",
+                "port": 9149,
+                "startupObjectType": "Page",
+                "schemaUpdateMode": "ForceSync",
+                "breakOnError": true,
+                 "enableLongRunningSqlStatements": true,
+                "enableSqlInformationDebugger": true,
+                "tenant": "default",    
+        }
