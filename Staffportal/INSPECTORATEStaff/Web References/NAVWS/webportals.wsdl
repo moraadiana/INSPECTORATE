@@ -3556,7 +3556,7 @@
   </binding>
   <service name="WebPortals">
     <port name="WebPortals_Port" binding="tns:WebPortals_Binding">
-      <address location="http://mis:7047/BC200/WS/INSPECTORATE/Codeunit/WebPortals" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://102.213.176.86:7047/BC200/WS/INSPECTORATE/Codeunit/WebPortals" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>

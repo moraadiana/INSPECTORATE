@@ -235,7 +235,8 @@ namespace INSPECTORATEStaff
             {
                 if (connToNAV == null || connToNAV.State == ConnectionState.Closed)
                 {
-                    connToNAV = new SqlConnection(@"Data Source = 102.213.176.86; Initial Catalog = INSPECTORATE; User ID = webportals; Password = login*4");
+                    connToNAV = new SqlConnection(@"Data Source = 102.213.176.86; Initial Catalog = INSPECTORATE; User ID = webportals; Password = login*4"); //102.213.176.86
+                    //< add key = "SqlConnection" value = "Data Source=NEWAPPKINGS\APPKINGS;Initial Catalog=KSA;MultipleActiveResultSets=true;User ID=webportals;Password=login*4" />
 
                     connToNAV.Open();
                 }

@@ -12,7 +12,7 @@ namespace INSPECTORATEStaff.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.11.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -36,10 +36,10 @@ namespace INSPECTORATEStaff.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://mis:7047/BC200/WS/INSPECTORATE/Codeunit/WebPortals")]
-        public string UFBstaff_NAVWS_webportals {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://102.213.176.86:7047/BC200/WS/INSPECTORATE/Codeunit/WebPortals")]
+        public string INSPECTORATEStaff_NAVWS_WebPortals {
             get {
-                return ((string)(this["UFBstaff_NAVWS_webportals"]));
+                return ((string)(this["INSPECTORATEStaff_NAVWS_WebPortals"]));
             }
         }
     }

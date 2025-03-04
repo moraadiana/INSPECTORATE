@@ -7774,7 +7774,7 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\NAVWS\webportals.wsdl" />
+    <None Include="Web References\NAVWS\WebPortals.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -7795,16 +7795,16 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://mis:7047/BC200/WS/INSPECTORATE/Codeunit/WebPortals">
+    <WebReferenceUrl Include="http://102.213.176.86:7047/BC200/WS/INSPECTORATE/Codeunit/WebPortals">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\NAVWS\</RelPath>
-      <UpdateFromURL>http://mis:7047/BC200/WS/INSPECTORATE/Codeunit/WebPortals</UpdateFromURL>
+      <UpdateFromURL>http://102.213.176.86:7047/BC200/WS/INSPECTORATE/Codeunit/WebPortals</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>UFBstaff_NAVWS_webportals</CachedSettingsPropName>
+      <CachedSettingsPropName>INSPECTORATEStaff_NAVWS_WebPortals</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
