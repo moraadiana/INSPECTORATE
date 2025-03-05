@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DoddleReport.iTextSharp</name>
+    </assembly>
+    <members>
+        <member name="M:DoddleReport.iTextSharp.PdfReportWriter.WriteReport(DoddleReport.Report,System.IO.Stream)">
+            <summary>
+            Writes the report.
+            </summary>
+            <param name="report">The report.</param>
+            <param name="destination">The destination.</param>
+        </member>
+        <member name="M:DoddleReport.iTextSharp.PdfReportWriter.AppendReport(DoddleReport.Report,DoddleReport.Report)">
+            <summary>
+            Appends the report.
+            </summary>
+            <param name="source">The source.</param>
+            <param name="destination">The destination.</param>
+        </member>
+        <member name="M:DoddleReport.iTextSharp.PdfReportWriter.RenderHeader(iTextSharp.text.pdf.PdfPTable,DoddleReport.ReportTextFieldCollection,DoddleReport.RenderHintsCollection)">
+            <summary>
+            Renders the header.
+            </summary>
+            <param name="globalTable">The global table.</param>
+            <param name="textFields">The text fields.</param>
+            <param name="renderHints">The render hints.</param>
+        </member>
+        <member name="M:DoddleReport.iTextSharp.PdfReportWriter.RenderFooter(iTextSharp.text.pdf.PdfPTable,DoddleReport.ReportTextFieldCollection,DoddleReport.RenderHintsCollection)">
+            <summary>
+            Renders the footer.
+            </summary>
+            <param name="globalTable">The global table.</param>
+            <param name="textFields">The text fields.</param>
+            <param name="renderHints">The render hints.</param>
+        </member>
+        <member name="M:DoddleReport.iTextSharp.PdfReportWriter.GetDefaultTitleStyle">
+            <summary>
+            Gets the default title style.
+            </summary>
+            <returns>The default title style.</returns>
+        </member>
+        <member name="M:DoddleReport.iTextSharp.PdfReportWriter.GetDefaultSubTitleStyle">
+            <summary>
+            Gets the default sub title style.
+            </summary>
+            <returns>The default sub title style.</returns>
+        </member>
+        <member name="M:DoddleReport.iTextSharp.PdfReportWriter.GetDefaultHeaderStyle">
+            <summary>
+            Gets the default header style.
+            </summary>
+            <returns>The default header style.</returns>
+        </member>
+        <member name="M:DoddleReport.iTextSharp.PdfReportWriter.GetDefaultFooterStyle">
+            <summary>
+            Gets the default footer style.
+            </summary>
+            <returns>The default footer style.</returns>
+        </member>
+        <member name="M:DoddleReport.iTextSharp.PdfReportWriter.CreateTextCell(DoddleReport.ReportStyle,System.String,System.String)">
+            <summary>
+            Creates the text cell.
+            </summary>
+            <param name="reportStyle">The report style.</param>
+            <param name="fontName">Name of the font.</param>
+            <param name="text">The text.</param>
+            <returns>
+            The newly created cell.
+            </returns>
+        </member>
+        <member name="M:DoddleReport.iTextSharp.PdfReportWriter.ConvertStyleToFont(DoddleReport.ReportStyle,System.String)">
+            <summary>
+            Converts a report style to a new font definition.
+            </summary>
+            <param name="reportStyle">The report style.</param>
+            <param name="fontFamily">Name of the font.</param>
+            <returns>The font.</returns>
+        </member>
+        <member name="M:DoddleReport.iTextSharp.PdfReportWriter.CopyStyleToCell(DoddleReport.ReportStyle,iTextSharp.text.pdf.PdfPCell)">
+            <summary>
+            Copies the report style to the cell style.
+            </summary>
+            <param name="reportStyle">The report style.</param>
+            <param name="cell">The cell.</param>
+        </member>
+    </members>
+</doc>

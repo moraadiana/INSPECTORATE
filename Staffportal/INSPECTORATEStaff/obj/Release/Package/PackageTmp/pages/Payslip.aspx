@@ -40,19 +40,22 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Year:</label>
+                                <div class="form-group row">
+                                    <label for="ddlYear" class="col-sm-2 col-form-label text-right">Year:</label>
                                     <div class="col-sm-3">
                                         <asp:DropDownList ID="ddlYear" class="form-control select2" runat="server" OnSelectedIndexChanged="ddlYear_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                                     </div>
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Month</label>
+
+                                    <label for="DdMonth" class="col-sm-2 col-form-label text-right">Month:</label>
                                     <div class="col-sm-3">
                                         <asp:DropDownList ID="DdMonth" class="form-control select2" runat="server" OnSelectedIndexChanged="DdMonth_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                                     </div>
-                                    <div class="col-sm-2">
-                                    <div class="col-sm-2">
-                                        <button type="button" onclick="lbtnViewpayslip_Click" id="lbtnViewpayslip_Click" class="btn btn-block btn-primary"><i class="fa fa-file-pdf-o"></i>View payslip</button>
-                                    </div>
+        
+                                   <%-- <div class="col-sm-2">
+                                        <button type="button" onclick="lbtnViewpayslip_Click" id="lbtnViewpayslip_Click" class="btn btn-block btn-primary">
+                                            <i class="fa fa-file-pdf-o"></i> View Payslip
+                                        </button>
+                                    </div>--%>
                                 </div>
                             </div>
                             <span style="font-size: 10pt">

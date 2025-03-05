@@ -622,7 +622,7 @@ D:\INSPECTORATE\Staffportal\INSPECTORATEStaff\bin\Microsoft.AspNet.FriendlyUrls.
 D:\INSPECTORATE\Staffportal\INSPECTORATEStaff\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\INSPECTORATE\Staffportal\INSPECTORATEStaff\obj\Release\INSPECTORATEStaff.csproj.AssemblyReference.cache
 D:\INSPECTORATE\Staffportal\INSPECTORATEStaff\obj\Release\INSPECTORATEStaff.csproj.CoreCompileInputs.cache
-D:\INSPECTORATE\Staffportal\INSPECTORATEStaff\obj\Release\INSPECTORATEStaff.csproj.CopyComplete
 D:\INSPECTORATE\Staffportal\INSPECTORATEStaff\obj\Release\INSPECTORATEStaff.dll
 D:\INSPECTORATE\Staffportal\INSPECTORATEStaff\obj\Release\INSPECTORATEStaff.pdb
 D:\INSPECTORATE\Staffportal\INSPECTORATEStaff\obj\Release\INSPECTORATEStaff.XmlSerializers.dll
+D:\INSPECTORATE\Staffportal\INSPECTORATEStaff\obj\Release\INSPECTO.529FBA3A.Up2Date
