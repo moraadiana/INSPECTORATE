@@ -1,0 +1,75 @@
+﻿<div class="page-content">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="@Url.Action("index", "dashboard")">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li><span>Dashboard</span></li>
+        </ul>
+    </div>
+
+    <h1 class="page-title">Dashboard</h1>
+
+    <div class="row">
+        <!-- Profile Sidebar -->
+        <div class="col-md-2">
+            <div class="profile-sidebar">
+                <div class="portlet light profile-sidebar-portlet text-center shadow rounded">
+                    <div class="profile-userpic mb-3">
+                        <img src="~/images/profile_m.png" class="img-fluid rounded-circle" alt="Avatar" style="width: 120px; height: 120px;">
+                    </div>
+                    <div class="profile-usertitle">
+                        <h4 class="profile-usertitle-name text-primary">@Session["memberName"]</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-10">
+            <div class="portlet box green shadow-lg rounded">
+                <div class="portlet-title d-flex justify-content-between align-items-center p-3 bg-success text-white">
+                    <div>
+                        <i class="fa fa-user"></i> Welcome, @Session["customerName"]
+                    </div>
+                    <a href="javascript:;" class="collapse text-white"><i class="fa fa-chevron-down"></i></a>
+                </div>
+
+                <div class="portlet-body p-4">
+                    <h5 class="mb-3"><strong>Pensioner Information</strong></h5>
+
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                            <tr>
+                                <td><i class="fa fa-user"></i> Name:</td>
+                                <td>@Session["Name"]</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-envelope"></i> Email:</td>
+                                <td>@Session["Email"]</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-phone"></i> Phone No:</td>
+                                <td>@Session["PhoneNo"]</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-id-card"></i> ID Number:</td>
+                                <td>@Session["Address"]</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-calendar"></i> Date of Joining:</td>
+                                <td>@Session["Country"]</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+
+                    <div class="text-center mt-4">
+                        <a href="@Url.Action("index", "dashboard")" class="btn btn-secondary">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
