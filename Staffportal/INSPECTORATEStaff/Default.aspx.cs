@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using INSPECTORATEStaff.NAVWS;
+using OpenQA.Selenium;
 using System;
 using System.Web.UI;
 using Windows.UI.Core;
@@ -7,6 +8,8 @@ namespace INSPECTORATEStaff
 {
     public partial class _Default : Page
     {
+       
+        string[] strLimiters = new string[] { "::" };
         protected void Page_Load(object sender, EventArgs e)
         {
             txtusername.Focus();
@@ -80,7 +83,36 @@ namespace INSPECTORATEStaff
                 ex.Data.Clear();
             }
         }
-        protected void LoginForUnchangedPass()
+        private void LoginForUnchangedPass()
+        {
+            try
+            {
+                string pass = txtpassword.Value.ToString();
+                string user = txtusername.Value.ToString();
+                string response = MyComponents.ObjNav.LoginForUnchangedPassword(user);
+                if (!string.IsNullOrEmpty(response))
+                {
+                    string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
+                    string returnMsg = responseArr[0];
+                    if (returnMsg == "SUCCESS")
+                    {
+                        string staffNo = responseArr[1];
+                        string staffEmail = responseArr[2];
+                        Response.Redirect($"ResetPassword.aspx?staffNo={staffNo}&email={staffEmail}");
+                    }
+                    else
+                    {
+                        LblError.Text = returnMsg;
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }
+        protected void LoginForUnchangedPass1()
         {
             string pass = txtpassword.Value.ToString();
             string user = txtusername.Value.ToString();

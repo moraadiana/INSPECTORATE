@@ -111,6 +111,8 @@ namespace INSPECTORATEStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GenerateTenderAwardLetterOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GenerateWarehouseReceiptOperationCompleted;
+        
         private System.Threading.SendOrPostCallback Generatep9ReportOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAdvertisedJobsOperationCompleted;
@@ -180,6 +182,8 @@ namespace INSPECTORATEStaff.NAVWS {
         private System.Threading.SendOrPostCallback InsertTenderBidOperationCompleted;
         
         private System.Threading.SendOrPostCallback IsTenderBiddingPeriodOpenedOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback LoginForUnchangedPasswordOperationCompleted;
         
         private System.Threading.SendOrPostCallback PRNApprovalRequestOperationCompleted;
         
@@ -399,6 +403,9 @@ namespace INSPECTORATEStaff.NAVWS {
         public event GenerateTenderAwardLetterCompletedEventHandler GenerateTenderAwardLetterCompleted;
         
         /// <remarks/>
+        public event GenerateWarehouseReceiptCompletedEventHandler GenerateWarehouseReceiptCompleted;
+        
+        /// <remarks/>
         public event Generatep9ReportCompletedEventHandler Generatep9ReportCompleted;
         
         /// <remarks/>
@@ -502,6 +509,9 @@ namespace INSPECTORATEStaff.NAVWS {
         
         /// <remarks/>
         public event IsTenderBiddingPeriodOpenedCompletedEventHandler IsTenderBiddingPeriodOpenedCompleted;
+        
+        /// <remarks/>
+        public event LoginForUnchangedPasswordCompletedEventHandler LoginForUnchangedPasswordCompleted;
         
         /// <remarks/>
         public event PRNApprovalRequestCompletedEventHandler PRNApprovalRequestCompleted;
@@ -2061,6 +2071,38 @@ namespace INSPECTORATEStaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:GenerateWarehouseReceipt", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="GenerateWarehouseReceipt_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void GenerateWarehouseReceipt(string path, string fileName, string pensionerNo) {
+            this.Invoke("GenerateWarehouseReceipt", new object[] {
+                        path,
+                        fileName,
+                        pensionerNo});
+        }
+        
+        /// <remarks/>
+        public void GenerateWarehouseReceiptAsync(string path, string fileName, string pensionerNo) {
+            this.GenerateWarehouseReceiptAsync(path, fileName, pensionerNo, null);
+        }
+        
+        /// <remarks/>
+        public void GenerateWarehouseReceiptAsync(string path, string fileName, string pensionerNo, object userState) {
+            if ((this.GenerateWarehouseReceiptOperationCompleted == null)) {
+                this.GenerateWarehouseReceiptOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGenerateWarehouseReceiptOperationCompleted);
+            }
+            this.InvokeAsync("GenerateWarehouseReceipt", new object[] {
+                        path,
+                        fileName,
+                        pensionerNo}, this.GenerateWarehouseReceiptOperationCompleted, userState);
+        }
+        
+        private void OnGenerateWarehouseReceiptOperationCompleted(object arg) {
+            if ((this.GenerateWarehouseReceiptCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GenerateWarehouseReceiptCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:Generatep9Report", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="Generatep9Report_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string Generatep9Report(int selectedPeriod, string employeeNo, string filenameFromApp) {
@@ -3233,6 +3275,36 @@ namespace INSPECTORATEStaff.NAVWS {
             if ((this.IsTenderBiddingPeriodOpenedCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.IsTenderBiddingPeriodOpenedCompleted(this, new IsTenderBiddingPeriodOpenedCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:LoginForUnchangedPassword", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="LoginForUnchangedPassword_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string LoginForUnchangedPassword(string username) {
+            object[] results = this.Invoke("LoginForUnchangedPassword", new object[] {
+                        username});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LoginForUnchangedPasswordAsync(string username) {
+            this.LoginForUnchangedPasswordAsync(username, null);
+        }
+        
+        /// <remarks/>
+        public void LoginForUnchangedPasswordAsync(string username, object userState) {
+            if ((this.LoginForUnchangedPasswordOperationCompleted == null)) {
+                this.LoginForUnchangedPasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoginForUnchangedPasswordOperationCompleted);
+            }
+            this.InvokeAsync("LoginForUnchangedPassword", new object[] {
+                        username}, this.LoginForUnchangedPasswordOperationCompleted, userState);
+        }
+        
+        private void OnLoginForUnchangedPasswordOperationCompleted(object arg) {
+            if ((this.LoginForUnchangedPasswordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LoginForUnchangedPasswordCompleted(this, new LoginForUnchangedPasswordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4982,6 +5054,10 @@ namespace INSPECTORATEStaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GenerateWarehouseReceiptCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void Generatep9ReportCompletedEventHandler(object sender, Generatep9ReportCompletedEventArgs e);
     
     /// <remarks/>
@@ -5811,6 +5887,32 @@ namespace INSPECTORATEStaff.NAVWS {
         private object[] results;
         
         internal IsTenderBiddingPeriodOpenedCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void LoginForUnchangedPasswordCompletedEventHandler(object sender, LoginForUnchangedPasswordCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LoginForUnchangedPasswordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LoginForUnchangedPasswordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
