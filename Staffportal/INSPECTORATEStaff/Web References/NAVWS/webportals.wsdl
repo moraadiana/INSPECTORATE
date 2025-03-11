@@ -647,6 +647,20 @@
           <sequence />
         </complexType>
       </element>
+      <element name="GenerateWarehouseReceipt">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="pensionerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateWarehouseReceipt_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
       <element name="Generatep9Report">
         <complexType>
           <sequence>
@@ -1180,6 +1194,20 @@
         </complexType>
       </element>
       <element name="IsTenderBiddingPeriodOpened_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="LoginForUnchangedPassword">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="LoginForUnchangedPassword_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1852,6 +1880,12 @@
   <message name="GenerateTenderAwardLetter_Result">
     <part name="parameters" element="tns:GenerateTenderAwardLetter_Result" />
   </message>
+  <message name="GenerateWarehouseReceipt">
+    <part name="parameters" element="tns:GenerateWarehouseReceipt" />
+  </message>
+  <message name="GenerateWarehouseReceipt_Result">
+    <part name="parameters" element="tns:GenerateWarehouseReceipt_Result" />
+  </message>
   <message name="Generatep9Report">
     <part name="parameters" element="tns:Generatep9Report" />
   </message>
@@ -2061,6 +2095,12 @@
   </message>
   <message name="IsTenderBiddingPeriodOpened_Result">
     <part name="parameters" element="tns:IsTenderBiddingPeriodOpened_Result" />
+  </message>
+  <message name="LoginForUnchangedPassword">
+    <part name="parameters" element="tns:LoginForUnchangedPassword" />
+  </message>
+  <message name="LoginForUnchangedPassword_Result">
+    <part name="parameters" element="tns:LoginForUnchangedPassword_Result" />
   </message>
   <message name="PRNApprovalRequest">
     <part name="parameters" element="tns:PRNApprovalRequest" />
@@ -2395,6 +2435,10 @@
       <input name="GenerateTenderAwardLetter" message="tns:GenerateTenderAwardLetter" />
       <output name="GenerateTenderAwardLetter_Result" message="tns:GenerateTenderAwardLetter_Result" />
     </operation>
+    <operation name="GenerateWarehouseReceipt">
+      <input name="GenerateWarehouseReceipt" message="tns:GenerateWarehouseReceipt" />
+      <output name="GenerateWarehouseReceipt_Result" message="tns:GenerateWarehouseReceipt_Result" />
+    </operation>
     <operation name="Generatep9Report">
       <input name="Generatep9Report" message="tns:Generatep9Report" />
       <output name="Generatep9Report_Result" message="tns:Generatep9Report_Result" />
@@ -2534,6 +2578,10 @@
     <operation name="IsTenderBiddingPeriodOpened">
       <input name="IsTenderBiddingPeriodOpened" message="tns:IsTenderBiddingPeriodOpened" />
       <output name="IsTenderBiddingPeriodOpened_Result" message="tns:IsTenderBiddingPeriodOpened_Result" />
+    </operation>
+    <operation name="LoginForUnchangedPassword">
+      <input name="LoginForUnchangedPassword" message="tns:LoginForUnchangedPassword" />
+      <output name="LoginForUnchangedPassword_Result" message="tns:LoginForUnchangedPassword_Result" />
     </operation>
     <operation name="PRNApprovalRequest">
       <input name="PRNApprovalRequest" message="tns:PRNApprovalRequest" />
@@ -3019,6 +3067,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GenerateWarehouseReceipt">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:GenerateWarehouseReceipt" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateWarehouseReceipt">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateWarehouseReceipt_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="Generatep9Report">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:Generatep9Report" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="Generatep9Report">
@@ -3331,6 +3388,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="IsTenderBiddingPeriodOpened_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="LoginForUnchangedPassword">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:LoginForUnchangedPassword" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="LoginForUnchangedPassword">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="LoginForUnchangedPassword_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

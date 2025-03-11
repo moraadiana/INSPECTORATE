@@ -19,8 +19,8 @@ namespace INSPECTORATEStaff
 
         protected void LbtnLogin_Click(object sender, EventArgs e)
         {
-            string username = Request.QueryString["sd"].ToString();
-            string email = Request.QueryString["em"].ToString();
+            string username = Request.QueryString["staffNo"].ToString();
+            string email = Request.QueryString["email"].ToString();
             string NewPass = txtNewPass.Text.ToString();
             string ConfirmNewPass = txtConfirmpassword.Text.ToString();
 
@@ -59,7 +59,7 @@ namespace INSPECTORATEStaff
                             {
                                 string body = "Your Portal Password has been successfully reset, Use the below password to login<br /><br />";
                                 body += "<b>Password: " + NewPass + " </b> <br /><br />";
-                                MyComponents.SendMyEmail(email, "MURBS - Web Portal Password", body);
+                                MyComponents.SendMyEmail(email, "Inspectorate - Web Portal Password", body);
                                 Session.Abandon();
                                 Session.Clear();
                                 Session.Remove("username");
