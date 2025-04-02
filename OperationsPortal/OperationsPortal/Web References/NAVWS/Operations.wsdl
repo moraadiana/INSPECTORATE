@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/Operations" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Operations" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Operations" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="CheckCustomerLogin">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="userpassword" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckCustomerLogin_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckValidCustomerNo">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckValidCustomerNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateWarehouseReceipt">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="pensionerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateWarehouseReceipt_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetCustomerProfileDetails">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomerProfileDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="CheckCustomerLogin">
+    <part name="parameters" element="tns:CheckCustomerLogin" />
+  </message>
+  <message name="CheckCustomerLogin_Result">
+    <part name="parameters" element="tns:CheckCustomerLogin_Result" />
+  </message>
+  <message name="CheckValidCustomerNo">
+    <part name="parameters" element="tns:CheckValidCustomerNo" />
+  </message>
+  <message name="CheckValidCustomerNo_Result">
+    <part name="parameters" element="tns:CheckValidCustomerNo_Result" />
+  </message>
+  <message name="GenerateWarehouseReceipt">
+    <part name="parameters" element="tns:GenerateWarehouseReceipt" />
+  </message>
+  <message name="GenerateWarehouseReceipt_Result">
+    <part name="parameters" element="tns:GenerateWarehouseReceipt_Result" />
+  </message>
+  <message name="GetCustomerProfileDetails">
+    <part name="parameters" element="tns:GetCustomerProfileDetails" />
+  </message>
+  <message name="GetCustomerProfileDetails_Result">
+    <part name="parameters" element="tns:GetCustomerProfileDetails_Result" />
+  </message>
+  <portType name="Operations_Port">
+    <operation name="CheckCustomerLogin">
+      <input name="CheckCustomerLogin" message="tns:CheckCustomerLogin" />
+      <output name="CheckCustomerLogin_Result" message="tns:CheckCustomerLogin_Result" />
+    </operation>
+    <operation name="CheckValidCustomerNo">
+      <input name="CheckValidCustomerNo" message="tns:CheckValidCustomerNo" />
+      <output name="CheckValidCustomerNo_Result" message="tns:CheckValidCustomerNo_Result" />
+    </operation>
+    <operation name="GenerateWarehouseReceipt">
+      <input name="GenerateWarehouseReceipt" message="tns:GenerateWarehouseReceipt" />
+      <output name="GenerateWarehouseReceipt_Result" message="tns:GenerateWarehouseReceipt_Result" />
+    </operation>
+    <operation name="GetCustomerProfileDetails">
+      <input name="GetCustomerProfileDetails" message="tns:GetCustomerProfileDetails" />
+      <output name="GetCustomerProfileDetails_Result" message="tns:GetCustomerProfileDetails_Result" />
+    </operation>
+  </portType>
+  <binding name="Operations_Binding" type="tns:Operations_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="CheckCustomerLogin">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:CheckCustomerLogin" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckCustomerLogin">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckCustomerLogin_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckValidCustomerNo">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:CheckValidCustomerNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckValidCustomerNo">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckValidCustomerNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateWarehouseReceipt">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GenerateWarehouseReceipt" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateWarehouseReceipt">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateWarehouseReceipt_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetCustomerProfileDetails">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GetCustomerProfileDetails" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetCustomerProfileDetails">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetCustomerProfileDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Operations">
+    <port name="Operations_Port" binding="tns:Operations_Binding">
+      <address location="http://102.213.176.86:7047/BC200/WS/INSPECTORATE/Codeunit/Operations" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>
