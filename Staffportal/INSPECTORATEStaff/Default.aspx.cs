@@ -1,6 +1,8 @@
 ﻿using INSPECTORATEStaff.NAVWS;
 using OpenQA.Selenium;
 using System;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web.UI;
 using Windows.UI.Core;
 
@@ -235,6 +237,50 @@ namespace INSPECTORATEStaff
         }
         protected void lbtnForgot_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string username = txtusername.Value.ToString();
+                if (string.IsNullOrEmpty(username))
+                {
+                    LblError.Text = "Kindly input Staff Number";
+                    txtusername.Focus();
+                    return;
+                }
+
+                if (!ValidStaffNo(username))
+                {
+                    LblError.Text = "Invalid Staff No";
+                    return;
+                }
+                string newPassword = GenerateRandomPassword(10);
+                string response = MyComponents.ObjNav.UpdateStaffAutoGenPassword(username, newPassword);
+                if (!string.IsNullOrEmpty(response))
+                {
+                    if (response != "SUCCESS")
+                    {
+                        LblError.Text = "Failed to reset the password. Please try again.";
+                        return;
+                    }
+
+                }
+                string email = GetStaffEmail(username);
+                //string staffPassword = GetStaffPassword(username);
+                string subject = "Inspectorate Staff Portal Password Reset";
+                string body = $"Use this password to log into Inspectorate Staff portal .<br/> <br/>Auto generated Portal password: <strong>{newPassword}</strong> <br/> <br/>Do not reply to this email.";
+                MyComponents.SendMyEmail(email, subject, body);
+                LblError.Text = $"Auto generated password has been sent to your email address {email}";
+                return;
+
+
+              
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }
+        protected void lbtnForgot_Click2(object sender, EventArgs e)
+        {
             string user = txtusername.Value.ToString();
             if (string.IsNullOrEmpty(user))
             {
@@ -280,7 +326,7 @@ namespace INSPECTORATEStaff
                     //Pick Email & send alert
                     string body = "Your Portal Password has been successfully reset, Use the below password to login<br/><br/>";
                     body += "<b>Password: " + password + " </b> <br /><br />";
-                    MyComponents.SendMyEmail(email, "BFL - Web Portal Password", body);
+                    MyComponents.SendMyEmail(email, "Inspectorate - Web Portal Password", body);
                     LblError.Text = "Your password has been sent to: " + email.ToUpper();
                 }
                 #endregion
@@ -290,6 +336,24 @@ namespace INSPECTORATEStaff
                 ex.Data.Clear();
             }
             #endregion
+        }
+        private string GenerateRandomPassword(int length)
+        {
+            const string validChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$!";
+            StringBuilder password = new StringBuilder();
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            {
+                byte[] byteBuffer = new byte[1];
+
+                for (int i = 0; i < length; i++)
+                {
+                    rng.GetBytes(byteBuffer);
+                    int index = byteBuffer[0] % validChars.Length;
+                    password.Append(validChars[index]);
+                }
+            }
+
+            return password.ToString();
         }
         private string GetStaffEmail(string staffNo)
         {

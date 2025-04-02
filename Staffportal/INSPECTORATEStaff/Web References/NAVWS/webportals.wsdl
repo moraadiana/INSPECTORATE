@@ -1548,6 +1548,21 @@
           <sequence />
         </complexType>
       </element>
+      <element name="UpdateStaffAutoGenPassword">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="genpass" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateStaffAutoGenPassword_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="UpdateStaffPass">
         <complexType>
           <sequence>
@@ -2234,6 +2249,12 @@
   <message name="TransportRequisitionApprovalRequest_Result">
     <part name="parameters" element="tns:TransportRequisitionApprovalRequest_Result" />
   </message>
+  <message name="UpdateStaffAutoGenPassword">
+    <part name="parameters" element="tns:UpdateStaffAutoGenPassword" />
+  </message>
+  <message name="UpdateStaffAutoGenPassword_Result">
+    <part name="parameters" element="tns:UpdateStaffAutoGenPassword_Result" />
+  </message>
   <message name="UpdateStaffPass">
     <part name="parameters" element="tns:UpdateStaffPass" />
   </message>
@@ -2670,6 +2691,10 @@
     <operation name="TransportRequisitionApprovalRequest">
       <input name="TransportRequisitionApprovalRequest" message="tns:TransportRequisitionApprovalRequest" />
       <output name="TransportRequisitionApprovalRequest_Result" message="tns:TransportRequisitionApprovalRequest_Result" />
+    </operation>
+    <operation name="UpdateStaffAutoGenPassword">
+      <input name="UpdateStaffAutoGenPassword" message="tns:UpdateStaffAutoGenPassword" />
+      <output name="UpdateStaffAutoGenPassword_Result" message="tns:UpdateStaffAutoGenPassword_Result" />
     </operation>
     <operation name="UpdateStaffPass">
       <input name="UpdateStaffPass" message="tns:UpdateStaffPass" />
@@ -3595,6 +3620,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="TransportRequisitionApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateStaffAutoGenPassword">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:UpdateStaffAutoGenPassword" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateStaffAutoGenPassword">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateStaffAutoGenPassword_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
