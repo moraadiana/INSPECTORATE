@@ -229,6 +229,8 @@ namespace INSPECTORATEStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback TransportRequisitionApprovalRequestOperationCompleted;
         
+        private System.Threading.SendOrPostCallback UpdateStaffAutoGenPasswordOperationCompleted;
+        
         private System.Threading.SendOrPostCallback UpdateStaffPassOperationCompleted;
         
         private System.Threading.SendOrPostCallback ValidRecruitmentEmailAddressOperationCompleted;
@@ -578,6 +580,9 @@ namespace INSPECTORATEStaff.NAVWS {
         
         /// <remarks/>
         public event TransportRequisitionApprovalRequestCompletedEventHandler TransportRequisitionApprovalRequestCompleted;
+        
+        /// <remarks/>
+        public event UpdateStaffAutoGenPasswordCompletedEventHandler UpdateStaffAutoGenPasswordCompleted;
         
         /// <remarks/>
         public event UpdateStaffPassCompletedEventHandler UpdateStaffPassCompleted;
@@ -4048,6 +4053,38 @@ namespace INSPECTORATEStaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:UpdateStaffAutoGenPassword", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="UpdateStaffAutoGenPassword_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string UpdateStaffAutoGenPassword(string username, string genpass) {
+            object[] results = this.Invoke("UpdateStaffAutoGenPassword", new object[] {
+                        username,
+                        genpass});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateStaffAutoGenPasswordAsync(string username, string genpass) {
+            this.UpdateStaffAutoGenPasswordAsync(username, genpass, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateStaffAutoGenPasswordAsync(string username, string genpass, object userState) {
+            if ((this.UpdateStaffAutoGenPasswordOperationCompleted == null)) {
+                this.UpdateStaffAutoGenPasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateStaffAutoGenPasswordOperationCompleted);
+            }
+            this.InvokeAsync("UpdateStaffAutoGenPassword", new object[] {
+                        username,
+                        genpass}, this.UpdateStaffAutoGenPasswordOperationCompleted, userState);
+        }
+        
+        private void OnUpdateStaffAutoGenPasswordOperationCompleted(object arg) {
+            if ((this.UpdateStaffAutoGenPasswordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateStaffAutoGenPasswordCompleted(this, new UpdateStaffAutoGenPasswordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:UpdateStaffPass", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="UpdateStaffPass_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string UpdateStaffPass(string username, string genpass) {
@@ -6233,6 +6270,32 @@ namespace INSPECTORATEStaff.NAVWS {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void TransportRequisitionApprovalRequestCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void UpdateStaffAutoGenPasswordCompletedEventHandler(object sender, UpdateStaffAutoGenPasswordCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateStaffAutoGenPasswordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateStaffAutoGenPasswordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]

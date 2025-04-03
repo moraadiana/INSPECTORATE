@@ -110,12 +110,12 @@ namespace INSPECTORATEStaff
         {
             try
             {
-                string email = "dynamicselfservice@gmail.com";
-                string password = "{[*^5~8(_+?Fd";
+                string email = "dynamicsselfservice@gmail.com";
+                string password = "ydujienvejtdojgv";
 
                 var loginInfo = new NetworkCredential(email, password);
                 var msg = new MailMessage();
-                var smtpClient = new SmtpClient("smtp.gmail.com", 25);
+                var smtpClient = new SmtpClient("smtp.gmail.com", 587);
 
                 msg.From = new MailAddress(email);
                 msg.To.Add(new MailAddress(address));
@@ -127,14 +127,13 @@ namespace INSPECTORATEStaff
                 smtpClient.UseDefaultCredentials = false;
                 smtpClient.Credentials = loginInfo;
                 smtpClient.Send(msg);
-
             }
             catch (Exception Ex)
             {
                 Ex.Data.Clear();
-                // throw;
             }
         }
+       
         public static string FormatDateWithoutSymbols(DateTime Date2Format)
         {
             string s = "";
