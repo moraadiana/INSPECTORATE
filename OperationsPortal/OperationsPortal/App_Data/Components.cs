@@ -16,27 +16,44 @@ namespace OperationsPortal
             get
             {
                 // Enforce TLS 1.2
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-                // Ignore SSL certificate validation (use only for testing)
-                ServicePointManager.ServerCertificateValidationCallback +=
-                    (sender, certificate, chain, sslPolicyErrors) => true;
+                //// Ignore SSL certificate validation (use only for testing)
+                //ServicePointManager.ServerCertificateValidationCallback +=
+                //    (sender, certificate, chain, sslPolicyErrors) => true;
 
-                var webservice = new Operations();
+                // var webservice = new Operations();
+                //try
+                //{
+                //    var credentials = new NetworkCredential(
+                //        ConfigurationManager.AppSettings["W_USER"],
+                //        ConfigurationManager.AppSettings["W_PWD"]
+                //    );
+                //    webservice.Credentials = credentials;
+                //    webservice.PreAuthenticate = true;
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine("Error initializing web service: " + ex.Message);
+                //}
+                // return webservice;
+                var ws = new Operations();
                 try
                 {
                     var credentials = new NetworkCredential(
                         ConfigurationManager.AppSettings["W_USER"],
                         ConfigurationManager.AppSettings["W_PWD"]
                     );
-                    webservice.Credentials = credentials;
-                    webservice.PreAuthenticate = true;
+                    ws.Credentials = credentials;
+                    ws.UseDefaultCredentials = false; // Explicitly set to false
+                    ws.PreAuthenticate = true; // Ensure credentials are sent with request
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error initializing web service: " + ex.Message);
+                    //ex.Data.Clear();
+                    Console.WriteLine("Authentication error: " + ex.ToString());
                 }
-                return webservice;
+                return ws;
             }
         }
         public static void SendEmailAlerts(string address, string subject, string message)

@@ -22,15 +22,5 @@ namespace OperationsPortal.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://102.213.176.86:7047/BC200/WS/INSPECTORATE/Codeunit/Operations")]
-        public string OperationsPortal_NAVWS_OperationsPortal {
-            get {
-                return ((string)(this["OperationsPortal_NAVWS_OperationsPortal"]));
-            }
-        }
     }
 }
