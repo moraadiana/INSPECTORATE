@@ -136,11 +136,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Web References\NAVWS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -199,13 +194,7 @@
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Statements\WarehouseReceipt.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
-    <None Include="Web References\NAVWS\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\NAVWS\Operations.wsdl" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />
@@ -235,22 +224,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://102.213.176.86:7047/BC200/WS/INSPECTORATE/Codeunit/Operations">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\NAVWS\</RelPath>
-      <UpdateFromURL>http://102.213.176.86:7047/BC200/WS/INSPECTORATE/Codeunit/Operations</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>OperationsPortal_NAVWS_OperationsPortal</CachedSettingsPropName>
-    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
