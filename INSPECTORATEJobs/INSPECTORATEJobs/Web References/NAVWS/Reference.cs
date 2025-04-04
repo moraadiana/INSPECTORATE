@@ -23,7 +23,7 @@ namespace INSPECTORATEJobs.NAVWS {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="Recruitment_Binding", Namespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment")]
@@ -31,11 +31,15 @@ namespace INSPECTORATEJobs.NAVWS {
         
         private System.Threading.SendOrPostCallback CreateOnlineRecruitmentAccountOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DeleteAttachmentOperationCompleted;
+        
         private System.Threading.SendOrPostCallback DeleteDocumentAttachmentOperationCompleted;
         
         private System.Threading.SendOrPostCallback DeleteMemoAttachmentOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAdvertisedJobsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetApplicantAttachmentsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetApplicantHobbiesOperationCompleted;
         
@@ -78,6 +82,8 @@ namespace INSPECTORATEJobs.NAVWS {
         private System.Threading.SendOrPostCallback RecruitmentUserNamesOperationCompleted;
         
         private System.Threading.SendOrPostCallback RecruitmentUserPasswordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RegFileUpload1OperationCompleted;
         
         private System.Threading.SendOrPostCallback RegFileUploadOperationCompleted;
         
@@ -127,6 +133,9 @@ namespace INSPECTORATEJobs.NAVWS {
         public event CreateOnlineRecruitmentAccountCompletedEventHandler CreateOnlineRecruitmentAccountCompleted;
         
         /// <remarks/>
+        public event DeleteAttachmentCompletedEventHandler DeleteAttachmentCompleted;
+        
+        /// <remarks/>
         public event DeleteDocumentAttachmentCompletedEventHandler DeleteDocumentAttachmentCompleted;
         
         /// <remarks/>
@@ -134,6 +143,9 @@ namespace INSPECTORATEJobs.NAVWS {
         
         /// <remarks/>
         public event GetAdvertisedJobsCompletedEventHandler GetAdvertisedJobsCompleted;
+        
+        /// <remarks/>
+        public event GetApplicantAttachmentsCompletedEventHandler GetApplicantAttachmentsCompleted;
         
         /// <remarks/>
         public event GetApplicantHobbiesCompletedEventHandler GetApplicantHobbiesCompleted;
@@ -197,6 +209,9 @@ namespace INSPECTORATEJobs.NAVWS {
         
         /// <remarks/>
         public event RecruitmentUserPasswordCompletedEventHandler RecruitmentUserPasswordCompleted;
+        
+        /// <remarks/>
+        public event RegFileUpload1CompletedEventHandler RegFileUpload1Completed;
         
         /// <remarks/>
         public event RegFileUploadCompletedEventHandler RegFileUploadCompleted;
@@ -323,6 +338,36 @@ namespace INSPECTORATEJobs.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Recruitment:DeleteAttachment", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment", ResponseElementName="DeleteAttachment_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool DeleteAttachment(string systemId) {
+            object[] results = this.Invoke("DeleteAttachment", new object[] {
+                        systemId});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DeleteAttachmentAsync(string systemId) {
+            this.DeleteAttachmentAsync(systemId, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteAttachmentAsync(string systemId, object userState) {
+            if ((this.DeleteAttachmentOperationCompleted == null)) {
+                this.DeleteAttachmentOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteAttachmentOperationCompleted);
+            }
+            this.InvokeAsync("DeleteAttachment", new object[] {
+                        systemId}, this.DeleteAttachmentOperationCompleted, userState);
+        }
+        
+        private void OnDeleteAttachmentOperationCompleted(object arg) {
+            if ((this.DeleteAttachmentCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteAttachmentCompleted(this, new DeleteAttachmentCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Recruitment:DeleteDocumentAttachment", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment", ResponseElementName="DeleteDocumentAttachment_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string DeleteDocumentAttachment(string fileName, string applicationNo) {
@@ -411,6 +456,36 @@ namespace INSPECTORATEJobs.NAVWS {
             if ((this.GetAdvertisedJobsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetAdvertisedJobsCompleted(this, new GetAdvertisedJobsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetApplicantAttachments", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment", ResponseElementName="GetApplicantAttachments_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetApplicantAttachments(string applicationNo) {
+            object[] results = this.Invoke("GetApplicantAttachments", new object[] {
+                        applicationNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetApplicantAttachmentsAsync(string applicationNo) {
+            this.GetApplicantAttachmentsAsync(applicationNo, null);
+        }
+        
+        /// <remarks/>
+        public void GetApplicantAttachmentsAsync(string applicationNo, object userState) {
+            if ((this.GetApplicantAttachmentsOperationCompleted == null)) {
+                this.GetApplicantAttachmentsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetApplicantAttachmentsOperationCompleted);
+            }
+            this.InvokeAsync("GetApplicantAttachments", new object[] {
+                        applicationNo}, this.GetApplicantAttachmentsOperationCompleted, userState);
+        }
+        
+        private void OnGetApplicantAttachmentsOperationCompleted(object arg) {
+            if ((this.GetApplicantAttachmentsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetApplicantAttachmentsCompleted(this, new GetApplicantAttachmentsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1080,6 +1155,42 @@ namespace INSPECTORATEJobs.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Recruitment:RegFileUpload1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment", ResponseElementName="RegFileUpload1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool RegFileUpload1(string retNo, string fileName, string attachment, int tableId) {
+            object[] results = this.Invoke("RegFileUpload1", new object[] {
+                        retNo,
+                        fileName,
+                        attachment,
+                        tableId});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RegFileUpload1Async(string retNo, string fileName, string attachment, int tableId) {
+            this.RegFileUpload1Async(retNo, fileName, attachment, tableId, null);
+        }
+        
+        /// <remarks/>
+        public void RegFileUpload1Async(string retNo, string fileName, string attachment, int tableId, object userState) {
+            if ((this.RegFileUpload1OperationCompleted == null)) {
+                this.RegFileUpload1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegFileUpload1OperationCompleted);
+            }
+            this.InvokeAsync("RegFileUpload1", new object[] {
+                        retNo,
+                        fileName,
+                        attachment,
+                        tableId}, this.RegFileUpload1OperationCompleted, userState);
+        }
+        
+        private void OnRegFileUpload1OperationCompleted(object arg) {
+            if ((this.RegFileUpload1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RegFileUpload1Completed(this, new RegFileUpload1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Recruitment:RegFileUpload", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment", ResponseElementName="RegFileUpload_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public bool RegFileUpload(string retNo, string fileName, string attachment, int tableId) {
@@ -1205,11 +1316,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void CreateOnlineRecruitmentAccountCompletedEventHandler(object sender, CreateOnlineRecruitmentAccountCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class CreateOnlineRecruitmentAccountCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1231,11 +1342,37 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void DeleteAttachmentCompletedEventHandler(object sender, DeleteAttachmentCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DeleteAttachmentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DeleteAttachmentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void DeleteDocumentAttachmentCompletedEventHandler(object sender, DeleteDocumentAttachmentCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DeleteDocumentAttachmentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1257,11 +1394,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void DeleteMemoAttachmentCompletedEventHandler(object sender, DeleteMemoAttachmentCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DeleteMemoAttachmentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1283,11 +1420,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetAdvertisedJobsCompletedEventHandler(object sender, GetAdvertisedJobsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetAdvertisedJobsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1309,11 +1446,37 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GetApplicantAttachmentsCompletedEventHandler(object sender, GetApplicantAttachmentsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetApplicantAttachmentsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetApplicantAttachmentsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetApplicantHobbiesCompletedEventHandler(object sender, GetApplicantHobbiesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetApplicantHobbiesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1335,11 +1498,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetApplicantQualificationsCompletedEventHandler(object sender, GetApplicantQualificationsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetApplicantQualificationsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1361,11 +1524,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetApplicantRefereesCompletedEventHandler(object sender, GetApplicantRefereesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetApplicantRefereesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1387,11 +1550,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetAttachmentFileNameCompletedEventHandler(object sender, GetAttachmentFileNameCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetAttachmentFileNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1413,11 +1576,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetJobQualificationCodesCompletedEventHandler(object sender, GetJobQualificationCodesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetJobQualificationCodesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1439,11 +1602,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetJobQualificationTypeCompletedEventHandler(object sender, GetJobQualificationTypeCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetJobQualificationTypeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1465,11 +1628,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetJobTitleCompletedEventHandler(object sender, GetJobTitleCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetJobTitleCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1491,11 +1654,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetMyApplicationsCompletedEventHandler(object sender, GetMyApplicationsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetMyApplicationsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1517,11 +1680,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetNationalitiesCompletedEventHandler(object sender, GetNationalitiesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetNationalitiesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1543,11 +1706,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void HRMApplicantHobbyCompletedEventHandler(object sender, HRMApplicantHobbyCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class HRMApplicantHobbyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1569,11 +1732,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void HRMApplicantQualificationsCompletedEventHandler(object sender, HRMApplicantQualificationsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class HRMApplicantQualificationsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1595,11 +1758,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void HRMApplicantRefereesCompletedEventHandler(object sender, HRMApplicantRefereesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class HRMApplicantRefereesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1621,11 +1784,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void HRMRemoveApplicantHobbyCompletedEventHandler(object sender, HRMRemoveApplicantHobbyCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class HRMRemoveApplicantHobbyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1647,11 +1810,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void HRMRemoveApplicantQualificationCompletedEventHandler(object sender, HRMRemoveApplicantQualificationCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class HRMRemoveApplicantQualificationCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1673,11 +1836,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void HRMRemoveApplicantRefereeCompletedEventHandler(object sender, HRMRemoveApplicantRefereeCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class HRMRemoveApplicantRefereeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1699,11 +1862,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void JobDescriptionCompletedEventHandler(object sender, JobDescriptionCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class JobDescriptionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1725,11 +1888,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void JobRequirementsCompletedEventHandler(object sender, JobRequirementsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class JobRequirementsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1751,11 +1914,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void RecruitmentUserDetailsCompletedEventHandler(object sender, RecruitmentUserDetailsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class RecruitmentUserDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1777,11 +1940,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void RecruitmentUserLoginCompletedEventHandler(object sender, RecruitmentUserLoginCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class RecruitmentUserLoginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1803,11 +1966,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void RecruitmentUserNamesCompletedEventHandler(object sender, RecruitmentUserNamesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class RecruitmentUserNamesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1829,11 +1992,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void RecruitmentUserPasswordCompletedEventHandler(object sender, RecruitmentUserPasswordCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class RecruitmentUserPasswordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1855,11 +2018,37 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void RegFileUpload1CompletedEventHandler(object sender, RegFileUpload1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RegFileUpload1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RegFileUpload1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void RegFileUploadCompletedEventHandler(object sender, RegFileUploadCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class RegFileUploadCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1881,11 +2070,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void SaveMemoAttchmntsCompletedEventHandler(object sender, SaveMemoAttchmntsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class SaveMemoAttchmntsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1907,11 +2096,11 @@ namespace INSPECTORATEJobs.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void SubmitJobApplicationCompletedEventHandler(object sender, SubmitJobApplicationCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class SubmitJobApplicationCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {

@@ -378,14 +378,14 @@ namespace INSPECTORATEStaff.pages
             {
                 string EmployeeNo = Session["username"].ToString();
                 string LeaveType = DdLeaveType.SelectedValue.ToString();
-                int Year = Convert.ToInt32(DateTime.Now.Year);
-                string CurrentLeavePeriod = Year.ToString();
+                //int Year = Convert.ToInt32(DateTime.Now.Year);
+                //string CurrentLeavePeriod = Year.ToString();
                 //leaveMsg.Visible = false;
                 //BtnApply.Visible = true;
-
+                // availabledays = MyComponents.ObjNav.AvailableLeaveDayss(EmployeeNo, LeaveType, CurrentLeavePeriod);
                 string availabledays = "";
-               //availabledays = MyComponents.ObjNav.AvailableLeaveDays(EmployeeNo, LeaveType);
-                availabledays = MyComponents.ObjNav.AvailableLeaveDayss(EmployeeNo, LeaveType, CurrentLeavePeriod);
+               availabledays = MyComponents.ObjNav.AvailableLeaveDays(EmployeeNo, LeaveType);
+              
                 if (!string.IsNullOrEmpty(availabledays))
                 {
                     double leavedays = Convert.ToDouble(availabledays);

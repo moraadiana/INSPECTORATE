@@ -268,7 +268,7 @@ namespace INSPECTORATEStaff
                 string subject = "Inspectorate Staff Portal Password Reset";
                 string body = $"Use this password to log into Inspectorate Staff portal .<br/> <br/>Auto generated Portal password: <strong>{newPassword}</strong> <br/> <br/>Do not reply to this email.";
                 MyComponents.SendMyEmail(email, subject, body);
-                LblError.Text = $"Auto generated password has been sent to your email address {email}";
+                lblSuccess.Text = $"Auto generated password has been sent to your email address {email}";
                 return;
 
 

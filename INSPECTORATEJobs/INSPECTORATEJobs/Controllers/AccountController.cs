@@ -143,9 +143,9 @@ namespace INSPECTORATEJobs.Controllers
                 {
                     string recipient = responseArr[1];
                     string password = responseArr[2];
-                    string subject = "AOG Recruitment Portal Password Reset";
+                    string subject = "Inpectorate Recruitment Portal Password Reset";
                     string body = $"Use the password below to log into your recruitment portal. <br/><br/>Portal Password: <strong>{password}</strong><br/><br/>Do not reply to this email.";
-                    Components.SendEmailAlerts(recipient, subject, body);
+                    Components.SendMyEmail(recipient, subject, body);
                     TempData["success"] = $"Password has been sent to your email address {recipient.ToUpper()}";
                     return RedirectToAction("login", "account");
                 }

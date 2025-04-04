@@ -22,6 +22,12 @@ namespace INSPECTORATEStaff.pages
                 {
                     Response.Redirect("~/Default.aspx");
                 }
+                string username = Session["username"].ToString();
+                bool response = MyComponents.ObjNav.HasPendingImprestSurrender(username);
+                if (response == true)
+                {
+                    SuccessMessage("Warning! You have pending imprest Surrender!");
+                }
                 string paged = Request.QueryString["Tp"].ToString();
                 if (paged == "old")
                 {
@@ -757,6 +763,12 @@ namespace INSPECTORATEStaff.pages
             {
                 Ex.Data.Clear();
             }
+        }
+        private void SuccessMessage(string message)
+        {
+            string page = "ImprestListing.aspx";
+            string strScript = "<script>alert('" + message + "');window.location='" + page + "';</script>";
+            ClientScript.RegisterStartupScript(GetType(), "Client Script", strScript.ToString());
         }
         private void Message(string p)
         {

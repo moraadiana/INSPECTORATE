@@ -31,6 +31,8 @@ namespace INSPECTORATEStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback ApproveDocumentOperationCompleted;
         
+        private System.Threading.SendOrPostCallback AvailableLeaveDays1OperationCompleted;
+        
         private System.Threading.SendOrPostCallback AvailableLeaveDaysOperationCompleted;
         
         private System.Threading.SendOrPostCallback AvailableLeaveDayssOperationCompleted;
@@ -163,7 +165,7 @@ namespace INSPECTORATEStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback HRLeaveApplicationOperationCompleted;
         
-        private System.Threading.SendOrPostCallback HasPendingImprestOperationCompleted;
+        private System.Threading.SendOrPostCallback HasPendingImprestSurrenderOperationCompleted;
         
         private System.Threading.SendOrPostCallback ImprestRequisitionApprovalRequestOperationCompleted;
         
@@ -285,6 +287,9 @@ namespace INSPECTORATEStaff.NAVWS {
         
         /// <remarks/>
         public event ApproveDocumentCompletedEventHandler ApproveDocumentCompleted;
+        
+        /// <remarks/>
+        public event AvailableLeaveDays1CompletedEventHandler AvailableLeaveDays1Completed;
         
         /// <remarks/>
         public event AvailableLeaveDaysCompletedEventHandler AvailableLeaveDaysCompleted;
@@ -485,7 +490,7 @@ namespace INSPECTORATEStaff.NAVWS {
         public event HRLeaveApplicationCompletedEventHandler HRLeaveApplicationCompleted;
         
         /// <remarks/>
-        public event HasPendingImprestCompletedEventHandler HasPendingImprestCompleted;
+        public event HasPendingImprestSurrenderCompletedEventHandler HasPendingImprestSurrenderCompleted;
         
         /// <remarks/>
         public event ImprestRequisitionApprovalRequestCompletedEventHandler ImprestRequisitionApprovalRequestCompleted;
@@ -634,6 +639,38 @@ namespace INSPECTORATEStaff.NAVWS {
             if ((this.ApproveDocumentCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ApproveDocumentCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:AvailableLeaveDays1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="AvailableLeaveDays1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string AvailableLeaveDays1(string employeeNo, string leaveType) {
+            object[] results = this.Invoke("AvailableLeaveDays1", new object[] {
+                        employeeNo,
+                        leaveType});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AvailableLeaveDays1Async(string employeeNo, string leaveType) {
+            this.AvailableLeaveDays1Async(employeeNo, leaveType, null);
+        }
+        
+        /// <remarks/>
+        public void AvailableLeaveDays1Async(string employeeNo, string leaveType, object userState) {
+            if ((this.AvailableLeaveDays1OperationCompleted == null)) {
+                this.AvailableLeaveDays1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnAvailableLeaveDays1OperationCompleted);
+            }
+            this.InvokeAsync("AvailableLeaveDays1", new object[] {
+                        employeeNo,
+                        leaveType}, this.AvailableLeaveDays1OperationCompleted, userState);
+        }
+        
+        private void OnAvailableLeaveDays1OperationCompleted(object arg) {
+            if ((this.AvailableLeaveDays1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AvailableLeaveDays1Completed(this, new AvailableLeaveDays1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2909,32 +2946,32 @@ namespace INSPECTORATEStaff.NAVWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:HasPendingImprest", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="HasPendingImprest_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:HasPendingImprestSurrender", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="HasPendingImprestSurrender_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool HasPendingImprest(string accountNo) {
-            object[] results = this.Invoke("HasPendingImprest", new object[] {
+        public bool HasPendingImprestSurrender(string accountNo) {
+            object[] results = this.Invoke("HasPendingImprestSurrender", new object[] {
                         accountNo});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void HasPendingImprestAsync(string accountNo) {
-            this.HasPendingImprestAsync(accountNo, null);
+        public void HasPendingImprestSurrenderAsync(string accountNo) {
+            this.HasPendingImprestSurrenderAsync(accountNo, null);
         }
         
         /// <remarks/>
-        public void HasPendingImprestAsync(string accountNo, object userState) {
-            if ((this.HasPendingImprestOperationCompleted == null)) {
-                this.HasPendingImprestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnHasPendingImprestOperationCompleted);
+        public void HasPendingImprestSurrenderAsync(string accountNo, object userState) {
+            if ((this.HasPendingImprestSurrenderOperationCompleted == null)) {
+                this.HasPendingImprestSurrenderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnHasPendingImprestSurrenderOperationCompleted);
             }
-            this.InvokeAsync("HasPendingImprest", new object[] {
-                        accountNo}, this.HasPendingImprestOperationCompleted, userState);
+            this.InvokeAsync("HasPendingImprestSurrender", new object[] {
+                        accountNo}, this.HasPendingImprestSurrenderOperationCompleted, userState);
         }
         
-        private void OnHasPendingImprestOperationCompleted(object arg) {
-            if ((this.HasPendingImprestCompleted != null)) {
+        private void OnHasPendingImprestSurrenderOperationCompleted(object arg) {
+            if ((this.HasPendingImprestSurrenderCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.HasPendingImprestCompleted(this, new HasPendingImprestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.HasPendingImprestSurrenderCompleted(this, new HasPendingImprestSurrenderCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4323,6 +4360,32 @@ namespace INSPECTORATEStaff.NAVWS {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void ApproveDocumentCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void AvailableLeaveDays1CompletedEventHandler(object sender, AvailableLeaveDays1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AvailableLeaveDays1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AvailableLeaveDays1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
@@ -5758,17 +5821,17 @@ namespace INSPECTORATEStaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    public delegate void HasPendingImprestCompletedEventHandler(object sender, HasPendingImprestCompletedEventArgs e);
+    public delegate void HasPendingImprestSurrenderCompletedEventHandler(object sender, HasPendingImprestSurrenderCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class HasPendingImprestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class HasPendingImprestSurrenderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal HasPendingImprestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal HasPendingImprestSurrenderCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

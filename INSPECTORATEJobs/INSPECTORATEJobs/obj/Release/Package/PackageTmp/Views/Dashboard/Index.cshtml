@@ -1,0 +1,86 @@
+﻿@model IEnumerable<INSPECTORATEJobs.ViewModels.AdvertisedJobs>
+@{
+    ViewBag.Title = "Open Vacancies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <!-- BEGIN PAGE HEADER-->
+    <!-- BEGIN PAGE BAR -->
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <a href="#">Inspectorate Online Jobs</a>
+                <i class="fa fa-circle"></i>
+            </li>
+        </ul>
+    </div>
+    <!-- END PAGE BAR -->
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            <button class="close" data-close="alert"></button>
+            <span>@TempData["Error"]</span>
+        </div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            <button class="close" data-close="alert"></button>
+            <span>@TempData["Success"]</span>
+        </div>
+    }
+    <!-- BEGIN PAGE TITLE-->
+<h1 class="page-title">
+    Inspectorate Online Jobs Board
+</h1>
+    <!-- END PAGE TITLE-->
+    <!-- END PAGE HEADER-->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light portlet-fit bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-settings font-red"></i>
+                        <span class="caption-subject font-red sbold uppercase">Open Vacancies</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="table-toolbar">
+                    </div>
+                    <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>REF No.</th>
+                                <th>Job Id</th>
+                                <th>Job Title</th>
+                                <th>Required Positions</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var job in @Model)
+                            {
+                                <tr>
+                                    <td>@job.Counter</td>
+                                    <td>@job.JobRefNo</td>
+                                    <td>@job.JobId</td>
+                                    <td>@job.JobTitle</td>
+                                    <td>@job.RequiredPositions</td>
+                                    <td><a href="@Url.Action("generalinformation", "jobapplication", new {jobId=job.JobId, refNo=job.JobRefNo})">Apply</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
