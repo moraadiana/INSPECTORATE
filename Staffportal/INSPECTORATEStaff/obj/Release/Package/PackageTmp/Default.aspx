@@ -12,6 +12,8 @@
                     <h5 style="font-family: Global Sans Serif"><u><strong>INSPECTORATE STAFF PORTAL</strong></u></h5>
                 </span>
                 <asp:Label ID="LblError" runat="server" class="text-white text-center p-b-0 myglow"></asp:Label><br />
+               <asp:Label ID="lblSuccess" runat="server" class="text-success text-center p-b-0"></asp:Label><br />
+
                 <br />
                 <div class="wrap-input100 validate-input" data-validate="Enter Staff Number">
                     <input class="input100" type="email" runat="server" id="txtusername">

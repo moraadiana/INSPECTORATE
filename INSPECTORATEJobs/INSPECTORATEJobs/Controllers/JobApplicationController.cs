@@ -37,7 +37,7 @@ namespace INSPECTORATEJobs.Controllers
                 }
             }
 
-                if (!string.IsNullOrEmpty(response))
+            if (!string.IsNullOrEmpty(response))
             {
                 string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
                 string returnMsg = responseArr[0];
@@ -192,14 +192,14 @@ namespace INSPECTORATEJobs.Controllers
         public ActionResult NavigateReferees()
         {
             string applicationNo = Session["ApplicationNo"].ToString();
-            //var applicantQualifications = Services.GetApplicantQualifications(applicationNo);
-            return RedirectToAction("referees");
-            //if (applicantQualifications.Count >= 2) return RedirectToAction("referees");
-            //else
-            //{
-            //    TempData["error"] = "You must add atleast two qualifications";
-            //    return RedirectToAction("qualifications");
-            //}
+            var applicantQualifications = Services.GetApplicantQualifications(applicationNo);
+           // return RedirectToAction("referees");
+            if (applicantQualifications.Count >= 2) return RedirectToAction("referees");
+            else
+            {
+                TempData["error"] = "You must add atleast two qualifications";
+                return RedirectToAction("qualifications");
+            }
         }
 
         public ActionResult Referees()
@@ -376,46 +376,96 @@ namespace INSPECTORATEJobs.Controllers
             }
         }
 
+        
         public ActionResult Attachments()
         {
             string applicationNo = Session["ApplicationNo"].ToString();
-
-            var applicantAttachments = Services.GetApplicantAttachments(applicationNo);
-            return View(applicantAttachments);
-        }
-        [HttpPost]
-        public ActionResult Attachments(HttpPostedFileBase attachmentFile)
-        {
-            string fileName = attachmentFile.FileName.Replace(" ", "-");
-            string documentNo = Session["ApplicationNo"].ToString();
-            string username = Session["username"].ToString();
-            string fileExtension = Path.GetExtension(fileName).Split('.')[1].ToLower();
-            if (fileExtension == "pdf" || fileExtension == "docx" || fileExtension == "doc" || fileExtension == "png" || fileExtension == "jpeg" || fileExtension == "jpg")
+            if (Session["ApplicationNo"] == null)
             {
-                string strPath = Server.MapPath("~/Attachments");
-                if (!Directory.Exists(strPath))
+                //TempData["Error"] = "Application number is missing. Please restart your application process.";
+                return RedirectToAction("login", "Account");
+            }
+            Attachment attachment = new Attachment();
+            var applicantAttachments = Services.GetApplicantAttachments(applicationNo);
+            attachment.ApplicantAttachments = applicantAttachments;
+
+            
+            return View(attachment);
+        }
+      
+
+        [HttpPost]
+        public ActionResult SubmitAttachment(Attachment attachment)
+        {
+            try
+            {
+                string applicationNo = Session["ApplicationNo"].ToString();
+                string username = Session["username"].ToString();
+                if (attachment.AttachmentFile == null || attachment.AttachmentFile.ContentLength == 0)
                 {
-                    Directory.CreateDirectory(strPath);
+                    TempData["Error"] = "Please select a file to upload.";
+                    return RedirectToAction("attachments", "jobapplication");
                 }
 
-                string pathToUpload = Path.Combine(strPath, documentNo + fileName.ToUpper());
-                attachmentFile.SaveAs(pathToUpload);
-                webportals.SaveMemoAttchmnts(documentNo, pathToUpload, fileName.ToUpper(), username);
-                Stream fs = attachmentFile.InputStream;
-                BinaryReader br = new BinaryReader(fs);
-                byte[] bytes = br.ReadBytes((int)fs.Length);
-                string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                webportals.RegFileUpload(documentNo, fileName.ToUpper(), base64String, 52178490);
-                TempData["success"] = "Document uploaded successfully";
-                return RedirectToAction("attachments");
+                string fileName = attachment.AttachmentFile.FileName;
+                string fileExtension = Path.GetExtension(fileName).Split('.')[1].ToLower();
+                if (fileExtension == "pdf")
+                {
+                    string path = Server.MapPath("~/Uploads/");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    string pathToUpload = Path.Combine(path, applicationNo.Replace("/", "") + fileName);
+                    if (System.IO.File.Exists(pathToUpload))
+                    {
+                        System.IO.File.Delete(pathToUpload);
+                    }
+                    attachment.AttachmentFile.SaveAs(pathToUpload);
+                    //webportals.SaveMemoAttchmnts(applicationNo, pathToUpload, fileName.ToUpper(), username);
+                    Stream fs = attachment.AttachmentFile.InputStream;
+                    BinaryReader br = new BinaryReader(fs);
+                    byte[] bytes = br.ReadBytes((int)fs.Length);
+                    string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+                    webportals.RegFileUpload(applicationNo, fileName.ToUpper(), base64String, 61225);
+                    TempData["Success"] = "Document has been uploaded successfully";
+                    return RedirectToAction("attachments", "jobapplication");
+                }
+                else
+                {
+                    TempData["Error"] = "Please upload files with .pdf extensions only.";
+                    return RedirectToAction("attachments", "jobapplication");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                TempData["error"] = "Please upload files with .pdf, .docx, .png, .jpg and .jpeg extensions only.";
-                return RedirectToAction("attachments");
+                TempData["Error"] = ex.Message;
+                return RedirectToAction("attachments", "jobapplication");
             }
         }
 
+       
+        public ActionResult RemoveAttachment1(string id)
+        {
+            try
+            {
+                if (webportals.DeleteAttachment(id))
+                {
+                    TempData["Success"] = "Document has been deleted successfully";
+                    return RedirectToAction("attachments", "jobapplication");
+                }
+                else
+                {
+                    TempData["Error"] = "An error occured while deleting document. Please try again later!";
+                    return RedirectToAction("attachments", "jobapplication");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                return RedirectToAction("attachments", "jobapplication");
+            }
+        }
         public ActionResult RemoveAttachment(string systemId)
         {
             try
@@ -449,20 +499,23 @@ namespace INSPECTORATEJobs.Controllers
             {
                 string applicationNo = Session["ApplicationNo"].ToString();
                 var attachments = Services.GetApplicantAttachments(applicationNo);
-                //if(attachments.Count <= 0)
-                //{
-                //    TempData["error"] = "Please upload attachments before proceeding";
-                //    return RedirectToAction("attachments");
-                //}
-                string jobTitle = Session["jobTitle"].ToString();
                 string recipient = Session["username"].ToString();
+                string names =  webportals.RecruitmentUserNames(recipient);
+                if (attachments.Count <= 0)
+                {
+                    TempData["error"] = "Please upload attachments before proceeding";
+                    return RedirectToAction("attachments");
+                }
+                string jobTitle = Session["jobTitle"].ToString();
+                
                 string subject = "INSPECTORATE Recruitment Job Application Alert";
-                string body = $"Hello {webportals.RecruitmentUserNames(recipient)}" +
+                string body = $"Hello {names}" +
                     $"<br/><br/>" +
                     $"You have successfully initiated a job application for <b>{jobTitle}</b> at INSPECTORATE." +
                     $"<br/>" +
                     $"Your application reference number is: <b>{applicationNo}</b>";
-                Components.SendEmailAlerts(recipient, subject, body);
+                Components.SendMyEmail(recipient, subject, body);
+                
                 TempData["success"] = "Job application has been submitted successfully.";
                 return RedirectToAction("applications", "dashboard");
             }

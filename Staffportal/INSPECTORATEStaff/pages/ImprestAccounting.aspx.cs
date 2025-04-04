@@ -121,11 +121,7 @@ namespace INSPECTORATEStaff.pages
             string imprestNo = ddlImprests.SelectedValue.ToString();
             try
             {
-                //bool response = MyComponents.ObjNav.HasPendingImprest(imprestNo);
-                //if (response == true)
-                //{
-                //    Message("Warning! You have a Pending imprest. Try again later!");
-                //}
+               
                 
                 if (!FileUpload1.HasFiles)
                 {

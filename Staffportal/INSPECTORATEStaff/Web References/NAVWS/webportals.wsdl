@@ -15,6 +15,21 @@
           <sequence />
         </complexType>
       </element>
+      <element name="AvailableLeaveDays1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="leaveType" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AvailableLeaveDays1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="AvailableLeaveDays">
         <complexType>
           <sequence>
@@ -1023,14 +1038,14 @@
           </sequence>
         </complexType>
       </element>
-      <element name="HasPendingImprest">
+      <element name="HasPendingImprestSurrender">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
           </sequence>
         </complexType>
       </element>
-      <element name="HasPendingImprest_Result">
+      <element name="HasPendingImprestSurrender_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
@@ -1669,6 +1684,12 @@
   <message name="ApproveDocument_Result">
     <part name="parameters" element="tns:ApproveDocument_Result" />
   </message>
+  <message name="AvailableLeaveDays1">
+    <part name="parameters" element="tns:AvailableLeaveDays1" />
+  </message>
+  <message name="AvailableLeaveDays1_Result">
+    <part name="parameters" element="tns:AvailableLeaveDays1_Result" />
+  </message>
   <message name="AvailableLeaveDays">
     <part name="parameters" element="tns:AvailableLeaveDays" />
   </message>
@@ -2065,11 +2086,11 @@
   <message name="HRLeaveApplication_Result">
     <part name="parameters" element="tns:HRLeaveApplication_Result" />
   </message>
-  <message name="HasPendingImprest">
-    <part name="parameters" element="tns:HasPendingImprest" />
+  <message name="HasPendingImprestSurrender">
+    <part name="parameters" element="tns:HasPendingImprestSurrender" />
   </message>
-  <message name="HasPendingImprest_Result">
-    <part name="parameters" element="tns:HasPendingImprest_Result" />
+  <message name="HasPendingImprestSurrender_Result">
+    <part name="parameters" element="tns:HasPendingImprestSurrender_Result" />
   </message>
   <message name="ImprestRequisitionApprovalRequest">
     <part name="parameters" element="tns:ImprestRequisitionApprovalRequest" />
@@ -2315,6 +2336,10 @@
     <operation name="ApproveDocument">
       <input name="ApproveDocument" message="tns:ApproveDocument" />
       <output name="ApproveDocument_Result" message="tns:ApproveDocument_Result" />
+    </operation>
+    <operation name="AvailableLeaveDays1">
+      <input name="AvailableLeaveDays1" message="tns:AvailableLeaveDays1" />
+      <output name="AvailableLeaveDays1_Result" message="tns:AvailableLeaveDays1_Result" />
     </operation>
     <operation name="AvailableLeaveDays">
       <input name="AvailableLeaveDays" message="tns:AvailableLeaveDays" />
@@ -2580,9 +2605,9 @@
       <input name="HRLeaveApplication" message="tns:HRLeaveApplication" />
       <output name="HRLeaveApplication_Result" message="tns:HRLeaveApplication_Result" />
     </operation>
-    <operation name="HasPendingImprest">
-      <input name="HasPendingImprest" message="tns:HasPendingImprest" />
-      <output name="HasPendingImprest_Result" message="tns:HasPendingImprest_Result" />
+    <operation name="HasPendingImprestSurrender">
+      <input name="HasPendingImprestSurrender" message="tns:HasPendingImprestSurrender" />
+      <output name="HasPendingImprestSurrender_Result" message="tns:HasPendingImprestSurrender_Result" />
     </operation>
     <operation name="ImprestRequisitionApprovalRequest">
       <input name="ImprestRequisitionApprovalRequest" message="tns:ImprestRequisitionApprovalRequest" />
@@ -2753,6 +2778,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="ApproveDocument_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="AvailableLeaveDays1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:AvailableLeaveDays1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="AvailableLeaveDays1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="AvailableLeaveDays1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3350,12 +3384,12 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
-    <operation name="HasPendingImprest">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:HasPendingImprest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="HasPendingImprest">
+    <operation name="HasPendingImprestSurrender">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:HasPendingImprestSurrender" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HasPendingImprestSurrender">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
-      <output name="HasPendingImprest_Result">
+      <output name="HasPendingImprestSurrender_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

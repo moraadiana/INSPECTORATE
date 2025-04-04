@@ -35,6 +35,33 @@ namespace INSPECTORATEJobs
             smtpClient.EnableSsl = true;
             smtpClient.Send(message);
         }
+        public static void SendMyEmail(string address, string subject, string message)
+        {
+            try
+            {
+                string email = "dynamicsselfservice@gmail.com";
+                string password = "ydujienvejtdojgv";
+
+                var loginInfo = new NetworkCredential(email, password);
+                var msg = new MailMessage();
+                var smtpClient = new SmtpClient("smtp.gmail.com", 587);
+
+                msg.From = new MailAddress(email);
+                msg.To.Add(new MailAddress(address));
+                msg.Subject = subject;
+                msg.Body = message;
+                msg.IsBodyHtml = true;
+
+                smtpClient.EnableSsl = true;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = loginInfo;
+                smtpClient.Send(msg);
+            }
+            catch (Exception Ex)
+            {
+                Ex.Data.Clear();
+            }
+        }
 
         // Get the SOAP web service
         public static Recruitment ObjNav

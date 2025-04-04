@@ -117,6 +117,12 @@ namespace INSPECTORATEJobs
         public static List<Citizenship> GetCitizenships()
         {
             List<Citizenship> citizenships = new List<Citizenship>();
+            // Add default "--select--" item
+            citizenships.Add(new Citizenship
+            {
+                Code = "",
+                Name = "--Select Citizenship--"
+            });
             try
             {
                 string nationalities = webportals.GetNationalities();
@@ -275,38 +281,31 @@ namespace INSPECTORATEJobs
             return applicantHobbies;
         }
 
-        public static List<ApplicantAttachments> GetApplicantAttachments(string applicationNo)
+        public static List<ApplicantAttachment> GetApplicantAttachments(string applicationNo)
         {
-            var applicantAttachments = new List<ApplicantAttachments>();
+            var applicantAttachments = new List<ApplicantAttachment>();
             try
             {
-                //connection = Components.getconnToNAV();
-                //command = new SqlCommand()
-                //{
-                //    CommandText = "spGetDocumentAttachments",
-                //    CommandType = CommandType.StoredProcedure,
-                //    Connection = connection
-                //};
-                //command.Parameters.AddWithValue("@Company_Name", Components.CompanyName);
-                //command.Parameters.AddWithValue("@DocNo", "'" + applicationNo + "'");
-                //reader = command.ExecuteReader();
-                //if (reader.HasRows)
-                //{
-                //    int counter = 0;
-                //    while(reader.Read())
-                //    {
-                //        counter++;
-                //        ApplicantAttachments attachments = new ApplicantAttachments()
-                //        {
-                //            Counter = counter,
-                //            Description = reader["Description"].ToString(),
-                //            DocumentNo = reader["Document No"].ToString(),
-                //            CreatedAt = Convert.ToDateTime(reader["$systemCreatedAt"].ToString()),
-                //            SystemId = reader["$systemId"].ToString()
-                //        };
-                //        applicantAttachments.Add(attachments);
-                //    }
-                //}
+                string attachments = webportals.GetApplicantAttachments(applicationNo);
+                if (!string.IsNullOrEmpty(attachments))
+                {
+                    int counter = 0;
+                    string[] attachmentsArr = attachments.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string attachment in attachmentsArr)
+                    {
+                        counter++;
+                        string[] responseArr = attachment.Split(strLimiters, StringSplitOptions.None);
+                        ApplicantAttachment attachmentdoc = new ApplicantAttachment()
+                        {
+                            DocumentNo = responseArr[0],
+                            Description = responseArr[1],
+                            CreatedAt = Convert.ToDateTime(responseArr[2]),
+                            SystemId = responseArr[3],
+                            Counter = counter
+                        };
+                        applicantAttachments.Add(attachmentdoc);
+                    }
+                }
             }
             catch (Exception ex)
             {
