@@ -163,6 +163,8 @@ namespace INSPECTORATEStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback HRLeaveApplicationOperationCompleted;
         
+        private System.Threading.SendOrPostCallback HasPendingImprestOperationCompleted;
+        
         private System.Threading.SendOrPostCallback ImprestRequisitionApprovalRequestOperationCompleted;
         
         private System.Threading.SendOrPostCallback ImprestRequisitionCreateOperationCompleted;
@@ -481,6 +483,9 @@ namespace INSPECTORATEStaff.NAVWS {
         
         /// <remarks/>
         public event HRLeaveApplicationCompletedEventHandler HRLeaveApplicationCompleted;
+        
+        /// <remarks/>
+        public event HasPendingImprestCompletedEventHandler HasPendingImprestCompleted;
         
         /// <remarks/>
         public event ImprestRequisitionApprovalRequestCompletedEventHandler ImprestRequisitionApprovalRequestCompleted;
@@ -2900,6 +2905,36 @@ namespace INSPECTORATEStaff.NAVWS {
             if ((this.HRLeaveApplicationCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.HRLeaveApplicationCompleted(this, new HRLeaveApplicationCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:HasPendingImprest", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="HasPendingImprest_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool HasPendingImprest(string accountNo) {
+            object[] results = this.Invoke("HasPendingImprest", new object[] {
+                        accountNo});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void HasPendingImprestAsync(string accountNo) {
+            this.HasPendingImprestAsync(accountNo, null);
+        }
+        
+        /// <remarks/>
+        public void HasPendingImprestAsync(string accountNo, object userState) {
+            if ((this.HasPendingImprestOperationCompleted == null)) {
+                this.HasPendingImprestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnHasPendingImprestOperationCompleted);
+            }
+            this.InvokeAsync("HasPendingImprest", new object[] {
+                        accountNo}, this.HasPendingImprestOperationCompleted, userState);
+        }
+        
+        private void OnHasPendingImprestOperationCompleted(object arg) {
+            if ((this.HasPendingImprestCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.HasPendingImprestCompleted(this, new HasPendingImprestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -5717,6 +5752,32 @@ namespace INSPECTORATEStaff.NAVWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void HasPendingImprestCompletedEventHandler(object sender, HasPendingImprestCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class HasPendingImprestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal HasPendingImprestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }

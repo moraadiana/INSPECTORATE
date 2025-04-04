@@ -3,11 +3,11 @@
 <html lang="en" style="font-size: 18px !important;">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title | Inspectorate Jobs Board </title>
+    <title>@ViewBag.Title | NCIA Jobs Board </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="Inspectorate Job Applications #1 for Admission Applications" name="description" />
+    <meta content="NCIA Job Applications #1 for Admission Applications" name="description" />
     <meta content="Diana Moraa" name="author" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css" />
@@ -49,7 +49,7 @@
                 <div class="page-logo">
 
                     <a href="@Url.Action("index", "dashboard")">
-                        <p class="logo-default" style="font-size: 1.9vmin"><span style="color:#ffffff">INSPECTORATE ONLINE JOBS BOARD</span></p>
+                        <p class="logo-default" style="font-size: 1.9vmin"><span style="color:#ffffff">NCIA ONLINE JOBS BOARD</span></p>
                     </a>
                     <div class="menu-toggler sidebar-toggler">
                         <span></span>
@@ -86,7 +86,7 @@
                                 </li>
                                 <li class="divider"> </li>
                                 <li>
-                                    <a href="@Url.Action("signout", "dashboard")">
+                                    <a href="@Url.Action("logout", "dashboard")">
                                         <i class="icon-logout"></i> Log Out
                                     </a>
                                 </li>
@@ -118,27 +118,48 @@
                             </div>
                         </li>
                         <!-- END SIDEBAR TOGGLER BUTTON -->
-      
-                        @*<li class="nav-item" style="display: block;">
+                        <li class="nav-item">
+                            <a href="@Url.Action("index", "dashboard")" style="color: #fff;" class="nav-link nav-toggle">
+                                <i class="icon-user"></i>
+                                <span class="title">My Profile</span>
+                            </a>
+                            <ul class="sub-menu" style="list-style-type:circle !important;">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("profileupdate", "dashboard")" class="nav-link nav-toggle">
+                                        <span style="color: #ffffff !important" class="title">Personal Details</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item" style="display: block;">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-users"></i>
                                 <span style="color: #ffffff !important" class="title">Update Profile</span>
                             </a>
                             <ul class="sub-menu" style="list-style-type:circle !important;">
-                         
-                                <li class="nav-item">
-                                    <a href="@Url.Action("generalinformation", "jobapplication")" class="nav-link nav-toggle">
-                                        <span style="color: #ffffff !important" class="title">General Information</span>
-                                    </a>
-                                </li>
+                                @*<li class="nav-item">
+                                        <a href="@Url.Action("profileupdate", "dashboard")" class="nav-link nav-toggle">
+                                            <span style="color: #ffffff !important" class="title">Personal Details</span>
+                                        </a>
+                                    </li>*@
                                 <li class="nav-item">
                                     <a href="@Url.Action("qualifications", "jobapplication")" class="nav-link nav-toggle">
-                                        <span style="color: #ffffff !important" class="title">Qualifications</span>
+                                        <span style="color: #ffffff !important" class="title">Academic Qualifications</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="@Url.Action("hobbies", "jobapplication")" class="nav-link nav-toggle">
-                                        <span style="color: #ffffff !important" class="title">Hobbies</span>
+                                    <a href="@Url.Action("proffessionalqualifications", "jobapplication")" class="nav-link nav-toggle">
+                                        <span style="color: #ffffff !important" class="title">Professional Qualifications</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("proffessionalbodies", "jobapplication")" class="nav-link nav-toggle">
+                                        <span style="color: #ffffff !important" class="title">Professional Bodies</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("nextofkin", "jobapplication")" class="nav-link nav-toggle">
+                                        <span style="color: #ffffff !important" class="title">Next of Kin</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -146,31 +167,39 @@
                                         <span style="color: #ffffff !important" class="title">Referees</span>
                                     </a>
                                 </li>
-
-
+                                <li class="nav-item">
+                                    <a href="@Url.Action("trainings", "jobapplication")" class="nav-link nav-toggle">
+                                        <span style="color: #ffffff !important" class="title">Training Attended</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("employmentdetails", "jobapplication")" class="nav-link nav-toggle">
+                                        <span style="color: #ffffff !important" class="title">Employment Details</span>
+                                    </a>
+                                </li>
                             </ul>
-                        </li>*@
-                        @*<li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a href="@Url.Action("myapplications", "dashboard")" style="color: #fff;" class="nav-link nav-toggle">
                                 <i class="icon-envelope-letter"></i>
                                 <span class="title">My Pending Applications</span>
                             </a>
-                        </li>*@
+                        </li>
                         <li class="nav-item">
-                            <a href="@Url.Action("applications", "dashboard")" style="color: #fff;" class="nav-link nav-toggle">
+                            <a href="@Url.Action("completeapplications", "dashboard")" style="color: #fff;" class="nav-link nav-toggle">
                                 <i class="icon-envelope-letter"></i>
                                 <span class="title">Complete Applications</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="@Url.Action("index", "dashboard")" style="color: #fff;" class="nav-link nav-toggle">
+                            <a href="@Url.Action("openvacancies", "dashboard")" style="color: #fff;" class="nav-link nav-toggle">
                                 <i class="icon-home"></i>
                                 <span class="title">Job Vacancies</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="@Url.Action("signout", "dashboard")" style="color: #fff;" class="nav-link nav-toggle">
-                                <i class="icon-Logout"></i>
+                            <a href="@Url.Action("logout", "dashboard")" style="color: #fff;" class="nav-link nav-toggle">
+                                <i class="icon-logout"></i>
                                 <span class="title">Logout</span>
                             </a>
                         </li>
@@ -192,7 +221,7 @@
         <!-- BEGIN FOOTER -->
         <div class="page-footer" style="background: linear-gradient(90deg, #244767 0%, #045DE9 50%, #33A4F3 100%) !important ">
             <div class="page-footer-inner" style="color: #fff;">
-                Inspectorate &copy; @DateTime.Now.Year Powered By<a target="_blank" href="http://www.appkings.ac.ke" style="color: #eee;"> AppKings Solutions Ltd </a>
+                NCIA &copy; @DateTime.Now.Year Powered By<a target="_blank" href="http://www.appkings.ac.ke" style="color: #eee;"> AppKings Solutions Ltd </a>
             </div>
             <div class="scroll-to-top">
                 <i class="icon-arrow-up"></i>

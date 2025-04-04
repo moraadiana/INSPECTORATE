@@ -379,6 +379,7 @@ namespace INSPECTORATEJobs.Controllers
         public ActionResult Attachments()
         {
             string applicationNo = Session["ApplicationNo"].ToString();
+
             var applicantAttachments = Services.GetApplicantAttachments(applicationNo);
             return View(applicantAttachments);
         }

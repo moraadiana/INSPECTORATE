@@ -1023,6 +1023,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="HasPendingImprest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HasPendingImprest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="ImprestRequisitionApprovalRequest">
         <complexType>
           <sequence>
@@ -2051,6 +2065,12 @@
   <message name="HRLeaveApplication_Result">
     <part name="parameters" element="tns:HRLeaveApplication_Result" />
   </message>
+  <message name="HasPendingImprest">
+    <part name="parameters" element="tns:HasPendingImprest" />
+  </message>
+  <message name="HasPendingImprest_Result">
+    <part name="parameters" element="tns:HasPendingImprest_Result" />
+  </message>
   <message name="ImprestRequisitionApprovalRequest">
     <part name="parameters" element="tns:ImprestRequisitionApprovalRequest" />
   </message>
@@ -2559,6 +2579,10 @@
     <operation name="HRLeaveApplication">
       <input name="HRLeaveApplication" message="tns:HRLeaveApplication" />
       <output name="HRLeaveApplication_Result" message="tns:HRLeaveApplication_Result" />
+    </operation>
+    <operation name="HasPendingImprest">
+      <input name="HasPendingImprest" message="tns:HasPendingImprest" />
+      <output name="HasPendingImprest_Result" message="tns:HasPendingImprest_Result" />
     </operation>
     <operation name="ImprestRequisitionApprovalRequest">
       <input name="ImprestRequisitionApprovalRequest" message="tns:ImprestRequisitionApprovalRequest" />
@@ -3323,6 +3347,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="HRLeaveApplication_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HasPendingImprest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:HasPendingImprest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HasPendingImprest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HasPendingImprest_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
