@@ -352,7 +352,12 @@ namespace INSPECTORATEStaff.pages
                 Ex.Data.Clear();
             }
         }
-        private void Message(string p)
+        private void Message(string message)
+        {
+            string strScript = "<script>alert('" + message + "');</script>";
+            ClientScript.RegisterStartupScript(GetType(), "Client Script", strScript.ToString());
+        }
+        private void Message1(string p)
         {
             string strScript = null;
             strScript = "<script>";

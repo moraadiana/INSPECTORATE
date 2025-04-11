@@ -125,11 +125,16 @@ namespace INSPECTORATEStaff.pages
             strScript = strScript + "</script>";
             Page.RegisterStartupScript("ClientScript", strScript.ToString());
         }
-        public void Message(string strMsg)
+        public void Message2(string strMsg)
         {
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myDetails", "$('#eventModal').modal();", true);
             //dvMdlContentFail.Visible = true;
             //dvMdlContentPass.Visible = false;
+        }
+        private void Message(string message)
+        {
+            string strScript = "<script>alert('" + message + "');</script>";
+            ClientScript.RegisterStartupScript(GetType(), "Client Script", strScript.ToString());
         }
 
         public void ExceptionMsg(string Msg)

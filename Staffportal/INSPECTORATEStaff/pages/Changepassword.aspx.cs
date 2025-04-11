@@ -149,7 +149,12 @@ namespace INSPECTORATEStaff.pages
             }
             return r;
         }
-        public void Message(string strMsg)
+        private void Message(string message)
+        {
+            string strScript = "<script>alert('" + message + "');</script>";
+            ClientScript.RegisterStartupScript(GetType(), "Client Script", strScript.ToString());
+        }
+        public void Message1(string strMsg)
         {
             string strScript = null;
             strScript = "<script>";

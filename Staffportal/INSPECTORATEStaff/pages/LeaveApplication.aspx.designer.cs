@@ -150,13 +150,31 @@ namespace INSPECTORATEStaff.pages
         protected global::System.Web.UI.WebControls.TextBox TxtPurpose;
 
         /// <summary>
-        /// FileUpload1 control.
+        /// fuLeaveDocs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.FileUpload fuLeaveDocs;
+
+        /// <summary>
+        /// lbtnAttach control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnAttach;
+
+        /// <summary>
+        /// gvAttachments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvAttachments;
 
         /// <summary>
         /// lbtnApply control.

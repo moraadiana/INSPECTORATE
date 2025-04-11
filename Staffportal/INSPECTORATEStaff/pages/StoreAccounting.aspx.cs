@@ -216,7 +216,12 @@ private static ClientContext LogOn(string userName, string password, Uri url)
 
     return ctx;
 }
-public void Message(string strMsg)
+        private void Message(string message)
+        {
+            string strScript = "<script>alert('" + message + "');</script>";
+            ClientScript.RegisterStartupScript(GetType(), "Client Script", strScript.ToString());
+        }
+        public void Message1(string strMsg)
 {
     string strScript = null;
     strScript = "<script>";

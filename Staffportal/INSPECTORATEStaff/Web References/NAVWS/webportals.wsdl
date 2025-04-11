@@ -514,6 +514,36 @@
           </sequence>
         </complexType>
       </element>
+      <element name="DeleteDocumentAttachment">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="systemId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteDocumentAttachment_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteDocumentAttachments">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="systemId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteDocumentAttachments_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="DetermineIfIncludesNonWorking">
         <complexType>
           <sequence>
@@ -718,6 +748,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetAttachmentDetails">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="systemId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAttachmentDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetBidderCurrentPassword">
         <complexType>
           <sequence>
@@ -782,6 +826,20 @@
         </complexType>
       </element>
       <element name="GetCurrentRecruitmentPassword_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetDocumentlines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetDocumentlines_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1271,6 +1329,24 @@
           <sequence />
         </complexType>
       </element>
+      <element name="RegFileUploadAtt">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="retNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="attachment" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="tableId" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="docType" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RegFileUploadAtt_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="RejectDocument">
         <complexType>
           <sequence>
@@ -1360,6 +1436,21 @@
         </complexType>
       </element>
       <element name="SaveMemoAttchments_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="SaveMemoAttchmnts1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentsNoz" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="attachmentz" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="decriptionz" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SaveMemoAttchmnts1_Result">
         <complexType>
           <sequence />
         </complexType>
@@ -1870,6 +1961,18 @@
   <message name="Create_Order_Lines_Result">
     <part name="parameters" element="tns:Create_Order_Lines_Result" />
   </message>
+  <message name="DeleteDocumentAttachment">
+    <part name="parameters" element="tns:DeleteDocumentAttachment" />
+  </message>
+  <message name="DeleteDocumentAttachment_Result">
+    <part name="parameters" element="tns:DeleteDocumentAttachment_Result" />
+  </message>
+  <message name="DeleteDocumentAttachments">
+    <part name="parameters" element="tns:DeleteDocumentAttachments" />
+  </message>
+  <message name="DeleteDocumentAttachments_Result">
+    <part name="parameters" element="tns:DeleteDocumentAttachments_Result" />
+  </message>
   <message name="DetermineIfIncludesNonWorking">
     <part name="parameters" element="tns:DetermineIfIncludesNonWorking" />
   </message>
@@ -1954,6 +2057,12 @@
   <message name="GetApprovalStatus_Result">
     <part name="parameters" element="tns:GetApprovalStatus_Result" />
   </message>
+  <message name="GetAttachmentDetails">
+    <part name="parameters" element="tns:GetAttachmentDetails" />
+  </message>
+  <message name="GetAttachmentDetails_Result">
+    <part name="parameters" element="tns:GetAttachmentDetails_Result" />
+  </message>
   <message name="GetBidderCurrentPassword">
     <part name="parameters" element="tns:GetBidderCurrentPassword" />
   </message>
@@ -1983,6 +2092,12 @@
   </message>
   <message name="GetCurrentRecruitmentPassword_Result">
     <part name="parameters" element="tns:GetCurrentRecruitmentPassword_Result" />
+  </message>
+  <message name="GetDocumentlines">
+    <part name="parameters" element="tns:GetDocumentlines" />
+  </message>
+  <message name="GetDocumentlines_Result">
+    <part name="parameters" element="tns:GetDocumentlines_Result" />
   </message>
   <message name="GetLastPRNNo">
     <part name="parameters" element="tns:GetLastPRNNo" />
@@ -2170,6 +2285,12 @@
   <message name="PurchaseHeaderCreate_Result">
     <part name="parameters" element="tns:PurchaseHeaderCreate_Result" />
   </message>
+  <message name="RegFileUploadAtt">
+    <part name="parameters" element="tns:RegFileUploadAtt" />
+  </message>
+  <message name="RegFileUploadAtt_Result">
+    <part name="parameters" element="tns:RegFileUploadAtt_Result" />
+  </message>
   <message name="RejectDocument">
     <part name="parameters" element="tns:RejectDocument" />
   </message>
@@ -2211,6 +2332,12 @@
   </message>
   <message name="SaveMemoAttchments_Result">
     <part name="parameters" element="tns:SaveMemoAttchments_Result" />
+  </message>
+  <message name="SaveMemoAttchmnts1">
+    <part name="parameters" element="tns:SaveMemoAttchmnts1" />
+  </message>
+  <message name="SaveMemoAttchmnts1_Result">
+    <part name="parameters" element="tns:SaveMemoAttchmnts1_Result" />
   </message>
   <message name="SaveMemoAttchmnts">
     <part name="parameters" element="tns:SaveMemoAttchmnts" />
@@ -2461,6 +2588,14 @@
       <input name="Create_Order_Lines" message="tns:Create_Order_Lines" />
       <output name="Create_Order_Lines_Result" message="tns:Create_Order_Lines_Result" />
     </operation>
+    <operation name="DeleteDocumentAttachment">
+      <input name="DeleteDocumentAttachment" message="tns:DeleteDocumentAttachment" />
+      <output name="DeleteDocumentAttachment_Result" message="tns:DeleteDocumentAttachment_Result" />
+    </operation>
+    <operation name="DeleteDocumentAttachments">
+      <input name="DeleteDocumentAttachments" message="tns:DeleteDocumentAttachments" />
+      <output name="DeleteDocumentAttachments_Result" message="tns:DeleteDocumentAttachments_Result" />
+    </operation>
     <operation name="DetermineIfIncludesNonWorking">
       <input name="DetermineIfIncludesNonWorking" message="tns:DetermineIfIncludesNonWorking" />
       <output name="DetermineIfIncludesNonWorking_Result" message="tns:DetermineIfIncludesNonWorking_Result" />
@@ -2517,6 +2652,10 @@
       <input name="GetApprovalStatus" message="tns:GetApprovalStatus" />
       <output name="GetApprovalStatus_Result" message="tns:GetApprovalStatus_Result" />
     </operation>
+    <operation name="GetAttachmentDetails">
+      <input name="GetAttachmentDetails" message="tns:GetAttachmentDetails" />
+      <output name="GetAttachmentDetails_Result" message="tns:GetAttachmentDetails_Result" />
+    </operation>
     <operation name="GetBidderCurrentPassword">
       <input name="GetBidderCurrentPassword" message="tns:GetBidderCurrentPassword" />
       <output name="GetBidderCurrentPassword_Result" message="tns:GetBidderCurrentPassword_Result" />
@@ -2536,6 +2675,10 @@
     <operation name="GetCurrentRecruitmentPassword">
       <input name="GetCurrentRecruitmentPassword" message="tns:GetCurrentRecruitmentPassword" />
       <output name="GetCurrentRecruitmentPassword_Result" message="tns:GetCurrentRecruitmentPassword_Result" />
+    </operation>
+    <operation name="GetDocumentlines">
+      <input name="GetDocumentlines" message="tns:GetDocumentlines" />
+      <output name="GetDocumentlines_Result" message="tns:GetDocumentlines_Result" />
     </operation>
     <operation name="GetLastPRNNo">
       <input name="GetLastPRNNo" message="tns:GetLastPRNNo" />
@@ -2661,6 +2804,10 @@
       <input name="PurchaseHeaderCreate" message="tns:PurchaseHeaderCreate" />
       <output name="PurchaseHeaderCreate_Result" message="tns:PurchaseHeaderCreate_Result" />
     </operation>
+    <operation name="RegFileUploadAtt">
+      <input name="RegFileUploadAtt" message="tns:RegFileUploadAtt" />
+      <output name="RegFileUploadAtt_Result" message="tns:RegFileUploadAtt_Result" />
+    </operation>
     <operation name="RejectDocument">
       <input name="RejectDocument" message="tns:RejectDocument" />
       <output name="RejectDocument_Result" message="tns:RejectDocument_Result" />
@@ -2688,6 +2835,10 @@
     <operation name="SaveMemoAttchments">
       <input name="SaveMemoAttchments" message="tns:SaveMemoAttchments" />
       <output name="SaveMemoAttchments_Result" message="tns:SaveMemoAttchments_Result" />
+    </operation>
+    <operation name="SaveMemoAttchmnts1">
+      <input name="SaveMemoAttchmnts1" message="tns:SaveMemoAttchmnts1" />
+      <output name="SaveMemoAttchmnts1_Result" message="tns:SaveMemoAttchmnts1_Result" />
     </operation>
     <operation name="SaveMemoAttchmnts">
       <input name="SaveMemoAttchmnts" message="tns:SaveMemoAttchmnts" />
@@ -3060,6 +3211,24 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="DeleteDocumentAttachment">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:DeleteDocumentAttachment" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteDocumentAttachment">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteDocumentAttachment_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteDocumentAttachments">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:DeleteDocumentAttachments" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteDocumentAttachments">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteDocumentAttachments_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="DetermineIfIncludesNonWorking">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:DetermineIfIncludesNonWorking" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="DetermineIfIncludesNonWorking">
@@ -3186,6 +3355,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetAttachmentDetails">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetAttachmentDetails" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAttachmentDetails">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAttachmentDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetBidderCurrentPassword">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetBidderCurrentPassword" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetBidderCurrentPassword">
@@ -3228,6 +3406,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetCurrentRecruitmentPassword_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetDocumentlines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetDocumentlines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetDocumentlines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetDocumentlines_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3510,6 +3697,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="RegFileUploadAtt">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:RegFileUploadAtt" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RegFileUploadAtt">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RegFileUploadAtt_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="RejectDocument">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:RejectDocument" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="RejectDocument">
@@ -3570,6 +3766,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="SaveMemoAttchments_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SaveMemoAttchmnts1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:SaveMemoAttchmnts1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SaveMemoAttchmnts1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SaveMemoAttchmnts1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

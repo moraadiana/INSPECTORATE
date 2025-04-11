@@ -1,5 +1,8 @@
 ﻿using INSPECTORATEStaff.NAVWS;
+using Microsoft.SharePoint.Client.Search.Query;
+using OpenQA.Selenium;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -24,6 +27,10 @@ namespace INSPECTORATEStaff.pages
         public static string StaffName = "";
         public static string StaffUserId = "";
         string LeaveNum = "";
+        SqlConnection connection;
+        SqlCommand command;
+        SqlDataReader reader;
+        SqlDataAdapter adapter;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -40,6 +47,7 @@ namespace INSPECTORATEStaff.pages
                 LoadRelievers();
                 LoadRelievers2();
                 LoadRelievers3();
+                BindAttachedDocuments();
                 LoadResponsibilityCenters();
                 string query = Request.QueryString["query"];
                 string leaveNo = null;
@@ -82,8 +90,7 @@ namespace INSPECTORATEStaff.pages
                         ddlReliever.SelectedValue = RelieverNo1;
                         ddlReliever2.SelectedValue = RelieverNo2;
                         ddlReliever3.SelectedValue = RelieverNo3;
-                       // txtStartDate.Text = StartingDate;
-                        //lblReturnDate.Text = ReturnDate;
+                        
                         LoadLeaveBal();
                     }
 
@@ -123,6 +130,158 @@ namespace INSPECTORATEStaff.pages
             }
          
         }
+        protected void lbtnAttach_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (fuLeaveDocs.PostedFile != null)
+                {
+                    string query = Request.QueryString["query"];
+                    string DocumentNo =" ";
+                    //
+                    if (query == "old")
+                    {
+                         DocumentNo = Request.QueryString["appNo"].ToString(); // Get the leaveNo from the query string
+                    }
+                    else
+                    {
+                         DocumentNo = spGetLeaveReqNo();
+                    }
+                        //string DocumentNo = Request.QueryString["appNo"].ToString(); // Replace slashes with dashes
+                        //string DocNo = Session["appNo"].ToString();
+                        string username = Session["username"].ToString();
+                    string filePath = fuLeaveDocs.PostedFile.FileName.Replace(" ", "-");
+                    string fileName = fuLeaveDocs.FileName.Replace(" ", "-");
+                    string fileExtension = Path.GetExtension(fileName).ToLower();
+
+                    if (fileExtension == ".pdf" || fileExtension == ".jpg" || fileExtension == ".png" || fileExtension == ".jpeg")
+                    {
+                        string strPath = Server.MapPath("~/Uploads");
+                        if (!Directory.Exists(strPath))
+                        {
+                            Directory.CreateDirectory(strPath);
+                        }
+
+
+                        string pathToUpload = Path.Combine(strPath, DocumentNo.Replace("/", "-") + fileName.ToUpper());
+
+                        if (File.Exists(pathToUpload))
+                        {
+                            File.Delete(pathToUpload);
+                        }
+                        fuLeaveDocs.SaveAs(pathToUpload);
+                        //webportals.SaveMemoAttchmnts1(DocumentNo, pathToUpload, fileName.ToUpper(), username);
+
+                        Stream fs = fuLeaveDocs.PostedFile.InputStream;
+                        BinaryReader br = new BinaryReader(fs);
+                        byte[] bytes = br.ReadBytes((int)fs.Length);
+                        string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+                        webportals.RegFileUploadAtt(DocumentNo, fileName.ToUpper(), base64String, 52178708, "Leave Requisition");
+                       BindAttachedDocuments();
+                        Message("Document uploaded successfully!");
+                    }
+                    else
+                    {
+                        Message("Please upload files with .pdf, .png, .jpg and .jpeg extensions only!");
+                        return;
+                    }
+                }
+                else
+                {
+                    Message("Please upload a file!");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                Message("An error occurred: " + ex.Message);
+            }
+        }
+        private void BindAttachedDocuments()
+        {
+            try
+            {
+                string query = Request.QueryString["query"];
+                string DocumentNo = " ";
+                //
+                if (query == "old")
+                {
+                    DocumentNo = Request.QueryString["appNo"].ToString(); 
+                }
+                else
+                {
+                    DocumentNo = spGetLeaveReqNo();
+                }
+                
+                string docLines = webportals.GetDocumentlines(DocumentNo);
+                if (!string.IsNullOrEmpty(docLines))
+                {
+                    string[] lineItems = docLines.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("Document No");
+                    dt.Columns.Add("Description");
+                    dt.Columns.Add("$systemCreatedAt");
+                    dt.Columns.Add("SystemId");
+
+                    foreach (string item in lineItems)
+                    {
+                        string[] fields = item.Split(strLimiters, StringSplitOptions.None);
+
+                        if (fields.Length == 4)
+                        {
+                            DataRow row = dt.NewRow();
+                            row["Document No"] = fields[0];
+                            row["Description"] = fields[1];
+                            row["$systemCreatedAt"] = fields[2];
+                            row["SystemId"] = fields[3];
+                            dt.Rows.Add(row);
+                        }
+                    }
+                    gvAttachments.DataSource = dt;
+                    gvAttachments.DataBind();
+
+                }
+                else
+                {
+                    // Handle the case where there are no imprest lines
+                    gvAttachments.DataSource = null;
+                    gvAttachments.DataBind();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+        }
+        protected void lbtnRemoveAttach_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string status = Request.QueryString["status"].ToString().Replace("%", " ");
+                string query = Request.QueryString["query"];
+               
+                if (status == "Open" || status == "Pending")
+                {
+                    string[] args = new string[2];
+                    args = (sender as LinkButton).CommandArgument.ToString().Split(';');
+                    string systemId = args[0];
+                    MyComponents.ObjNav.DeleteDocumentAttachments(systemId);
+                    BindAttachedDocuments();
+                    
+                }
+                else
+                {
+                    Message("You can only edit an open document!");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }  
         public void Fill_DropDownLeaveTypes()
         {
             try
@@ -487,13 +646,13 @@ namespace INSPECTORATEStaff.pages
             strScript = strScript + "</script>";
             Page.RegisterStartupScript("ClientScript", strScript.ToString());
         }
-        public void Message(string strMsg)
+        
+        private void Message(string message)
         {
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myDetails", "$('#eventModal').modal();", true);
-            dvMdlContentFail.Visible = true;
-            dvMdlContentPass.Visible = false;
+            string strScript = "<script>alert('" + message + "');</script>";
+            ClientScript.RegisterStartupScript(GetType(), "Client Script", strScript.ToString());
         }
-
+      
         private void SuccessMessage(string message)
         {
             string page = "LeaveListsing.aspx";
@@ -565,20 +724,38 @@ namespace INSPECTORATEStaff.pages
 
                 }
                 //Validate Leave days
-                var appliedDays = TxtAppliedDays.Text.ToString();
-                if (lblLeaveBal.Text != "Sorry, You have exhausted your leave days. You may select a different leave Type")
+                string appliedDays = TxtAppliedDays.Text.Trim();
+                string availableDays = lblLeaveBal.Text.Trim();
+                if (string.IsNullOrEmpty(appliedDays))
                 {
-                    if (Convert.ToInt32(appliedDays) > Convert.ToInt32(lblLeaveBal.Text))
-                    {
-                        Message1("Sorry, Applied days cannot be more than the available leave days");
-                        TxtAppliedDays.Focus();
-                        return;
-                    }
+                    Message("Applied days cannot be null");
+                    TxtAppliedDays.Focus();
+                    return;
                 }
-                else
+                // Check if available days is not a valid number
+                if (!double.TryParse(availableDays.Trim(), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out double available))
                 {
-                    Message1("Sorry, Your Leave balance is exhausted, Consult your system administrator");
+                    Message("Available leave days are not valid. Please contact HR.");
+                    return;
                 }
+             
+                if (!int.TryParse(appliedDays, out int applied))
+                {
+                    Message("Please enter a valid number for applied days.");
+                    TxtAppliedDays.Focus();
+                    return;
+                }
+                if (applied > available)
+                {
+                    Message("Applied days cannot be more than available days!");
+                    return;
+                }
+                else if (available <= 0)
+                {
+                    Message("You have exhausted your leave days. Please visit the HR to update your leave days");
+                    return;
+                }
+                
                 #endregion 
                 #region Validation
 
@@ -587,6 +764,11 @@ namespace INSPECTORATEStaff.pages
                 string Reliever = "", RelieverName = "";
                 string Reliever2 = "", RelieverName2 = "";
                 string Reliever3 = "", RelieverName3 = "";
+                if (gvAttachments.Rows.Count < 1)
+                {
+                    Message("Please attach documents before sending for approval!");
+                    return;
+                }
 
                 if (string.IsNullOrEmpty(ddlReliever.SelectedValue))
                 {
@@ -610,12 +792,7 @@ namespace INSPECTORATEStaff.pages
                     ddlresponibilitycentres.Focus();
                     return;
                 }
-                if (Convert.ToInt32(appliedDays) > Convert.ToInt32(lblLeaveBal.Text))
-                {
-                    Message1("Days applied cannot be more than the leave balance.");
-                    TxtAppliedDays.Focus();
-                    return;
-                }
+               
                 if (string.IsNullOrEmpty(appliedDays))
                 {
                     Message1("Please enter the applied days.");
@@ -666,52 +843,52 @@ namespace INSPECTORATEStaff.pages
                 var newReturnDate = "";
                 newReturnDate = returndate.ToString("yyyy-MM-dd");
                 #endregion
-                try
-                {
-                    if (!FileUpload1.HasFiles)
-                    {
-                        Message("Warning! You must attach the documents!");
-                        return;
-                    }
-                    string DocumentNo = spGetLeaveReqNo();
-                    string user = Session["username"].ToString();
-                    DateTime AttachDT = DateTime.Now;
-                    //string filext = Path.GetExtension(fileName).Split('.')[1].ToLower();
-                    //string attchby = "";
-                    //int identity=0;
-                    //string ftype = "";
-                    int tblId = 61125;
-                    string fileName = Path.Combine(Server.MapPath("~/ImprestDocs/") + FileUpload1.FileName);
-                    string filext = Path.GetExtension(fileName).Split('.')[1].ToLower();
-                    string ftype = "";
-                    if (filext == "pdf")
-                    {
-                        ftype = "2";
-                    }
-                    if (filext == "jpg")
-                    {
-                        ftype = "1";
-                    }
-                    if (filext == "xlsx")
-                    {
-                        ftype = "4";
-                    }
-                    if (filext == "docx")
-                    {
-                        ftype = "3";
-                    }
-                    string DoCfilename = Path.GetFileName(FileUpload1.PostedFile.FileName.TrimEnd('.', 'p', 'd', 'f')).Replace(" ", "_");
-                    FileUpload1.SaveAs(fileName);
-                    //fileName.TrimEnd('.','p','d','f');
-                    //TrimEnd();
-                    MyComponents.ObjNav.SaveMemoAttchmnts(DocumentNo, tblId, ftype, filext, AttachDT, fileName, fileName, user);
-                    //foreach (GridViewRow gvr in this.gvLines.Rows) ;
-                }
-                catch (Exception Ex)
-                {
-                    Message("ERROR: " + Ex.Message.ToString());
-                    Ex.Data.Clear();
-                }
+                //try
+                //{
+                //    if (!FileUpload1.HasFiles)
+                //    {
+                //        Message("Warning! You must attach document!");
+                //        return;
+                //    }
+                //    string DocumentNo = spGetLeaveReqNo();
+                //    string user = Session["username"].ToString();
+                //    DateTime AttachDT = DateTime.Now;
+                //    //string filext = Path.GetExtension(fileName).Split('.')[1].ToLower();
+                //    //string attchby = "";
+                //    //int identity=0;
+                //    //string ftype = "";
+                //    int tblId = 61125;
+                //    string fileName = Path.Combine(Server.MapPath("~/ImprestDocs/") + FileUpload1.FileName);
+                //    string filext = Path.GetExtension(fileName).Split('.')[1].ToLower();
+                //    string ftype = "";
+                //    if (filext == "pdf")
+                //    {
+                //        ftype = "2";
+                //    }
+                //    if (filext == "jpg")
+                //    {
+                //        ftype = "1";
+                //    }
+                //    if (filext == "xlsx")
+                //    {
+                //        ftype = "4";
+                //    }
+                //    if (filext == "docx")
+                //    {
+                //        ftype = "3";
+                //    }
+                //    string DoCfilename = Path.GetFileName(FileUpload1.PostedFile.FileName.TrimEnd('.', 'p', 'd', 'f')).Replace(" ", "_");
+                //    FileUpload1.SaveAs(fileName);
+                //    //fileName.TrimEnd('.','p','d','f');
+                //    //TrimEnd();
+                //    //MyComponents.ObjNav.SaveMemoAttchmnts(DocumentNo, tblId, ftype, filext, AttachDT, fileName, fileName, user);
+                //    //foreach (GridViewRow gvr in this.gvLines.Rows) ;
+                //}
+                //catch (Exception Ex)
+                //{
+                //    Message("ERROR: " + Ex.Message.ToString());
+                //    Ex.Data.Clear();
+                //}
                 #region SendforApproval
                 string LeaveNo = null;
                 string query = Request.QueryString["query"];
@@ -720,15 +897,6 @@ namespace INSPECTORATEStaff.pages
                     LeaveNo = Request.QueryString["appNo"]; // Get the leaveNo from the query string
                 }
 
-                /*  try
-                  {
-                      MyComponents.ObjNav.HRLeaveApplication(Session["username"].ToString(), DdLeaveType.SelectedValue, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startingDate), Convert.ToDateTime(newEndDate), Convert.ToDateTime(newReturnDate), TxtPurpose.Text, Reliever, RelieverName, rCentre, Reliever2, RelieverName2, Reliever3, RelieverName3);
-                  }
-                  catch (Exception exception)
-                  {
-                      Message("ERROR: " + exception.Message.ToString());
-                      exception.Data.Clear();
-                  }*/
                 #endregion
                
                
@@ -741,26 +909,11 @@ namespace INSPECTORATEStaff.pages
                     if (returnMsg == "SUCCESS")
                     {
                         string leaveNo = responseArr[1];
+                        Session["appNo"] = leaveNo;
+
                         SuccessMessage("Leave application has been sent for approval successfully.");
                         return;
-                       /*
-                              // TODO: Sent email to reliever
-  string relieverEmail = GetRelieverEmail(reliever);
-                              string subject = "NCIA Leave Relieval Request";
-                              string body = $"Hello {ddlReliver.SelectedItem}" +
-                                  $"<br/><br/>" +
-                                  $"You have been requested by {Session["staffName"]} to be a reliever." +
-                                  $"<br/><br/>" +
-                                  $"Do not reply to this email.";
-                              Components.SentEmailAlerts(relieverEmail, subject, body);
-                              SuccessMessage("Leave application has been sent for approval successfully.");
-                              return;
-                          }
-                          else
-                          {
-                              Message(approval);
-                              return;
-                          }*/
+                      
                     }
                     else
                     {

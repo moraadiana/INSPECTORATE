@@ -770,13 +770,18 @@ namespace INSPECTORATEStaff.pages
             string strScript = "<script>alert('" + message + "');window.location='" + page + "';</script>";
             ClientScript.RegisterStartupScript(GetType(), "Client Script", strScript.ToString());
         }
-        private void Message(string p)
+        private void Message1(string p)
         {
             string strScript = null;
             strScript = "<script>";
             strScript = strScript + "alert('" + p + "');";
             strScript = strScript + "</script>";
             Page.RegisterStartupScript("ClientScript", strScript.ToString());
+        }
+        private void Message(string message)
+        {
+            string strScript = "<script>alert('" + message + "');</script>";
+            ClientScript.RegisterStartupScript(GetType(), "Client Script", strScript.ToString());
         }
         protected string[] AccountDetails(string code)
         {

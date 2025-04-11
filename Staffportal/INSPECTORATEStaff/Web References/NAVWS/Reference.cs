@@ -93,6 +93,10 @@ namespace INSPECTORATEStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback Create_Order_LinesOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DeleteDocumentAttachmentOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DeleteDocumentAttachmentsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback DetermineIfIncludesNonWorkingOperationCompleted;
         
         private System.Threading.SendOrPostCallback DetermineIfIsNonWorkingOperationCompleted;
@@ -121,6 +125,8 @@ namespace INSPECTORATEStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GetApprovalStatusOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAttachmentDetailsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetBidderCurrentPasswordOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetBidderMailOperationCompleted;
@@ -130,6 +136,8 @@ namespace INSPECTORATEStaff.NAVWS {
         private System.Threading.SendOrPostCallback GetCurrentPasswordOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetCurrentRecruitmentPasswordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetDocumentlinesOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetLastPRNNoOperationCompleted;
         
@@ -193,6 +201,8 @@ namespace INSPECTORATEStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback PurchaseHeaderCreateOperationCompleted;
         
+        private System.Threading.SendOrPostCallback RegFileUploadAttOperationCompleted;
+        
         private System.Threading.SendOrPostCallback RejectDocumentOperationCompleted;
         
         private System.Threading.SendOrPostCallback RemoveClaimReqLineOperationCompleted;
@@ -206,6 +216,8 @@ namespace INSPECTORATEStaff.NAVWS {
         private System.Threading.SendOrPostCallback RemoveStoreReqLineOperationCompleted;
         
         private System.Threading.SendOrPostCallback SaveMemoAttchmentsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SaveMemoAttchmnts1OperationCompleted;
         
         private System.Threading.SendOrPostCallback SaveMemoAttchmntsOperationCompleted;
         
@@ -382,6 +394,12 @@ namespace INSPECTORATEStaff.NAVWS {
         public event Create_Order_LinesCompletedEventHandler Create_Order_LinesCompleted;
         
         /// <remarks/>
+        public event DeleteDocumentAttachmentCompletedEventHandler DeleteDocumentAttachmentCompleted;
+        
+        /// <remarks/>
+        public event DeleteDocumentAttachmentsCompletedEventHandler DeleteDocumentAttachmentsCompleted;
+        
+        /// <remarks/>
         public event DetermineIfIncludesNonWorkingCompletedEventHandler DetermineIfIncludesNonWorkingCompleted;
         
         /// <remarks/>
@@ -424,6 +442,9 @@ namespace INSPECTORATEStaff.NAVWS {
         public event GetApprovalStatusCompletedEventHandler GetApprovalStatusCompleted;
         
         /// <remarks/>
+        public event GetAttachmentDetailsCompletedEventHandler GetAttachmentDetailsCompleted;
+        
+        /// <remarks/>
         public event GetBidderCurrentPasswordCompletedEventHandler GetBidderCurrentPasswordCompleted;
         
         /// <remarks/>
@@ -437,6 +458,9 @@ namespace INSPECTORATEStaff.NAVWS {
         
         /// <remarks/>
         public event GetCurrentRecruitmentPasswordCompletedEventHandler GetCurrentRecruitmentPasswordCompleted;
+        
+        /// <remarks/>
+        public event GetDocumentlinesCompletedEventHandler GetDocumentlinesCompleted;
         
         /// <remarks/>
         public event GetLastPRNNoCompletedEventHandler GetLastPRNNoCompleted;
@@ -532,6 +556,9 @@ namespace INSPECTORATEStaff.NAVWS {
         public event PurchaseHeaderCreateCompletedEventHandler PurchaseHeaderCreateCompleted;
         
         /// <remarks/>
+        public event RegFileUploadAttCompletedEventHandler RegFileUploadAttCompleted;
+        
+        /// <remarks/>
         public event RejectDocumentCompletedEventHandler RejectDocumentCompleted;
         
         /// <remarks/>
@@ -551,6 +578,9 @@ namespace INSPECTORATEStaff.NAVWS {
         
         /// <remarks/>
         public event SaveMemoAttchmentsCompletedEventHandler SaveMemoAttchmentsCompleted;
+        
+        /// <remarks/>
+        public event SaveMemoAttchmnts1CompletedEventHandler SaveMemoAttchmnts1Completed;
         
         /// <remarks/>
         public event SaveMemoAttchmntsCompletedEventHandler SaveMemoAttchmntsCompleted;
@@ -1795,6 +1825,70 @@ namespace INSPECTORATEStaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:DeleteDocumentAttachment", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="DeleteDocumentAttachment_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string DeleteDocumentAttachment(string systemId, string fileName, string documentNo) {
+            object[] results = this.Invoke("DeleteDocumentAttachment", new object[] {
+                        systemId,
+                        fileName,
+                        documentNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DeleteDocumentAttachmentAsync(string systemId, string fileName, string documentNo) {
+            this.DeleteDocumentAttachmentAsync(systemId, fileName, documentNo, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteDocumentAttachmentAsync(string systemId, string fileName, string documentNo, object userState) {
+            if ((this.DeleteDocumentAttachmentOperationCompleted == null)) {
+                this.DeleteDocumentAttachmentOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteDocumentAttachmentOperationCompleted);
+            }
+            this.InvokeAsync("DeleteDocumentAttachment", new object[] {
+                        systemId,
+                        fileName,
+                        documentNo}, this.DeleteDocumentAttachmentOperationCompleted, userState);
+        }
+        
+        private void OnDeleteDocumentAttachmentOperationCompleted(object arg) {
+            if ((this.DeleteDocumentAttachmentCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteDocumentAttachmentCompleted(this, new DeleteDocumentAttachmentCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:DeleteDocumentAttachments", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="DeleteDocumentAttachments_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool DeleteDocumentAttachments(string systemId) {
+            object[] results = this.Invoke("DeleteDocumentAttachments", new object[] {
+                        systemId});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DeleteDocumentAttachmentsAsync(string systemId) {
+            this.DeleteDocumentAttachmentsAsync(systemId, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteDocumentAttachmentsAsync(string systemId, object userState) {
+            if ((this.DeleteDocumentAttachmentsOperationCompleted == null)) {
+                this.DeleteDocumentAttachmentsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteDocumentAttachmentsOperationCompleted);
+            }
+            this.InvokeAsync("DeleteDocumentAttachments", new object[] {
+                        systemId}, this.DeleteDocumentAttachmentsOperationCompleted, userState);
+        }
+        
+        private void OnDeleteDocumentAttachmentsOperationCompleted(object arg) {
+            if ((this.DeleteDocumentAttachmentsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteDocumentAttachmentsCompleted(this, new DeleteDocumentAttachmentsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:DetermineIfIncludesNonWorking", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="DetermineIfIncludesNonWorking_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public bool DetermineIfIncludesNonWorking(ref string fLeaveCode) {
@@ -2242,6 +2336,36 @@ namespace INSPECTORATEStaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetAttachmentDetails", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="GetAttachmentDetails_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetAttachmentDetails(string systemId) {
+            object[] results = this.Invoke("GetAttachmentDetails", new object[] {
+                        systemId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAttachmentDetailsAsync(string systemId) {
+            this.GetAttachmentDetailsAsync(systemId, null);
+        }
+        
+        /// <remarks/>
+        public void GetAttachmentDetailsAsync(string systemId, object userState) {
+            if ((this.GetAttachmentDetailsOperationCompleted == null)) {
+                this.GetAttachmentDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAttachmentDetailsOperationCompleted);
+            }
+            this.InvokeAsync("GetAttachmentDetails", new object[] {
+                        systemId}, this.GetAttachmentDetailsOperationCompleted, userState);
+        }
+        
+        private void OnGetAttachmentDetailsOperationCompleted(object arg) {
+            if ((this.GetAttachmentDetailsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAttachmentDetailsCompleted(this, new GetAttachmentDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetBidderCurrentPassword", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="GetBidderCurrentPassword_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetBidderCurrentPassword(string bidderNumber) {
@@ -2388,6 +2512,36 @@ namespace INSPECTORATEStaff.NAVWS {
             if ((this.GetCurrentRecruitmentPasswordCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetCurrentRecruitmentPasswordCompleted(this, new GetCurrentRecruitmentPasswordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetDocumentlines", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="GetDocumentlines_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetDocumentlines(string docNo) {
+            object[] results = this.Invoke("GetDocumentlines", new object[] {
+                        docNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetDocumentlinesAsync(string docNo) {
+            this.GetDocumentlinesAsync(docNo, null);
+        }
+        
+        /// <remarks/>
+        public void GetDocumentlinesAsync(string docNo, object userState) {
+            if ((this.GetDocumentlinesOperationCompleted == null)) {
+                this.GetDocumentlinesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDocumentlinesOperationCompleted);
+            }
+            this.InvokeAsync("GetDocumentlines", new object[] {
+                        docNo}, this.GetDocumentlinesOperationCompleted, userState);
+        }
+        
+        private void OnGetDocumentlinesOperationCompleted(object arg) {
+            if ((this.GetDocumentlinesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetDocumentlinesCompleted(this, new GetDocumentlinesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3450,6 +3604,44 @@ namespace INSPECTORATEStaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:RegFileUploadAtt", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="RegFileUploadAtt_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool RegFileUploadAtt(string retNo, string fileName, string attachment, int tableId, string docType) {
+            object[] results = this.Invoke("RegFileUploadAtt", new object[] {
+                        retNo,
+                        fileName,
+                        attachment,
+                        tableId,
+                        docType});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RegFileUploadAttAsync(string retNo, string fileName, string attachment, int tableId, string docType) {
+            this.RegFileUploadAttAsync(retNo, fileName, attachment, tableId, docType, null);
+        }
+        
+        /// <remarks/>
+        public void RegFileUploadAttAsync(string retNo, string fileName, string attachment, int tableId, string docType, object userState) {
+            if ((this.RegFileUploadAttOperationCompleted == null)) {
+                this.RegFileUploadAttOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegFileUploadAttOperationCompleted);
+            }
+            this.InvokeAsync("RegFileUploadAtt", new object[] {
+                        retNo,
+                        fileName,
+                        attachment,
+                        tableId,
+                        docType}, this.RegFileUploadAttOperationCompleted, userState);
+        }
+        
+        private void OnRegFileUploadAttOperationCompleted(object arg) {
+            if ((this.RegFileUploadAttCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RegFileUploadAttCompleted(this, new RegFileUploadAttCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:RejectDocument", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="RejectDocument_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void RejectDocument(string documentNo, string approverID) {
             this.Invoke("RejectDocument", new object[] {
@@ -3658,6 +3850,40 @@ namespace INSPECTORATEStaff.NAVWS {
             if ((this.SaveMemoAttchmentsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SaveMemoAttchmentsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:SaveMemoAttchmnts1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="SaveMemoAttchmnts1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void SaveMemoAttchmnts1(string documentsNoz, string attachmentz, string decriptionz, string username) {
+            this.Invoke("SaveMemoAttchmnts1", new object[] {
+                        documentsNoz,
+                        attachmentz,
+                        decriptionz,
+                        username});
+        }
+        
+        /// <remarks/>
+        public void SaveMemoAttchmnts1Async(string documentsNoz, string attachmentz, string decriptionz, string username) {
+            this.SaveMemoAttchmnts1Async(documentsNoz, attachmentz, decriptionz, username, null);
+        }
+        
+        /// <remarks/>
+        public void SaveMemoAttchmnts1Async(string documentsNoz, string attachmentz, string decriptionz, string username, object userState) {
+            if ((this.SaveMemoAttchmnts1OperationCompleted == null)) {
+                this.SaveMemoAttchmnts1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnSaveMemoAttchmnts1OperationCompleted);
+            }
+            this.InvokeAsync("SaveMemoAttchmnts1", new object[] {
+                        documentsNoz,
+                        attachmentz,
+                        decriptionz,
+                        username}, this.SaveMemoAttchmnts1OperationCompleted, userState);
+        }
+        
+        private void OnSaveMemoAttchmnts1OperationCompleted(object arg) {
+            if ((this.SaveMemoAttchmnts1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SaveMemoAttchmnts1Completed(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -5015,6 +5241,58 @@ namespace INSPECTORATEStaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void DeleteDocumentAttachmentCompletedEventHandler(object sender, DeleteDocumentAttachmentCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DeleteDocumentAttachmentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DeleteDocumentAttachmentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void DeleteDocumentAttachmentsCompletedEventHandler(object sender, DeleteDocumentAttachmentsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DeleteDocumentAttachmentsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DeleteDocumentAttachmentsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void DetermineIfIncludesNonWorkingCompletedEventHandler(object sender, DetermineIfIncludesNonWorkingCompletedEventArgs e);
     
     /// <remarks/>
@@ -5271,6 +5549,32 @@ namespace INSPECTORATEStaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GetAttachmentDetailsCompletedEventHandler(object sender, GetAttachmentDetailsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAttachmentDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAttachmentDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetBidderCurrentPasswordCompletedEventHandler(object sender, GetBidderCurrentPasswordCompletedEventArgs e);
     
     /// <remarks/>
@@ -5386,6 +5690,32 @@ namespace INSPECTORATEStaff.NAVWS {
         private object[] results;
         
         internal GetCurrentRecruitmentPasswordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GetDocumentlinesCompletedEventHandler(object sender, GetDocumentlinesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetDocumentlinesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetDocumentlinesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -6097,6 +6427,32 @@ namespace INSPECTORATEStaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void RegFileUploadAttCompletedEventHandler(object sender, RegFileUploadAttCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RegFileUploadAttCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RegFileUploadAttCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void RejectDocumentCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
@@ -6144,6 +6500,10 @@ namespace INSPECTORATEStaff.NAVWS {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void SaveMemoAttchmentsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void SaveMemoAttchmnts1CompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
