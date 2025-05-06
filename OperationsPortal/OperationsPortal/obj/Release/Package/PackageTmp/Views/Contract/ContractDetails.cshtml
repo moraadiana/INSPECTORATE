@@ -1,0 +1,161 @@
+﻿@{
+    ViewBag.Title = "Contract Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var storageList = ViewBag.StorageList as List<OperationsPortal.Models.Storage>;
+    var productList = ViewBag.ProductList as List<OperationsPortal.Models.Product>;
+    var partyList = ViewBag.PartyList as List<OperationsPortal.Models.Party>;
+}
+
+<div class="page-content">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="@Url.Action("Index", "Dashboard")">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <a href="@Url.Action("contractList", "contract")">Contracts</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>Contract Details</span>
+            </li>
+        </ul>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            <button class="close" data-close="alert"></button>
+            <span>@TempData["Error"]</span>
+        </div>
+    }
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            <button class="close" data-close="alert"></button>
+            <span>@TempData["Success"]</span>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light portlet-fit bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-docs font-dark"></i>
+                        <span class="caption-subject font-dark bold uppercase">Contract Details - @Session["contractNo"]</span>
+                    </div>
+                </div>
+
+                <div class="portlet-body">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item active">
+                            <a href="#products" class="nav-link active" data-toggle="tab">Products</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="#storage" class="nav-link " data-toggle="tab">Storage</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#parties" class="nav-link" data-toggle="tab">Parties</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content mt-3">
+                        <div class="tab-pane fade " id="storage">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Facility Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (storageList != null)
+                                    {
+                                        foreach (var item in storageList)
+                                        {
+                                            <tr>
+                                                <td>@item.Type</td>
+                                                <td>@item.Description</td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane fade active in" id="products">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        @*<th>Contract No.</th>*@
+                                        <th>Product</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (productList != null)
+                                    {
+                                        foreach (var item in productList)
+                                        {
+                                            <tr>
+                                                @*<td>@item.contractNo</td>*@
+                                                <td>@item.Code</td>
+                                                <td>@item.Description</td>
+                                                <td>
+                                                    <a href="@Url.Action("ProductLedger", "Contract", new { productNo = item.Code , contractNo = item.contractNo})">Details</a>
+
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane fade" id="parties">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        @*<th>Contract No.</th>*@
+                                        <th>Party Type</th>
+                                        <th>Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (partyList != null)
+                                    {
+                                        foreach (var item in partyList)
+                                        {
+                                            <tr>
+                                                <td>@item.contractNo</td>
+                                                <td>@item.Type</td>
+                                                <td>@item.Name</td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> <!-- end tab-content -->
+                </div> <!-- end portlet-body -->
+            </div> <!-- end portlet -->
+        </div>
+    </div>
+</div>
+
+<script>
+    // Bootstrap tab persistence (optional)
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        localStorage.setItem('activeTab', $(e.target).attr('href'));
+    });
+
+    var activeTab = localStorage.getItem('activeTab');
+    if (activeTab) {
+        $('.nav-tabs a[href="' + activeTab + '"]').tab('show');
+    }
+</script>

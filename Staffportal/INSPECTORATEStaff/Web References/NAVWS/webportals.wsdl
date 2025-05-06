@@ -136,6 +136,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="CanUpload">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="staffNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CanUpload_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="CancelApprovalRequest">
         <complexType>
           <sequence>
@@ -1817,6 +1831,12 @@
   <message name="CalcReturnDate_Result">
     <part name="parameters" element="tns:CalcReturnDate_Result" />
   </message>
+  <message name="CanUpload">
+    <part name="parameters" element="tns:CanUpload" />
+  </message>
+  <message name="CanUpload_Result">
+    <part name="parameters" element="tns:CanUpload_Result" />
+  </message>
   <message name="CancelApprovalRequest">
     <part name="parameters" element="tns:CancelApprovalRequest" />
   </message>
@@ -2492,6 +2512,10 @@
       <input name="CalcReturnDate" message="tns:CalcReturnDate" />
       <output name="CalcReturnDate_Result" message="tns:CalcReturnDate_Result" />
     </operation>
+    <operation name="CanUpload">
+      <input name="CanUpload" message="tns:CanUpload" />
+      <output name="CanUpload_Result" message="tns:CanUpload_Result" />
+    </operation>
     <operation name="CancelApprovalRequest">
       <input name="CancelApprovalRequest" message="tns:CancelApprovalRequest" />
       <output name="CancelApprovalRequest_Result" message="tns:CancelApprovalRequest_Result" />
@@ -2992,6 +3016,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="CalcReturnDate_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CanUpload">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:CanUpload" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CanUpload">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CanUpload_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

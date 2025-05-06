@@ -35,6 +35,7 @@ namespace OperationsPortal.Controllers
         {
             try
             {
+               
                 string response = webportals.GetCustomerProfileDetails(username);
                 if (response != null)
                 {

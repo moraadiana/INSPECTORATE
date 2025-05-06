@@ -45,6 +45,8 @@ namespace INSPECTORATEStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback CalcReturnDateOperationCompleted;
         
+        private System.Threading.SendOrPostCallback CanUploadOperationCompleted;
+        
         private System.Threading.SendOrPostCallback CancelApprovalRequestOperationCompleted;
         
         private System.Threading.SendOrPostCallback CancelClaimRequisitionOperationCompleted;
@@ -320,6 +322,9 @@ namespace INSPECTORATEStaff.NAVWS {
         
         /// <remarks/>
         public event CalcReturnDateCompletedEventHandler CalcReturnDateCompleted;
+        
+        /// <remarks/>
+        public event CanUploadCompletedEventHandler CanUploadCompleted;
         
         /// <remarks/>
         public event CancelApprovalRequestCompletedEventHandler CancelApprovalRequestCompleted;
@@ -925,6 +930,36 @@ namespace INSPECTORATEStaff.NAVWS {
             if ((this.CalcReturnDateCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CalcReturnDateCompleted(this, new CalcReturnDateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:CanUpload", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="CanUpload_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool CanUpload(string staffNo) {
+            object[] results = this.Invoke("CanUpload", new object[] {
+                        staffNo});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CanUploadAsync(string staffNo) {
+            this.CanUploadAsync(staffNo, null);
+        }
+        
+        /// <remarks/>
+        public void CanUploadAsync(string staffNo, object userState) {
+            if ((this.CanUploadOperationCompleted == null)) {
+                this.CanUploadOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCanUploadOperationCompleted);
+            }
+            this.InvokeAsync("CanUpload", new object[] {
+                        staffNo}, this.CanUploadOperationCompleted, userState);
+        }
+        
+        private void OnCanUploadOperationCompleted(object arg) {
+            if ((this.CanUploadCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CanUploadCompleted(this, new CanUploadCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4765,6 +4800,32 @@ namespace INSPECTORATEStaff.NAVWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((System.DateTime)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void CanUploadCompletedEventHandler(object sender, CanUploadCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CanUploadCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CanUploadCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }

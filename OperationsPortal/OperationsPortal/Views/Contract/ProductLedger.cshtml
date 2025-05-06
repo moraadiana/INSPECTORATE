@@ -1,0 +1,139 @@
+﻿@model IEnumerable<OperationsPortal.Models.ProductLedger>
+@{
+    ViewBag.Title = "CMA Product Ledger";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-content">
+    <!-- BEGIN PAGE HEADER-->
+    <!-- BEGIN PAGE BAR -->
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="@Url.Action("index", "dashboard")">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <a href="@Url.Action("contractList", "contract")">Contracts</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <a href="@Url.Action("ContractDetails", "Contract", new { contractNo = Session["contractNo"] })">Contracts Details</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <a href="#">Product Ledger</a>
+                <i class="fa fa-circle"></i>
+            </li>
+        </ul>
+    </div>
+    <!-- END PAGE BAR -->
+
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">
+            <button class="close" data-close="alert"></button>
+            <span> @ViewBag.Error </span>
+        </div>
+    }
+    @if (ViewBag.Success != null)
+    {
+        <div class="alert alert-success">
+            <button class="close" data-close="alert"></button>
+            <span> @ViewBag.Success </span>
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            <button class="close" data-close="alert"></button>
+            <span>@TempData["Error"]</span>
+        </div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            <button class="close" data-close="alert"></button>
+            <span>@TempData["Success"]</span>
+        </div>
+    }
+    <!-- BEGIN PAGE TITLE
+    <h1 class="page-title">
+        NMK Tenders Portal
+    </h1>
+    <!-- END PAGE TITLE-->
+    <!-- END PAGE HEADER-->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light portlet-fit bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-settings font-red"></i>
+                        <span class="caption-subject font-red sbold uppercase"> CMA Product Ledger</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+
+                    <div class="table-toolbar">
+                    </div>
+                    <table class="table table-striped table-hover table-bordered" id="orders">
+                        <thead>
+                            <tr>
+                                <th> Product  </th>
+                                <th> Facility Name  </th>
+                                <th> Vessel Name </th>
+                                <th> Description </th>
+                                <th> Quantity </th>
+                                <th> Unit Cost </th>
+                                <th> UOM </th>
+                                <th> Total Value </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (!Model.Equals(null))
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Product</td>
+                                        <td>@item.facilityName</td>
+                                        <td>@item.vesselName</td>
+                                        <td>@item.Description</td>
+                                        <td>@item.Quantity</td>
+                                        <td>@item.unitCost</td>
+                                        <td>@item.UOM</td>
+                                        <td>@item.totalValue</td>
+
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                    @*<div class="form-actions">
+                        <a href="@Url.Action("ContractDetails", "Contract", new { contractNo = Session["contractNo"] })" class="btn btn-default">
+                            <i class="fa fa-arrow-left"></i> Back to Contract Details
+                        </a>
+                    </div>*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('#orders').DataTable({
+            "pageLength": 10, // Ensure this is applied
+            "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]], // Dropdown options
+            "ordering": true,
+            "searching": true,
+            "stateSave": true, // Remember user preferences
+            retrieve: true
+        });
+    });
+
+</script>

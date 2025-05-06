@@ -21,6 +21,21 @@ namespace INSPECTORATEStaff.pages
             }
             lblUser.Text = Session["StaffName"].ToString();
         }
+        protected void CanUpload(string staffNo)
+        {
+            try
+            {
+                var response = MyComponents.ObjNav.CanUpload(staffNo);
+                if(response)
+                {
+                 
+                }
+            }
+            catch(Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }
         protected void lbtnLogOut_Click(object sender, EventArgs e)
         {
             Session.Remove("username");

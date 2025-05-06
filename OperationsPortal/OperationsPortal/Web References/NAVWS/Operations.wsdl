@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/Operations" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Operations" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Operations" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="CheckCustomerLogin">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="userpassword" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckCustomerLogin_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckValidCustomerNo">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckValidCustomerNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateWarehouseReceipt1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="receiptNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="contractNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateWarehouseReceipt1_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GenerateWarehouseReceipt2">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="receiptNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="contractNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateWarehouseReceipt2_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GenerateWarehouseReceipt">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="receiptNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="contractNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateWarehouseReceipt_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetCMAProductLedger">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="contractNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="productNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCMAProductLedger_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClientContracts">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="clientNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClientContracts_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetContractParties">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="contractNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetContractParties_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetContractProducts">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="contractNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetContractProducts_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetContractStorage">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="contractNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetContractStorage_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomerContractDispatchOrders">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="customerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomerContractDispatchOrders_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomerContractReceiptOrders">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="customerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomerContractReceiptOrders_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomerContractReleaseOrders">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="customerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomerContractReleaseOrders_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomerContractTransferOrders">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="customerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomerContractTransferOrders_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomerEmail">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomerEmail_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomerProfileDetails">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomerProfileDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateCustomerAutoGenPassword">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="genpass" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateCustomerAutoGenPassword_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateCustomerPassword">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="password" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateCustomerPassword_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="CheckCustomerLogin">
+    <part name="parameters" element="tns:CheckCustomerLogin" />
+  </message>
+  <message name="CheckCustomerLogin_Result">
+    <part name="parameters" element="tns:CheckCustomerLogin_Result" />
+  </message>
+  <message name="CheckValidCustomerNo">
+    <part name="parameters" element="tns:CheckValidCustomerNo" />
+  </message>
+  <message name="CheckValidCustomerNo_Result">
+    <part name="parameters" element="tns:CheckValidCustomerNo_Result" />
+  </message>
+  <message name="GenerateWarehouseReceipt1">
+    <part name="parameters" element="tns:GenerateWarehouseReceipt1" />
+  </message>
+  <message name="GenerateWarehouseReceipt1_Result">
+    <part name="parameters" element="tns:GenerateWarehouseReceipt1_Result" />
+  </message>
+  <message name="GenerateWarehouseReceipt2">
+    <part name="parameters" element="tns:GenerateWarehouseReceipt2" />
+  </message>
+  <message name="GenerateWarehouseReceipt2_Result">
+    <part name="parameters" element="tns:GenerateWarehouseReceipt2_Result" />
+  </message>
+  <message name="GenerateWarehouseReceipt">
+    <part name="parameters" element="tns:GenerateWarehouseReceipt" />
+  </message>
+  <message name="GenerateWarehouseReceipt_Result">
+    <part name="parameters" element="tns:GenerateWarehouseReceipt_Result" />
+  </message>
+  <message name="GetCMAProductLedger">
+    <part name="parameters" element="tns:GetCMAProductLedger" />
+  </message>
+  <message name="GetCMAProductLedger_Result">
+    <part name="parameters" element="tns:GetCMAProductLedger_Result" />
+  </message>
+  <message name="GetClientContracts">
+    <part name="parameters" element="tns:GetClientContracts" />
+  </message>
+  <message name="GetClientContracts_Result">
+    <part name="parameters" element="tns:GetClientContracts_Result" />
+  </message>
+  <message name="GetContractParties">
+    <part name="parameters" element="tns:GetContractParties" />
+  </message>
+  <message name="GetContractParties_Result">
+    <part name="parameters" element="tns:GetContractParties_Result" />
+  </message>
+  <message name="GetContractProducts">
+    <part name="parameters" element="tns:GetContractProducts" />
+  </message>
+  <message name="GetContractProducts_Result">
+    <part name="parameters" element="tns:GetContractProducts_Result" />
+  </message>
+  <message name="GetContractStorage">
+    <part name="parameters" element="tns:GetContractStorage" />
+  </message>
+  <message name="GetContractStorage_Result">
+    <part name="parameters" element="tns:GetContractStorage_Result" />
+  </message>
+  <message name="GetCustomerContractDispatchOrders">
+    <part name="parameters" element="tns:GetCustomerContractDispatchOrders" />
+  </message>
+  <message name="GetCustomerContractDispatchOrders_Result">
+    <part name="parameters" element="tns:GetCustomerContractDispatchOrders_Result" />
+  </message>
+  <message name="GetCustomerContractReceiptOrders">
+    <part name="parameters" element="tns:GetCustomerContractReceiptOrders" />
+  </message>
+  <message name="GetCustomerContractReceiptOrders_Result">
+    <part name="parameters" element="tns:GetCustomerContractReceiptOrders_Result" />
+  </message>
+  <message name="GetCustomerContractReleaseOrders">
+    <part name="parameters" element="tns:GetCustomerContractReleaseOrders" />
+  </message>
+  <message name="GetCustomerContractReleaseOrders_Result">
+    <part name="parameters" element="tns:GetCustomerContractReleaseOrders_Result" />
+  </message>
+  <message name="GetCustomerContractTransferOrders">
+    <part name="parameters" element="tns:GetCustomerContractTransferOrders" />
+  </message>
+  <message name="GetCustomerContractTransferOrders_Result">
+    <part name="parameters" element="tns:GetCustomerContractTransferOrders_Result" />
+  </message>
+  <message name="GetCustomerEmail">
+    <part name="parameters" element="tns:GetCustomerEmail" />
+  </message>
+  <message name="GetCustomerEmail_Result">
+    <part name="parameters" element="tns:GetCustomerEmail_Result" />
+  </message>
+  <message name="GetCustomerProfileDetails">
+    <part name="parameters" element="tns:GetCustomerProfileDetails" />
+  </message>
+  <message name="GetCustomerProfileDetails_Result">
+    <part name="parameters" element="tns:GetCustomerProfileDetails_Result" />
+  </message>
+  <message name="UpdateCustomerAutoGenPassword">
+    <part name="parameters" element="tns:UpdateCustomerAutoGenPassword" />
+  </message>
+  <message name="UpdateCustomerAutoGenPassword_Result">
+    <part name="parameters" element="tns:UpdateCustomerAutoGenPassword_Result" />
+  </message>
+  <message name="UpdateCustomerPassword">
+    <part name="parameters" element="tns:UpdateCustomerPassword" />
+  </message>
+  <message name="UpdateCustomerPassword_Result">
+    <part name="parameters" element="tns:UpdateCustomerPassword_Result" />
+  </message>
+  <portType name="Operations_Port">
+    <operation name="CheckCustomerLogin">
+      <input name="CheckCustomerLogin" message="tns:CheckCustomerLogin" />
+      <output name="CheckCustomerLogin_Result" message="tns:CheckCustomerLogin_Result" />
+    </operation>
+    <operation name="CheckValidCustomerNo">
+      <input name="CheckValidCustomerNo" message="tns:CheckValidCustomerNo" />
+      <output name="CheckValidCustomerNo_Result" message="tns:CheckValidCustomerNo_Result" />
+    </operation>
+    <operation name="GenerateWarehouseReceipt1">
+      <input name="GenerateWarehouseReceipt1" message="tns:GenerateWarehouseReceipt1" />
+      <output name="GenerateWarehouseReceipt1_Result" message="tns:GenerateWarehouseReceipt1_Result" />
+    </operation>
+    <operation name="GenerateWarehouseReceipt2">
+      <input name="GenerateWarehouseReceipt2" message="tns:GenerateWarehouseReceipt2" />
+      <output name="GenerateWarehouseReceipt2_Result" message="tns:GenerateWarehouseReceipt2_Result" />
+    </operation>
+    <operation name="GenerateWarehouseReceipt">
+      <input name="GenerateWarehouseReceipt" message="tns:GenerateWarehouseReceipt" />
+      <output name="GenerateWarehouseReceipt_Result" message="tns:GenerateWarehouseReceipt_Result" />
+    </operation>
+    <operation name="GetCMAProductLedger">
+      <input name="GetCMAProductLedger" message="tns:GetCMAProductLedger" />
+      <output name="GetCMAProductLedger_Result" message="tns:GetCMAProductLedger_Result" />
+    </operation>
+    <operation name="GetClientContracts">
+      <input name="GetClientContracts" message="tns:GetClientContracts" />
+      <output name="GetClientContracts_Result" message="tns:GetClientContracts_Result" />
+    </operation>
+    <operation name="GetContractParties">
+      <input name="GetContractParties" message="tns:GetContractParties" />
+      <output name="GetContractParties_Result" message="tns:GetContractParties_Result" />
+    </operation>
+    <operation name="GetContractProducts">
+      <input name="GetContractProducts" message="tns:GetContractProducts" />
+      <output name="GetContractProducts_Result" message="tns:GetContractProducts_Result" />
+    </operation>
+    <operation name="GetContractStorage">
+      <input name="GetContractStorage" message="tns:GetContractStorage" />
+      <output name="GetContractStorage_Result" message="tns:GetContractStorage_Result" />
+    </operation>
+    <operation name="GetCustomerContractDispatchOrders">
+      <input name="GetCustomerContractDispatchOrders" message="tns:GetCustomerContractDispatchOrders" />
+      <output name="GetCustomerContractDispatchOrders_Result" message="tns:GetCustomerContractDispatchOrders_Result" />
+    </operation>
+    <operation name="GetCustomerContractReceiptOrders">
+      <input name="GetCustomerContractReceiptOrders" message="tns:GetCustomerContractReceiptOrders" />
+      <output name="GetCustomerContractReceiptOrders_Result" message="tns:GetCustomerContractReceiptOrders_Result" />
+    </operation>
+    <operation name="GetCustomerContractReleaseOrders">
+      <input name="GetCustomerContractReleaseOrders" message="tns:GetCustomerContractReleaseOrders" />
+      <output name="GetCustomerContractReleaseOrders_Result" message="tns:GetCustomerContractReleaseOrders_Result" />
+    </operation>
+    <operation name="GetCustomerContractTransferOrders">
+      <input name="GetCustomerContractTransferOrders" message="tns:GetCustomerContractTransferOrders" />
+      <output name="GetCustomerContractTransferOrders_Result" message="tns:GetCustomerContractTransferOrders_Result" />
+    </operation>
+    <operation name="GetCustomerEmail">
+      <input name="GetCustomerEmail" message="tns:GetCustomerEmail" />
+      <output name="GetCustomerEmail_Result" message="tns:GetCustomerEmail_Result" />
+    </operation>
+    <operation name="GetCustomerProfileDetails">
+      <input name="GetCustomerProfileDetails" message="tns:GetCustomerProfileDetails" />
+      <output name="GetCustomerProfileDetails_Result" message="tns:GetCustomerProfileDetails_Result" />
+    </operation>
+    <operation name="UpdateCustomerAutoGenPassword">
+      <input name="UpdateCustomerAutoGenPassword" message="tns:UpdateCustomerAutoGenPassword" />
+      <output name="UpdateCustomerAutoGenPassword_Result" message="tns:UpdateCustomerAutoGenPassword_Result" />
+    </operation>
+    <operation name="UpdateCustomerPassword">
+      <input name="UpdateCustomerPassword" message="tns:UpdateCustomerPassword" />
+      <output name="UpdateCustomerPassword_Result" message="tns:UpdateCustomerPassword_Result" />
+    </operation>
+  </portType>
+  <binding name="Operations_Binding" type="tns:Operations_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="CheckCustomerLogin">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:CheckCustomerLogin" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckCustomerLogin">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckCustomerLogin_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckValidCustomerNo">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:CheckValidCustomerNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckValidCustomerNo">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckValidCustomerNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateWarehouseReceipt1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GenerateWarehouseReceipt1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateWarehouseReceipt1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateWarehouseReceipt1_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateWarehouseReceipt2">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GenerateWarehouseReceipt2" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateWarehouseReceipt2">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateWarehouseReceipt2_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateWarehouseReceipt">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GenerateWarehouseReceipt" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateWarehouseReceipt">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateWarehouseReceipt_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetCMAProductLedger">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GetCMAProductLedger" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetCMAProductLedger">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetCMAProductLedger_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetClientContracts">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GetClientContracts" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetClientContracts">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetClientContracts_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetContractParties">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GetContractParties" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetContractParties">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetContractParties_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetContractProducts">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GetContractProducts" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetContractProducts">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetContractProducts_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetContractStorage">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GetContractStorage" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetContractStorage">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetContractStorage_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetCustomerContractDispatchOrders">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GetCustomerContractDispatchOrders" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetCustomerContractDispatchOrders">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetCustomerContractDispatchOrders_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetCustomerContractReceiptOrders">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GetCustomerContractReceiptOrders" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetCustomerContractReceiptOrders">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetCustomerContractReceiptOrders_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetCustomerContractReleaseOrders">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GetCustomerContractReleaseOrders" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetCustomerContractReleaseOrders">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetCustomerContractReleaseOrders_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetCustomerContractTransferOrders">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GetCustomerContractTransferOrders" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetCustomerContractTransferOrders">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetCustomerContractTransferOrders_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetCustomerEmail">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GetCustomerEmail" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetCustomerEmail">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetCustomerEmail_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetCustomerProfileDetails">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GetCustomerProfileDetails" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetCustomerProfileDetails">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetCustomerProfileDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateCustomerAutoGenPassword">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:UpdateCustomerAutoGenPassword" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateCustomerAutoGenPassword">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateCustomerAutoGenPassword_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateCustomerPassword">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:UpdateCustomerPassword" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateCustomerPassword">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateCustomerPassword_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Operations">
+    <port name="Operations_Port" binding="tns:Operations_Binding">
+      <address location="http://102.213.176.86:7047/BC200/WS/INSP%20TEST/Codeunit/Operations" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

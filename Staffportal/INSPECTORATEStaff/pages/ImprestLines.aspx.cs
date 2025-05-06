@@ -23,11 +23,11 @@ namespace INSPECTORATEStaff.pages
                     Response.Redirect("~/Default.aspx");
                 }
                 string username = Session["username"].ToString();
-                bool response = MyComponents.ObjNav.HasPendingImprestSurrender(username);
+                /*bool response = MyComponents.ObjNav.HasPendingImprestSurrender(username);
                 if (response == true)
                 {
                     SuccessMessage("Warning! You have pending imprest Surrender!");
-                }
+                }*/
                 string paged = Request.QueryString["Tp"].ToString();
                 if (paged == "old")
                 {

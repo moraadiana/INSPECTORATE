@@ -76,14 +76,14 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">HR Online <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="LeaveListsing.aspx"><i class="fa fa-hand-o-right"></i>Leave Requests</a></li>
-                                       <%--<li class="divider"></li>
+                                        <%--<li class="divider"></li>
                                         <li><a href="TrainingListing.aspx"><i class="fa fa-hand-o-right"></i>Training Requests</a></li>
                                         <li class="divider"></li>
                                         <li><a href="TransportListing.aspx"><i class="fa fa-hand-o-right"></i>Transport Requests</a></li>
                                         <li class="divider"></li>--%>
                                         <li class="divider"></li>
                                         <li><a href="BackToOfficeListsing.aspx"><i class="fa fa-hand-o-right"></i>Apply Back To office</a></li>
-                                        
+
                                     </ul>
                                 </li>
                                 <li class="dropdown">
@@ -91,16 +91,15 @@
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="ImprestListing.aspx"><i class="fa fa-hand-o-right"></i>Imprest Requisitions</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="ImprestAccounting.aspx"><i class="fa fa-hand-o-right"></i> Imprest Accounting</a></li>
+                                        <li><a href="ImprestAccounting.aspx"><i class="fa fa-hand-o-right"></i>Imprest Accounting</a></li>
                                         <li class="divider"></li>
                                         <li><a href="ClaimListing.aspx"><i class="fa fa-hand-o-right"></i>Claim Requisitions</a></li>
                                         <%--<li class="divider"></li>--%>
                                         <%--<li><a href="TransportListing.aspx"><i class="fa fa-hand-o-right"></i>Transport Requisitions</a></li>--%>
                                         <%--<li><a href="VenueListing.aspx"><i class="fa fa-hand-o-right"></i>Venue Booking</a></li>--%>
-                                     
                                     </ul>
                                 </li>
-                                
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Procurement<span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
@@ -108,8 +107,8 @@
                                         <li class="divider"></li>
                                         <li><a href="StoreAccounting.aspx"><i class="fa fa-hand-o-right"></i>Store Confirm</a></li>
                                     </ul>
-                                   </li>
-                               <li id="downloads" runat="server" class="dropdown">
+                                </li>
+                                <li id="downloads" runat="server" class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Downloads <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li id="documents" runat="server"><a href="Downloads.aspx"><i class="fa fa-file"></i>Reliever Form</a></li>
@@ -122,9 +121,16 @@
                                         <li><a href="Approvals_Leave.aspx"><i class="fa fa-hand-o-right"></i>Leave Approvals</a></li>
                                         <li class="divider"></li>
                                         <li><a href="Approvals_Imprest.aspx"><i class="fa fa-hand-o-right"></i>Imprest Approvals</a></li>
-                                         <li class="divider"></li>
+                                        <li class="divider"></li>
                                         <li><a href="Approvals_Stores.aspx"><i class="fa fa-hand-o-right"></i>Stores Approvals</a></li>
                                         <%--<li class="divider"></li>--%>
+                                    </ul>
+                                </li>
+                                <li class="dropdown" id="upload">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Upload Files <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="UploadFiles.aspx"><i class="fa fa-hand-o-right"></i>Upload</a></li>
+
                                     </ul>
                                 </li>
                             </ul>
@@ -137,19 +143,22 @@
                                 <li class="dropdown user user-menu">
                                     <!-- Menu Toggle Button -->
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <span class="hidden-xs"> <asp:Label ID="lblUser" runat="server" Text="Label"></asp:Label> </span><span class="caret"></span>
+                                        <span class="hidden-xs">
+                                            <asp:Label ID="lblUser" runat="server" Text="Label"></asp:Label>
+                                        </span><span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu" role="menu">
                                         <%--<li class="divider"></li>--%>
-                                        <li><a href="Changepassword.aspx" style="color:black"><i class="fa fa-fw fa-edit text-blue"></i>Change Password</a></li>
+                                        <li><a href="Changepassword.aspx" style="color: black"><i class="fa fa-fw fa-edit text-blue"></i>Change Password</a></li>
                                         <li class="divider"></li>
-                                         <li><asp:LinkButton ID="lbtnLogOut" runat="server" OnClick="lbtnLogOut_Click" style="color:black"><i class="fa fa-fw fa-power-off text-red"></i> Sign out</asp:LinkButton></li>
-                                       
+                                        <li>
+                                            <asp:LinkButton ID="lbtnLogOut" runat="server" OnClick="lbtnLogOut_Click" Style="color: black"><i class="fa fa-fw fa-power-off text-red"></i> Sign out</asp:LinkButton></li>
+
                                         <%--<li class="divider"></li>--%>
                                     </ul>
                                 </li>
                                 <li></li>
-                                 <!-- Tasks Menu -->
+                                <!-- Tasks Menu -->
                             </ul>
                         </div>
                         <!-- /.navbar-custom-menu -->
@@ -169,7 +178,7 @@
                         <%--<b>Version</b> 2.4.0--%>
                     </div>
                     <center>
-                    <strong>All Rights reserved &copy;  <%=DateTime.Now.Year %>. Powered by <a href="http://www.appkings.co.ke/" target="_blank">AppKings Solutions Ltd</a>.</strong>
+                        <strong>All Rights reserved &copy;  <%=DateTime.Now.Year %>. Powered by <a href="http://www.appkings.co.ke/" target="_blank">AppKings Solutions Ltd</a>.</strong>
                     </center>
                 </div>
                 <!-- /.container -->
@@ -206,7 +215,7 @@
                     'autoWidth': false
                 })
             })
-</script>
+        </script>
         <asp:ContentPlaceHolder ID="customJS" runat="server">
         </asp:ContentPlaceHolder>
         <script>
@@ -275,7 +284,7 @@
                     showInputs: false
                 })
             })
-</script>
+        </script>
     </form>
 </body>
 </html>

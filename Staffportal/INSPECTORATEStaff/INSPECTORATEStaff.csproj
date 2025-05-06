@@ -7187,6 +7187,7 @@
     <Content Include="pages\TrainingListing.aspx" />
     <Content Include="pages\TransportListing.aspx" />
     <Content Include="pages\TransportRequiz.aspx" />
+    <Content Include="pages\UploadFiles.aspx" />
     <Content Include="pages\VenueBooking.aspx" />
     <Content Include="pages\VenueListing.aspx" />
     <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
@@ -7713,6 +7714,13 @@
     </Compile>
     <Compile Include="pages\TransportRequiz.aspx.designer.cs">
       <DependentUpon>TransportRequiz.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\UploadFiles.aspx.cs">
+      <DependentUpon>UploadFiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\UploadFiles.aspx.designer.cs">
+      <DependentUpon>UploadFiles.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\VenueBooking.aspx.cs">
       <DependentUpon>VenueBooking.aspx</DependentUpon>

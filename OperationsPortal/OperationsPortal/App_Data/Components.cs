@@ -15,43 +15,16 @@ namespace OperationsPortal
         {
             get
             {
-                // Enforce TLS 1.2
-                //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-                //// Ignore SSL certificate validation (use only for testing)
-                //ServicePointManager.ServerCertificateValidationCallback +=
-                //    (sender, certificate, chain, sslPolicyErrors) => true;
-
-                // var webservice = new Operations();
-                //try
-                //{
-                //    var credentials = new NetworkCredential(
-                //        ConfigurationManager.AppSettings["W_USER"],
-                //        ConfigurationManager.AppSettings["W_PWD"]
-                //    );
-                //    webservice.Credentials = credentials;
-                //    webservice.PreAuthenticate = true;
-                //}
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine("Error initializing web service: " + ex.Message);
-                //}
-                // return webservice;
                 var ws = new Operations();
                 try
                 {
-                    var credentials = new NetworkCredential(
-                        ConfigurationManager.AppSettings["W_USER"],
-                        ConfigurationManager.AppSettings["W_PWD"]
-                    );
+                    var credentials = new NetworkCredential(ConfigurationManager.AppSettings["W_USER"], ConfigurationManager.AppSettings["W_PWD"]);
                     ws.Credentials = credentials;
-                    ws.UseDefaultCredentials = false; // Explicitly set to false
-                    ws.PreAuthenticate = true; // Ensure credentials are sent with request
+                    ws.PreAuthenticate = true;
                 }
                 catch (Exception ex)
                 {
-                    //ex.Data.Clear();
-                    Console.WriteLine("Authentication error: " + ex.ToString());
+                    ex.Data.Clear();
                 }
                 return ws;
             }

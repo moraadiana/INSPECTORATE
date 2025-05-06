@@ -3,7 +3,9 @@ using OperationsPortal.NAVWS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Principal;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using static System.Net.WebRequestMethods;
@@ -30,7 +32,7 @@ namespace OperationsPortal.Controllers
                 string emailAddress = account.Email;
                 string password = account.Password.Trim();
                 bool isValid = webportals.CheckValidCustomerNo(custNo);
-                Console.WriteLine($"CheckValidPensionerNo returned: {isValid}");
+                Console.WriteLine($"CheckValidCustomerNo returned: {isValid}");
                 if (webportals.CheckValidCustomerNo(custNo))
                 {
                     string response = webportals.CheckCustomerLogin(custNo, password);
@@ -40,22 +42,22 @@ namespace OperationsPortal.Controllers
                         string returnMsg = responseArr[0];
                         if (returnMsg == "SUCCESS")
                         {
-                            string customerNo = responseArr[2];
-                            string customerName = responseArr[3];
-                            string customerEmail = responseArr[4];
-                            // string vendorVat = responseArr[4];
+                            string customerNo = responseArr[1];
+                            string customerName = responseArr[2];
+                            string customerEmail = responseArr[3];
+                            
 
                             Session["customerNo"] = customerNo;
                             Session["customerName"] = customerName;
                             Session["customerEmail"] = customerEmail;
-                            // Session["VendorVat"] = vendorVat;
+
 
                             //string otp = GenerateOtp(6);
                             //Session["otp"] = otp;
 
                             //string subject = "Inspectorate Operations Portal OTP";
                             //string body = $"{otp} is your OTP Code for Inspectorate Operations portal.";
-                            //Components.SendEmailAlerts(pensionerEmail, subject, body);
+                            //Components.SendEmailAlerts(customerEmail, subject, body);
                             //return RedirectToAction("verifyotp");
                             return RedirectToAction("index", "dashboard");
                         }
@@ -68,7 +70,7 @@ namespace OperationsPortal.Controllers
                 }
                 else
                 {
-                    TempData["error"] = "Invalid Vendor No. ";
+                    TempData["error"] = "Invalid Client No. ";
                     return View("index");
                 }
             }
@@ -82,7 +84,7 @@ namespace OperationsPortal.Controllers
 
         public ActionResult VerifyOTP()
         {
-            if (Session["pensionerNo"] == null) return View("index");
+            if (Session["customerNo"] == null) return View("index");
             return View();
         }
 
@@ -122,7 +124,120 @@ namespace OperationsPortal.Controllers
 
             return result;
         }
+        public ActionResult ResetPassword(string email, string pensionerNo)
+        {
+            // If email is provided in query string, store it in session
+            if (!string.IsNullOrEmpty(email))
+            {
+                Session["EmailAddress"] = email;
+            }
 
+            if (!string.IsNullOrEmpty(pensionerNo))
+            {
+                Session["customerNo"] = pensionerNo;
+            }
+
+            // Retrieve stored session values if they exist
+            ViewBag.EmailAddress = Session["EmailAddress"] as string;
+            ViewBag.PensionerNo = Session["pensionerNo"] as string;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ResetPassword(ResetPassword reset)
+        {
+            try
+            {
+                //if (Session["customerNo"] == null)
+                //{
+                //    TempData["Error"] = "Session expired. Please log in again.";
+                //    return RedirectToAction("index", "login");
+                //}
+                string newPassword = reset.Password;
+                string confirmPassword = reset.PasswordConfirmation;
+                string customerNo = reset.customerNo;
+                //string customerNo = Session["customerNo"].ToString();
+
+                string response = webportals.UpdateCustomerPassword(customerNo, newPassword);
+                if (!string.IsNullOrEmpty(response))
+                {
+                    if (response == "SUCCESS")
+                    {
+                        TempData["Success"] = "Password has been updated successfully";
+                        return RedirectToAction("index", "login");
+                    }
+                    else
+                    {
+                        TempData["Error"] = "An error occured while updating your password. Please try again later.";
+                        return RedirectToAction("resetpassword", "login");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+            }
+            return View();
+        }
+        public ActionResult ForgotPassword(string email, string pensionerNo)
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ForgotPassword(ResetPassword reset)
+        {
+            try
+            {
+
+                string newPassword = GenerateRandomPassword(10);
+                string clientNo = reset.customerNo;
+                string clientEmail = reset.Email;
+                //string email = Components.ObjNav.GetPensionerEmail(pensionerNo);
+                string response = Components.ObjNav.UpdateCustomerAutoGenPassword(clientNo, newPassword);
+                if (!string.IsNullOrEmpty(response))
+                {
+                    if (response != "SUCCESS")
+                    {
+                        TempData["Error"] = "Failed to reset the password. Please try again.";
+                        View("forgotpassword");
+                    }
+
+                }
+                string subject = "Inspectorate Operations Portal Password Reset";
+                string body = $"Use this password to log into Inspectorate Operations  Portal.<br/><br/>Auto generated Portal password: <strong>{newPassword}</strong> <br/> <br/>Do not reply to this email.";
+                Components.SendEmailAlerts(clientEmail, subject, body);
+                
+                TempData["Success"] = $"Auto generated password has been sent to your email address {clientEmail}";
+                //  return RedirectToAction("index");
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                return View("forgotpassword");
+            }
+            return View("index");
+        }
+
+        private string GenerateRandomPassword(int length)
+        {
+            const string validChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$!";
+            StringBuilder password = new StringBuilder();
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            {
+                byte[] byteBuffer = new byte[1];
+
+                for (int i = 0; i < length; i++)
+                {
+                    rng.GetBytes(byteBuffer);
+                    int index = byteBuffer[0] % validChars.Length;
+                    password.Append(validChars[index]);
+                }
+            }
+
+            return password.ToString();
+        }
         [ChildActionOnly]
         public PartialViewResult Notification()
         {
