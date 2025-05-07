@@ -31,7 +31,7 @@
           </sequence>
         </complexType>
       </element>
-      <element name="GenerateWarehouseReceipt1">
+      <element name="GenerateReleaseOrderReport">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="path" type="string" />
@@ -41,22 +41,7 @@
           </sequence>
         </complexType>
       </element>
-      <element name="GenerateWarehouseReceipt1_Result">
-        <complexType>
-          <sequence />
-        </complexType>
-      </element>
-      <element name="GenerateWarehouseReceipt2">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="receiptNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="contractNo" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="GenerateWarehouseReceipt2_Result">
+      <element name="GenerateReleaseOrderReport_Result">
         <complexType>
           <sequence />
         </complexType>
@@ -275,17 +260,11 @@
   <message name="CheckValidCustomerNo_Result">
     <part name="parameters" element="tns:CheckValidCustomerNo_Result" />
   </message>
-  <message name="GenerateWarehouseReceipt1">
-    <part name="parameters" element="tns:GenerateWarehouseReceipt1" />
+  <message name="GenerateReleaseOrderReport">
+    <part name="parameters" element="tns:GenerateReleaseOrderReport" />
   </message>
-  <message name="GenerateWarehouseReceipt1_Result">
-    <part name="parameters" element="tns:GenerateWarehouseReceipt1_Result" />
-  </message>
-  <message name="GenerateWarehouseReceipt2">
-    <part name="parameters" element="tns:GenerateWarehouseReceipt2" />
-  </message>
-  <message name="GenerateWarehouseReceipt2_Result">
-    <part name="parameters" element="tns:GenerateWarehouseReceipt2_Result" />
+  <message name="GenerateReleaseOrderReport_Result">
+    <part name="parameters" element="tns:GenerateReleaseOrderReport_Result" />
   </message>
   <message name="GenerateWarehouseReceipt">
     <part name="parameters" element="tns:GenerateWarehouseReceipt" />
@@ -380,13 +359,9 @@
       <input name="CheckValidCustomerNo" message="tns:CheckValidCustomerNo" />
       <output name="CheckValidCustomerNo_Result" message="tns:CheckValidCustomerNo_Result" />
     </operation>
-    <operation name="GenerateWarehouseReceipt1">
-      <input name="GenerateWarehouseReceipt1" message="tns:GenerateWarehouseReceipt1" />
-      <output name="GenerateWarehouseReceipt1_Result" message="tns:GenerateWarehouseReceipt1_Result" />
-    </operation>
-    <operation name="GenerateWarehouseReceipt2">
-      <input name="GenerateWarehouseReceipt2" message="tns:GenerateWarehouseReceipt2" />
-      <output name="GenerateWarehouseReceipt2_Result" message="tns:GenerateWarehouseReceipt2_Result" />
+    <operation name="GenerateReleaseOrderReport">
+      <input name="GenerateReleaseOrderReport" message="tns:GenerateReleaseOrderReport" />
+      <output name="GenerateReleaseOrderReport_Result" message="tns:GenerateReleaseOrderReport_Result" />
     </operation>
     <operation name="GenerateWarehouseReceipt">
       <input name="GenerateWarehouseReceipt" message="tns:GenerateWarehouseReceipt" />
@@ -465,21 +440,12 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
-    <operation name="GenerateWarehouseReceipt1">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GenerateWarehouseReceipt1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="GenerateWarehouseReceipt1">
+    <operation name="GenerateReleaseOrderReport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GenerateReleaseOrderReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateReleaseOrderReport">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
-      <output name="GenerateWarehouseReceipt1_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="GenerateWarehouseReceipt2">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Operations:GenerateWarehouseReceipt2" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="GenerateWarehouseReceipt2">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="GenerateWarehouseReceipt2_Result">
+      <output name="GenerateReleaseOrderReport_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

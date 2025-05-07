@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "WareHouse Receipt";
+    ViewBag.Title = "Release Order Report";
 }
 
 <div class="container-fluid page-content d-flex justify-content-center">
@@ -10,7 +10,7 @@
             <li class="breadcrumb-item">
                 <a href="@Url.Action("index", "dashboard")" class="text-decoration-none">Home</a>
             </li>
-            <li class="breadcrumb-item active">WareHouse Receipt</li>
+            <li class="breadcrumb-item active">Release Order Report</li>
         </ul>
     </div>
 
@@ -38,7 +38,7 @@
             <div class="card shadow-lg border-0">
                 <div class="card-header bg-gradient-primary text-white d-flex align-items-center">
                     <h5 class="mb-0">
-                        <i class="bi bi-file-earmark-text me-2"></i> Warehouse Receipt
+                        <i class="bi bi-file-earmark-text me-2"></i> Release Order Report
                     </h5>
                 </div>
                 <div class="card-body text-center">
@@ -61,7 +61,7 @@
                     else
                     {
                         <div class="alert alert-info text-center">
-                            <i class=""></i> No Receipt available.
+                            <i class=""></i> No Report available.
                         </div>
                     }
                 </div>

@@ -88,6 +88,7 @@
                                 <th> Description </th>
                                 <th> Contract No. </th>
                                 <th> Status </th>
+                                <th> Action </th>
 
                             </tr>
                         </thead>
@@ -102,7 +103,10 @@
                                         <td>@item.Description</td>
                                         <td>@item.contractNo</td>
                                         <td>@item.Status</td>
+                                        <td>
+                                            <a href="@Url.Action("ReleaseOrderReport", "Report", new { releaseNo = item.No, contractNo=item.contractNo })">View Report</a>
 
+                                        </td>
 
                                     </tr>
                                 }

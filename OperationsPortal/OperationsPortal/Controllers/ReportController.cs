@@ -58,5 +58,42 @@ namespace OperationsPortal.Controllers
 
             return View();
         }
+        public ActionResult ReleaseOrderReport(string releaseNo, string contractNo)
+        {
+            Session["releaseNo"] = releaseNo;
+            Session["contractNo"] = contractNo;
+            if (Session["customerNo"] == null)
+                return RedirectToAction("index", "login");
+            try
+            {
+                string fileName = releaseNo.Replace(@"/", @"");
+                string pdfFileName = $"ReleaseOrderReport-{fileName}.pdf";
+
+                string path = Server.MapPath("~/Downloads/");
+                if (string.IsNullOrEmpty(path))
+                    throw new Exception("Resolved path is null or empty.");
+
+                string pdfFilePath = Path.Combine(path, pdfFileName);
+                Debug.WriteLine($"Resolved path: {path}");
+
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+
+                if (System.IO.File.Exists(pdfFilePath))
+                    System.IO.File.Delete(pdfFilePath);
+
+                webportals.GenerateReleaseOrderReport(path, pdfFileName, releaseNo, contractNo);
+                TempData["PdfUrl"] = Url.Content($"~/Downloads/{pdfFileName}");
+                ViewBag.PdfUrl = TempData["PdfUrl"];
+
+
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = $"An error occurred: {ex.Message}";
+            }
+
+            return View();
+        }
     }
 }

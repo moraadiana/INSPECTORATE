@@ -33,9 +33,7 @@ namespace OperationsPortal.NAVWS {
         
         private System.Threading.SendOrPostCallback CheckValidCustomerNoOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GenerateWarehouseReceipt1OperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GenerateWarehouseReceipt2OperationCompleted;
+        private System.Threading.SendOrPostCallback GenerateReleaseOrderReportOperationCompleted;
         
         private System.Threading.SendOrPostCallback GenerateWarehouseReceiptOperationCompleted;
         
@@ -110,10 +108,7 @@ namespace OperationsPortal.NAVWS {
         public event CheckValidCustomerNoCompletedEventHandler CheckValidCustomerNoCompleted;
         
         /// <remarks/>
-        public event GenerateWarehouseReceipt1CompletedEventHandler GenerateWarehouseReceipt1Completed;
-        
-        /// <remarks/>
-        public event GenerateWarehouseReceipt2CompletedEventHandler GenerateWarehouseReceipt2Completed;
+        public event GenerateReleaseOrderReportCompletedEventHandler GenerateReleaseOrderReportCompleted;
         
         /// <remarks/>
         public event GenerateWarehouseReceiptCompletedEventHandler GenerateWarehouseReceiptCompleted;
@@ -220,9 +215,9 @@ namespace OperationsPortal.NAVWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Operations:GenerateWarehouseReceipt1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Operations", ResponseElementName="GenerateWarehouseReceipt1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Operations", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void GenerateWarehouseReceipt1(string path, string fileName, string receiptNo, string contractNo) {
-            this.Invoke("GenerateWarehouseReceipt1", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Operations:GenerateReleaseOrderReport", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Operations", ResponseElementName="GenerateReleaseOrderReport_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Operations", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void GenerateReleaseOrderReport(string path, string fileName, string receiptNo, string contractNo) {
+            this.Invoke("GenerateReleaseOrderReport", new object[] {
                         path,
                         fileName,
                         receiptNo,
@@ -230,60 +225,26 @@ namespace OperationsPortal.NAVWS {
         }
         
         /// <remarks/>
-        public void GenerateWarehouseReceipt1Async(string path, string fileName, string receiptNo, string contractNo) {
-            this.GenerateWarehouseReceipt1Async(path, fileName, receiptNo, contractNo, null);
+        public void GenerateReleaseOrderReportAsync(string path, string fileName, string receiptNo, string contractNo) {
+            this.GenerateReleaseOrderReportAsync(path, fileName, receiptNo, contractNo, null);
         }
         
         /// <remarks/>
-        public void GenerateWarehouseReceipt1Async(string path, string fileName, string receiptNo, string contractNo, object userState) {
-            if ((this.GenerateWarehouseReceipt1OperationCompleted == null)) {
-                this.GenerateWarehouseReceipt1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnGenerateWarehouseReceipt1OperationCompleted);
+        public void GenerateReleaseOrderReportAsync(string path, string fileName, string receiptNo, string contractNo, object userState) {
+            if ((this.GenerateReleaseOrderReportOperationCompleted == null)) {
+                this.GenerateReleaseOrderReportOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGenerateReleaseOrderReportOperationCompleted);
             }
-            this.InvokeAsync("GenerateWarehouseReceipt1", new object[] {
+            this.InvokeAsync("GenerateReleaseOrderReport", new object[] {
                         path,
                         fileName,
                         receiptNo,
-                        contractNo}, this.GenerateWarehouseReceipt1OperationCompleted, userState);
+                        contractNo}, this.GenerateReleaseOrderReportOperationCompleted, userState);
         }
         
-        private void OnGenerateWarehouseReceipt1OperationCompleted(object arg) {
-            if ((this.GenerateWarehouseReceipt1Completed != null)) {
+        private void OnGenerateReleaseOrderReportOperationCompleted(object arg) {
+            if ((this.GenerateReleaseOrderReportCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GenerateWarehouseReceipt1Completed(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Operations:GenerateWarehouseReceipt2", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Operations", ResponseElementName="GenerateWarehouseReceipt2_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Operations", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void GenerateWarehouseReceipt2(string path, string fileName, string receiptNo, string contractNo) {
-            this.Invoke("GenerateWarehouseReceipt2", new object[] {
-                        path,
-                        fileName,
-                        receiptNo,
-                        contractNo});
-        }
-        
-        /// <remarks/>
-        public void GenerateWarehouseReceipt2Async(string path, string fileName, string receiptNo, string contractNo) {
-            this.GenerateWarehouseReceipt2Async(path, fileName, receiptNo, contractNo, null);
-        }
-        
-        /// <remarks/>
-        public void GenerateWarehouseReceipt2Async(string path, string fileName, string receiptNo, string contractNo, object userState) {
-            if ((this.GenerateWarehouseReceipt2OperationCompleted == null)) {
-                this.GenerateWarehouseReceipt2OperationCompleted = new System.Threading.SendOrPostCallback(this.OnGenerateWarehouseReceipt2OperationCompleted);
-            }
-            this.InvokeAsync("GenerateWarehouseReceipt2", new object[] {
-                        path,
-                        fileName,
-                        receiptNo,
-                        contractNo}, this.GenerateWarehouseReceipt2OperationCompleted, userState);
-        }
-        
-        private void OnGenerateWarehouseReceipt2OperationCompleted(object arg) {
-            if ((this.GenerateWarehouseReceipt2Completed != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GenerateWarehouseReceipt2Completed(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GenerateReleaseOrderReportCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -794,11 +755,7 @@ namespace OperationsPortal.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    public delegate void GenerateWarehouseReceipt1CompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    public delegate void GenerateWarehouseReceipt2CompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void GenerateReleaseOrderReportCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]

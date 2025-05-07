@@ -8,7 +8,7 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="TInspectorate operations portal Applications" name="description" />
+    <meta content="Inspectorate operations portal Applications" name="description" />
     <meta content="Diana Moraa" name="author" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css" />
@@ -29,56 +29,52 @@
     <!-- END THEME GLOBAL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
     <link href="../assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+    @*<link href="../assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />*@
+    <link href="../assets/layouts/layout/css/themes/sidebar-custom.css" rel="stylesheet" type="text/css" id="style_color" />
     <link href="../assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+
     <!-- END THEME LAYOUT STYLES -->
-    <link rel="shortcut icon" href="~/images/logo.jpg" />
+    <link rel="shortcut icon" href="~/images/logo.png" />
 </head>
 <!-- END HEAD -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
     <div id="loading" class="loading">
-        <img id="loading-image" src="../assets/pages/img/spinner.png" alt="Loading..." />
+        <img id="loading-image" src="../assets/pages/img/spinner2.png" alt="Loading..." />
     </div>
     <div class="page-wrapper">
         <!-- BEGIN HEADER -->
-        <div class="page-header navbar navbar-fixed-top" style="background-color: whitesmoke">
-            <!-- BEGIN HEADER INNER -->
-            <div class="page-header-inner ">
-              
-                <div class="page-logo" style="display: flex; align-items: center; justify-content: space-between; background-color: whitesmoke; padding: 10px 15px; ">
-                    <a href="@Url.Action("index", "dashboard")" style="text-decoration: none; flex-grow: 1;">
-                        <div class="logo-default" style="font-size: 12px;  color: #000000; text-align: center;">
-                            INSPECTORATE OPERATIONS PORTAL
-                        </div>
+        <div class="page-header navbar navbar-fixed-top">
+            <div class="page-header-inner">
+                <div class="page-logo ">
+                    <a href="@Url.Action("index", "dashboard")" class="logo-link">
+                        <span class="logo-text">INSPECTORATE OPERATIONS PORTAL</span>
                     </a>
-                    <div class="menu-toggler sidebar-toggler" style="cursor: pointer; margin-left: 10px;">
-                        <span></span>
+                    <div class="toggle">
+                        <div class="menu-toggler sidebar-toggler" title="Toggle Sidebar">
+                            <span class="toggler-bar"></span>
+                        </div>
+                        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span></span>
+                        </a>
                     </div>
                 </div>
+                
 
-                <!-- END LOGO -->
-                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span></span>
-                </a>
-                <!-- END RESPONSIVE MENU TOGGLER -->
-                <!-- BEGIN TOP NAVIGATION MENU -->
                 <div class="top-menu">
-                    <ul class="nav navbar-nav pull-right">
+                    <ul class="nav navbar-nav">
                         <li class="dropdown dropdown-user">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                @*<img alt="" class="img-circle" src="@Url.Content("~/Profiles/" + Session["username"].ToString() + ".png?"+ DateTime.Now.Ticks.ToString())" />*@
-                                <img src="~/Profiles/defaultavatar.png" class="img-circle" alt="" />
-                                <span style="color: black !important" class="username username-hide-on-mobile"> @Session["customerName"] </span>
+                                <img src="~/images/profile_m.png" class="img-circle user-avatar" alt="Avatar" />
+                                <span class="username">@Session["customerName"]</span>
                                 <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-default">
                                 <li>
                                     <a href="@Url.Action("index", "dashboard")">
-                                        <i class="icon-home"></i> Pensioner Profile
+                                        <i class="icon-home"></i> Customer Profile
                                     </a>
                                 </li>
-                                <li class="divider"> </li>
+                                <li class="divider"></li>
                                 <li>
                                     <a href="@Url.Action("logout", "dashboard")">
                                         <i class="icon-logout"></i> Log Out
@@ -88,103 +84,65 @@
                         </li>
                     </ul>
                 </div>
-                <!-- END TOP NAVIGATION MENU -->
             </div>
-            <!-- END HEADER INNER -->
+
         </div>
+
         <!-- END HEADER -->
         <!-- BEGIN HEADER & CONTENT DIVIDER -->
         <div class="clearfix"> </div>
         <!-- END HEADER & CONTENT DIVIDER -->
         <!-- BEGIN CONTAINER -->
         <div class="page-container">
-            <!-- BEGIN SIDEBAR -->
+            
             <div class="page-sidebar-wrapper">
-                <!-- BEGIN SIDEBAR -->
-                <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-                <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-                <div class="page-sidebar navbar-collapse collapse" style="background-color: whitesmoke !important">
-                    <ul class="page-sidebar-menu  page-header-fixed" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
-                        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-                        <li class="sidebar-toggler-wrapper hide">
-                            <div class="sidebar-toggler">
-                                <span></span>
-                            </div>
-                        </li>
-                        <!-- END SIDEBAR TOGGLER BUTTON -->
-                        <!-- Customer Profile -->
+              
+                <div class="page-sidebar navbar-collapse collapse">
+                    <ul class="page-sidebar-menu page-header-fixed" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                        
                         <li class="nav-item">
-                            <a href="@Url.Action("index", "dashboard")" class="nav-link nav-toggle">
-                                <i class="icon-user"></i> <!-- Changed from icon-home -->
-                                <span style="color: black !important" class="title">My Profile</span>
-                            </a>
-                        </li>
-                        <!-- My Contracts -->
-                        <li class="nav-item">
-                            <a href="@Url.Action("ContractList", "Contract")" class="nav-link nav-toggle">
-                                <i class="icon-docs"></i> <!-- icon for documents/contracts -->
-                                <span style="color: #000000 !important" class="title">Active Contracts</span>
+                            <a href="@Url.Action("index", "dashboard")" class="nav-link">
+                                <i class="icon-user"></i>
+                                <span class="title">My Profile</span>
                             </a>
                         </li>
 
-
-                        <!-- My Contract Orders -->
                         <li class="nav-item">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-folder-alt"></i> <!-- icon for grouped orders/files -->
-                                <span style="color: black !important" class="title">Contracts</span>
+                            <a href="@Url.Action("ContractList", "Contract")" class="nav-link">
+                                <i class="icon-docs"></i>
+                                <span class="title">Active Contracts</span>
                             </a>
-                            <ul class="sub-menu">
-
-
-                                <!-- Dispatch Orders -->
-                                <li class="nav-item">
-                                    <a href="@Url.Action("DispatchOrders", "Contract")" class="nav-link nav-toggle">
-                                        <i class="icon-plane"></i> <!-- icon for dispatch/delivery -->
-                                        <span style="color: black !important" class="title">
-                                            Dispatch
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <!-- Receipt Orders -->
-                                <li class="nav-item">
-                                    <a href="@Url.Action("ReceiptOrders", "Contract")" class="nav-link nav-toggle">
-                                        <i class="icon-note"></i> <!-- icon for receiving/notes -->
-                                        <span style="color: black !important" class="title">
-                                            Warehouse Receipt
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <!-- Release Orders -->
-                                <li class="nav-item">
-                                    <a href="@Url.Action("ReleaseOrders", "Contract")" class="nav-link nav-toggle">
-                                        <i class="icon-share-alt"></i> <!-- icon for releasing -->
-                                        <span style="color: black !important" class="title">
-                                            Release Orders
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="@Url.Action("TranferOrders", "Contract")" class="nav-link nav-toggle">
-                                        <i class="icon-share-alt"></i> <!-- icon for releasing -->
-                                        <span style="color: black !important" class="title">
-                                            Transfers
-                                        </span>
-                                    </a>
-                                </li>
-
-                            </ul>
                         </li>
-
+                        <li class="nav-item">
+                            <a href="@Url.Action("DispatchOrders", "Contract")" class="nav-link">
+                                <i class="icon-plane"></i>
+                                <span class="title">Dispatch</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("ReceiptOrders", "Contract")" class="nav-link">
+                                <i class="icon-note"></i>
+                                <span class="title">Warehouse Receipt</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("ReleaseOrders", "Contract")" class="nav-link">
+                                <i class="icon-share-alt"></i>
+                                <span class="title">Release Orders</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("TranferOrders", "Contract")" class="nav-link">
+                                <i class="icon-share-alt"></i>
+                                <span class="title">Transfers</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- END SIDEBAR -->
             </div>
-            <div class="page-content-wrapper" style="background-color: whitesmoke !important">
+            <div class="page-content-wrapper" >
                 @RenderBody()
                 <!-- BEGIN QUICK SIDEBAR -->
                 <a href="javascript:;" class="page-quick-sidebar-toggler">
@@ -194,7 +152,7 @@
         </div>
         <!-- END CONTAINER -->
         <!-- BEGIN FOOTER -->
-        <div class="page-footer" style="background-color: whitesmoke !important">
+        <div class="page-footer">
             <div class="page-footer-inner">
                 <span style="color:#BBC2CC">INSPECTORATE &copy; @DateTime.Now.Year Powered By<a target="_blank" href="http://www.appkings.ac.ke"> AppKings Solutions Ltd </a></span>
             </div>

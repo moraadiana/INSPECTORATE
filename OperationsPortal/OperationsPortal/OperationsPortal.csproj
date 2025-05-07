@@ -2212,6 +2212,7 @@
     <Content Include="assets\layouts\layout\css\custom.min.css" />
     <Content Include="assets\layouts\layout\css\layout.min.css" />
     <Content Include="assets\layouts\layout\css\themes\darkblue.min.css" />
+    <Content Include="assets\layouts\layout\css\themes\sidebar-custom.css" />
     <Content Include="assets\layouts\layout\img\avatar1.jpg" />
     <Content Include="assets\layouts\layout\img\avatar10.jpg" />
     <Content Include="assets\layouts\layout\img\avatar11.jpg" />
@@ -2294,6 +2295,8 @@
     <Content Include="assets\pages\img\page_general_search\3.jpg" />
     <Content Include="assets\pages\img\page_general_search\4.jpg" />
     <Content Include="assets\pages\img\page_general_search\5.jpg" />
+    <Content Include="assets\pages\img\spinner.png" />
+    <Content Include="assets\pages\img\spinner2.png" />
     <Content Include="assets\pages\media\bg\5.jpg" />
     <Content Include="assets\pages\media\blog\4.jpg" />
     <Content Include="assets\pages\media\blog\5.jpg" />
@@ -2581,6 +2584,7 @@
     <Content Include="Views\Contract\ContractDetails.cshtml" />
     <Content Include="Views\Contract\TranferOrders.cshtml" />
     <Content Include="Views\Contract\ProductLedger.cshtml" />
+    <Content Include="Views\Report\ReleaseOrderReport.cshtml" />
     <None Include="Web References\NAVWS\Operations.wsdl" />
     <None Include="Web References\NAVWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>

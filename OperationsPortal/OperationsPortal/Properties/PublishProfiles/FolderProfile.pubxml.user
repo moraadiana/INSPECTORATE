@@ -3,7 +3,7 @@
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\inetpub\wwwroot\INSPECTORATELIVE\OperationsPortal</_PublishTargetUrl>
-    <History>True|2025-05-06T12:20:31.8082769Z||;True|2025-05-06T15:19:29.5831677+03:00||;True|2025-05-06T15:16:43.7808627+03:00||;True|2025-05-06T13:44:33.9366456+03:00||;</History>
+    <History>True|2025-05-07T11:30:58.3972797Z||;True|2025-05-06T15:20:31.8082769+03:00||;True|2025-05-06T15:19:29.5831677+03:00||;True|2025-05-06T15:16:43.7808627+03:00||;True|2025-05-06T13:44:33.9366456+03:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -6440,7 +6440,10 @@
       <publishTime>04/02/2025 22:00:24</publishTime>
     </File>
     <File Include="assets/layouts/layout/css/themes/darkblue.min.css">
-      <publishTime>04/02/2025 22:00:24</publishTime>
+      <publishTime>05/07/2025 09:17:12</publishTime>
+    </File>
+    <File Include="assets/layouts/layout/css/themes/sidebar-custom.css">
+      <publishTime>05/07/2025 14:18:06</publishTime>
     </File>
     <File Include="assets/layouts/layout/img/avatar1.jpg">
       <publishTime>04/02/2025 22:00:24</publishTime>
@@ -6699,6 +6702,12 @@
     </File>
     <File Include="assets/pages/img/page_general_search/5.jpg">
       <publishTime>04/02/2025 22:00:24</publishTime>
+    </File>
+    <File Include="assets/pages/img/spinner.png">
+      <publishTime>05/07/2025 14:21:44</publishTime>
+    </File>
+    <File Include="assets/pages/img/spinner2.png">
+      <publishTime>05/07/2025 14:23:38</publishTime>
     </File>
     <File Include="assets/pages/media/bg/5.jpg">
       <publishTime>04/02/2025 22:00:24</publishTime>
@@ -7106,13 +7115,13 @@
       <publishTime>03/08/2023 10:09:56</publishTime>
     </File>
     <File Include="bin/OperationsPortal.dll">
-      <publishTime>05/06/2025 15:33:34</publishTime>
+      <publishTime>05/07/2025 14:30:52</publishTime>
     </File>
     <File Include="bin/OperationsPortal.pdb">
-      <publishTime>05/06/2025 15:33:34</publishTime>
+      <publishTime>05/07/2025 14:30:52</publishTime>
     </File>
     <File Include="bin/OperationsPortal.XmlSerializers.dll">
-      <publishTime>05/06/2025 15:33:35</publishTime>
+      <publishTime>05/07/2025 14:30:55</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>08/08/2018 08:38:48</publishTime>
@@ -7484,10 +7493,10 @@
       <publishTime>05/06/2025 10:06:25</publishTime>
     </File>
     <File Include="Views/Contract/ReceiptOrders.cshtml">
-      <publishTime>05/06/2025 14:28:30</publishTime>
+      <publishTime>05/07/2025 14:15:27</publishTime>
     </File>
     <File Include="Views/Contract/ReleaseOrders.cshtml">
-      <publishTime>05/05/2025 16:24:42</publishTime>
+      <publishTime>05/07/2025 14:15:27</publishTime>
     </File>
     <File Include="Views/Contract/TranferOrders.cshtml">
       <publishTime>05/05/2025 18:06:27</publishTime>
@@ -7507,14 +7516,17 @@
     <File Include="Views/Login/VerifyOTP.cshtml">
       <publishTime>04/02/2025 22:00:23</publishTime>
     </File>
+    <File Include="Views/Report/ReleaseOrderReport.cshtml">
+      <publishTime>05/07/2025 14:15:27</publishTime>
+    </File>
     <File Include="Views/Report/WarehouseReceipt.cshtml">
-      <publishTime>05/06/2025 11:08:40</publishTime>
+      <publishTime>05/07/2025 14:15:27</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>04/02/2025 22:00:23</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>05/06/2025 13:36:42</publishTime>
+      <publishTime>05/07/2025 14:27:07</publishTime>
     </File>
     <File Include="Views/Shared/_Login.cshtml">
       <publishTime>05/06/2025 15:33:33</publishTime>

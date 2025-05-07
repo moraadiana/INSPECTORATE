@@ -1,0 +1,326 @@
+﻿/* General Page Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f6fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Loading Spinner */
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding-top: 200px;
+}
+
+#loading-image {
+    width: 50px;
+}
+
+/* Header */
+.page-header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+    display: flex;
+    height: 60px;
+}
+
+.page-header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.page-logo {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    height: 60px;
+    background-color: #fff;
+    border-bottom: 1px solid #e7ecf1;
+}
+
+.logo-link {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    flex-grow: 1;
+}
+
+.page-logo a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+}
+
+/* Toggler Icons */
+.menu-toggler.sidebar-toggler {
+    display: inline-block;
+    padding: 5px;
+    color: aqua;
+    background: gray;
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.top-menu {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+    .top-menu .nav > li > a:hover {
+        background-color: #e6e6e6;
+        border-radius: 4px;
+    }
+
+    .top-menu .username {
+        font-weight: 500;
+        color: #000 !important;
+    }
+
+    .top-menu .fa-angle-down {
+        margin-left: 5px;
+    }
+
+    .top-menu .dropdown-menu {
+        border-radius: 4px;
+        min-width: 180px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+        .top-menu .dropdown-menu li a {
+            padding: 10px 15px;
+            color: #333;
+            font-size: 13px;
+            display: block;
+        }
+
+            .top-menu .dropdown-menu li a:hover {
+                background-color: #f0f4ff;
+                color: #1d4ed8;
+            }
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle {
+    padding: 16px 6px 13px 8px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+/* Sidebar */
+.page-sidebar {
+    background-color: #ffffff;
+    border-right: 1px solid #eaeaea;
+    width: 240px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    overflow-y: auto;
+    padding-top: 20px;
+    height: calc(100vh - 60px);
+    transition: transform 0.3s ease;
+}
+
+    .page-sidebar.collapsed {
+        transform: translateX(-100%);
+    }
+
+    .page-sidebar .page-sidebar-menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        .page-sidebar .page-sidebar-menu > li > a {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: #333;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            text-decoration: none;
+        }
+
+            .page-sidebar .page-sidebar-menu > li > a:hover {
+                background-color: #f0f4ff;
+                color: #1d4ed8;
+            }
+
+        .page-sidebar .page-sidebar-menu > li.active > a {
+            background-color: #f0f4ff;
+            border-left: 4px solid #1d4ed8;
+            font-weight: 600;
+        }
+
+    .page-sidebar .icon-user,
+    .page-sidebar .icon-docs,
+    .page-sidebar .icon-plane,
+    .page-sidebar .icon-note,
+    .page-sidebar .icon-share-alt {
+        margin-right: 10px;
+    }
+
+/* Main Content */
+.page-content-wrapper {
+    margin-left: 5px;
+    padding: 10px 20px 20px;
+    transition: margin-left 0.3s ease;
+}
+
+
+.page-content-wrapper.full-width {
+    margin-left: 0;
+}
+
+/* Footer */
+.page-footer {
+    background-color: whitesmoke;
+    text-align: center;
+    padding: 15px;
+    font-size: 13px;
+    color: #888;
+}
+
+    .page-footer a {
+        color: #1d4ed8;
+        text-decoration: none;
+    }
+
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+
+/* Quick Sidebar Toggler */
+.page-quick-sidebar-toggler {
+    display: inline-block;
+    padding: 8px;
+    color: black;
+    cursor: pointer;
+}
+
+    .page-quick-sidebar-toggler:hover {
+        color: #1d4ed8;
+    }
+
+/* Scroll-to-top */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    z-index: 999;
+    cursor: pointer;
+}
+
+    .scroll-to-top i {
+        font-size: 18px;
+        color: #fff;
+        background-color: #1d4ed8;
+        padding: 10px;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+/* Responsive Fixes */
+@media (max-width: 991px) {
+    /* Header Adjustments */
+    .menu-toggler {
+        display: flex;
+    }
+
+    .logo-text {
+        font-size: 14px;
+    }
+
+    .page-logo {
+        padding: 0 10px;
+    }
+
+    /* Sidebar Adjustments */
+    .page-sidebar {
+        position: fixed;
+        top: 60px;
+        height: calc(100vh - 60px);
+        width: 240px;
+        background: #fff;
+        z-index: 999;
+        transform: translateX(-100%);
+    }
+
+        .page-sidebar.active {
+            transform: translateX(0);
+        }
+
+    .page-content-wrapper {
+        margin-left: 0;
+        padding: 90px 20px 30px;
+    }
+
+    /* Footer Adjustments */
+    .page-footer {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    /* Scroll-to-top */
+    .scroll-to-top i {
+        font-size: 16px;
+    }
+
+    /* Toggler Adjustments */
+    .menu-toggler.sidebar-toggler {
+        display: inline-block;
+        padding: 8px;
+        color: #333;
+        background: #e6e6e6;
+    }
+}
+
+@media (max-width: 767px) {
+    /* Mobile View: Make Sidebar Hideable */
+    .page-sidebar {
+        width: 100%;
+        transform: translateX(-100%);
+    }
+
+        .page-sidebar.active {
+            transform: translateX(0);
+        }
+
+    /* Adjust Page Header for Mobile */
+    .page-header {
+        height: 50px;
+        padding: 0 10px;
+    }
+
+    .page-logo {
+        padding: 0;
+        height: 50px;
+    }
+
+    /* Adjust Page Content */
+    .page-content-wrapper {
+        padding: 60px 15px;
+    }
+}
