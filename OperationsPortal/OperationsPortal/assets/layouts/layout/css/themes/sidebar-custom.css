@@ -42,14 +42,19 @@ body {
 }
 
 .page-logo {
-    flex: 0 0 auto;
+/*    flex: 0 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 15px;
     height: 60px;
     background-color: #fff;
-    border-bottom: 1px solid #e7ecf1;
+    border-bottom: 1px solid #e7ecf1;*/
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-bottom: 10px;
 }
 
 .logo-link {

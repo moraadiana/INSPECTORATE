@@ -2586,10 +2586,10 @@
     <Content Include="Views\Contract\ProductLedger.cshtml" />
     <Content Include="Views\Report\ReleaseOrderReport.cshtml" />
     <None Include="Web References\NAVWS\Operations.wsdl" />
-    <None Include="Web References\NAVWS\Reference.map">
+    <Content Include="Web References\NAVWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -2622,13 +2622,16 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Statements\" />
+  </ItemGroup>
+  <ItemGroup>
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://102.213.176.86:7047/BC200/WS/INSP%2520TEST/Codeunit/Operations">
+    <WebReferenceUrl Include="http://102.213.176.86:7047/BC200/WS/INSPECTORATE/Codeunit/Operations">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\NAVWS\</RelPath>
-      <UpdateFromURL>http://102.213.176.86:7047/BC200/WS/INSP%2520TEST/Codeunit/Operations</UpdateFromURL>
+      <UpdateFromURL>http://102.213.176.86:7047/BC200/WS/INSPECTORATE/Codeunit/Operations</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2636,9 +2639,6 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>OperationsPortal_NAVWS_Operations</CachedSettingsPropName>
     </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Statements\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

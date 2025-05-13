@@ -124,7 +124,7 @@ namespace OperationsPortal.Controllers
 
             return result;
         }
-        public ActionResult ResetPassword(string email, string pensionerNo)
+        public ActionResult ResetPassword(string email, string customerNo)
         {
             // If email is provided in query string, store it in session
             if (!string.IsNullOrEmpty(email))
@@ -132,14 +132,14 @@ namespace OperationsPortal.Controllers
                 Session["EmailAddress"] = email;
             }
 
-            if (!string.IsNullOrEmpty(pensionerNo))
+            if (!string.IsNullOrEmpty(customerNo))
             {
-                Session["customerNo"] = pensionerNo;
+                Session["customerNo"] = customerNo;
             }
 
             // Retrieve stored session values if they exist
             ViewBag.EmailAddress = Session["EmailAddress"] as string;
-            ViewBag.PensionerNo = Session["pensionerNo"] as string;
+            ViewBag.customerNo = Session["customerNo"] as string;
 
             return View();
         }
@@ -180,7 +180,7 @@ namespace OperationsPortal.Controllers
             }
             return View();
         }
-        public ActionResult ForgotPassword(string email, string pensionerNo)
+        public ActionResult ForgotPassword(string email, string customerNo)
         {
 
             return View();
@@ -194,7 +194,7 @@ namespace OperationsPortal.Controllers
                 string newPassword = GenerateRandomPassword(10);
                 string clientNo = reset.customerNo;
                 string clientEmail = reset.Email;
-                //string email = Components.ObjNav.GetPensionerEmail(pensionerNo);
+                //string email = Components.ObjNav.GetCustomerEmail(customerNo);
                 string response = Components.ObjNav.UpdateCustomerAutoGenPassword(clientNo, newPassword);
                 if (!string.IsNullOrEmpty(response))
                 {

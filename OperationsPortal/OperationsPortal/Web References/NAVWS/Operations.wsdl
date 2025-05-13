@@ -578,7 +578,7 @@
   </binding>
   <service name="Operations">
     <port name="Operations_Port" binding="tns:Operations_Binding">
-      <address location="http://102.213.176.86:7047/BC200/WS/INSP%20TEST/Codeunit/Operations" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://102.213.176.86:7047/BC200/WS/INSPECTORATE/Codeunit/Operations" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>

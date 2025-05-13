@@ -45,7 +45,7 @@
         <!-- BEGIN HEADER -->
         <div class="page-header navbar navbar-fixed-top">
             <div class="page-header-inner">
-                <div class="page-logo ">
+                @*<div class="page-logo ">
                     <a href="@Url.Action("index", "dashboard")" class="logo-link">
                         <span class="logo-text">INSPECTORATE OPERATIONS PORTAL</span>
                     </a>
@@ -57,8 +57,23 @@
                             <span></span>
                         </a>
                     </div>
+                </div>*@
+                <div class="page-logo" style="display: flex; align-items: center; justify-content: space-between;">
+                    <a href="@Url.Action("index", "dashboard")" style="text-decoration: none; flex-grow: 1;">
+                        <div class="logo-default" style="font-size: 14px;  color: #000; text-align: center;">
+                            INSPECTORATE OPERATIONS PORTAL
+                        </div>
+                    </a>
+                    <div class="menu-toggler sidebar-toggler" style="cursor: pointer; margin-left: 10px;">
+                        <span></span>
+                    </div>
                 </div>
-                
+
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
 
                 <div class="top-menu">
                     <ul class="nav navbar-nav">
