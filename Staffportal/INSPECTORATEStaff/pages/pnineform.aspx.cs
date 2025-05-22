@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -59,6 +61,51 @@ namespace INSPECTORATEStaff.pages
         }
         protected void LoadP9()
         {
+            try
+            {
+                var filename = Session["username"].ToString().Replace(@"/", @"");
+                var employee = Session["username"].ToString();
+
+                if (!int.TryParse(ddlYear.SelectedValue, out int period))
+                {
+                    Console.WriteLine("Please select a valid Year.");
+                    return;
+                }
+                try
+                {
+                    string returnstring = "";
+                    MyComponents.ObjNav.Generatep9Report(period, employee, String.Format("p9Form{0}.pdf", filename), ref returnstring);
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("p9Form{0}.pdf", filename)));
+
+                    byte[] bytes = Convert.FromBase64String(returnstring);
+                    string path = HostingEnvironment.MapPath("~/Downloads/" + $"p9Form{filename}.pdf");
+                    if (!Directory.Exists(Server.MapPath("~/Downloads/")))
+                    {
+                        Directory.CreateDirectory(Server.MapPath("~/Downloads/"));
+                    }
+                    if (System.IO.File.Exists(path))
+                    {
+                        System.IO.File.Delete(path);
+                    }
+                    FileStream stream = new FileStream(path, FileMode.CreateNew);
+                    BinaryWriter writer = new BinaryWriter(stream);
+                    writer.Write(bytes, 0, bytes.Length);
+                    writer.Close();
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("p9Form{0}.pdf", filename)));
+                }
+                catch (Exception exception)
+                {
+                    exception.Data.Clear();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }
+        protected void LoadP91()
+        {
            try
             {
                 var filename = Session["username"].ToString().Replace(@"/", @"");
@@ -67,7 +114,7 @@ namespace INSPECTORATEStaff.pages
                 //var s =Convert.ToDateTime(period.ToString("M/dd/yyyy", CultureInfo.InvariantCulture));
                 try
                 {
-                    MyComponents.ObjNav.Generatep9Report(period, employee, String.Format("p9Form{0}.pdf", filename));
+                   // MyComponents.ObjNav.Generatep9Report(period, employee, String.Format("p9Form{0}.pdf", filename));
                     myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("p9Form{0}.pdf", filename)));
 
                 }

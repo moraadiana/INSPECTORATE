@@ -444,6 +444,25 @@
           </sequence>
         </complexType>
       </element>
+      <element name="CreateComplaint">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="resolutionNotes" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="handledBy" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="resolutionDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="resolutionFeedback" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateComplaint_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="CreateOnlineCustomer">
         <complexType>
           <sequence>
@@ -706,21 +725,7 @@
           <sequence />
         </complexType>
       </element>
-      <element name="GenerateWarehouseReceipt">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="pensionerNo" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="GenerateWarehouseReceipt_Result">
-        <complexType>
-          <sequence />
-        </complexType>
-      </element>
-      <element name="Generatep9Report">
+      <element name="Generatep9Report1">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="selectedPeriod" type="int" />
@@ -729,10 +734,28 @@
           </sequence>
         </complexType>
       </element>
+      <element name="Generatep9Report1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="Generatep9Report">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="selectedPeriod" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="Generatep9Report_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -812,6 +835,20 @@
         </complexType>
       </element>
       <element name="GetBidderProfileDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetComplaintsDetails">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="complaintNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetComplaintsDetails_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -902,6 +939,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetMyComplaints">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyComplaints_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetMyStoreRequisitions">
         <complexType>
           <sequence>
@@ -986,6 +1037,18 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetQAWorkforms">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetQAWorkforms_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetRecruitmentEmailAddress">
         <complexType>
           <sequence>
@@ -1050,6 +1113,18 @@
         </complexType>
       </element>
       <element name="GetStaffProfileDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetUsers">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetUsers_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1957,6 +2032,12 @@
   <message name="CreateBidderAccount_Result">
     <part name="parameters" element="tns:CreateBidderAccount_Result" />
   </message>
+  <message name="CreateComplaint">
+    <part name="parameters" element="tns:CreateComplaint" />
+  </message>
+  <message name="CreateComplaint_Result">
+    <part name="parameters" element="tns:CreateComplaint_Result" />
+  </message>
   <message name="CreateOnlineCustomer">
     <part name="parameters" element="tns:CreateOnlineCustomer" />
   </message>
@@ -2053,11 +2134,11 @@
   <message name="GenerateTenderAwardLetter_Result">
     <part name="parameters" element="tns:GenerateTenderAwardLetter_Result" />
   </message>
-  <message name="GenerateWarehouseReceipt">
-    <part name="parameters" element="tns:GenerateWarehouseReceipt" />
+  <message name="Generatep9Report1">
+    <part name="parameters" element="tns:Generatep9Report1" />
   </message>
-  <message name="GenerateWarehouseReceipt_Result">
-    <part name="parameters" element="tns:GenerateWarehouseReceipt_Result" />
+  <message name="Generatep9Report1_Result">
+    <part name="parameters" element="tns:Generatep9Report1_Result" />
   </message>
   <message name="Generatep9Report">
     <part name="parameters" element="tns:Generatep9Report" />
@@ -2101,6 +2182,12 @@
   <message name="GetBidderProfileDetails_Result">
     <part name="parameters" element="tns:GetBidderProfileDetails_Result" />
   </message>
+  <message name="GetComplaintsDetails">
+    <part name="parameters" element="tns:GetComplaintsDetails" />
+  </message>
+  <message name="GetComplaintsDetails_Result">
+    <part name="parameters" element="tns:GetComplaintsDetails_Result" />
+  </message>
   <message name="GetCurrentPassword">
     <part name="parameters" element="tns:GetCurrentPassword" />
   </message>
@@ -2136,6 +2223,12 @@
   </message>
   <message name="GetMonthName_Result">
     <part name="parameters" element="tns:GetMonthName_Result" />
+  </message>
+  <message name="GetMyComplaints">
+    <part name="parameters" element="tns:GetMyComplaints" />
+  </message>
+  <message name="GetMyComplaints_Result">
+    <part name="parameters" element="tns:GetMyComplaints_Result" />
   </message>
   <message name="GetMyStoreRequisitions">
     <part name="parameters" element="tns:GetMyStoreRequisitions" />
@@ -2173,6 +2266,12 @@
   <message name="GetProfilePicture_Result">
     <part name="parameters" element="tns:GetProfilePicture_Result" />
   </message>
+  <message name="GetQAWorkforms">
+    <part name="parameters" element="tns:GetQAWorkforms" />
+  </message>
+  <message name="GetQAWorkforms_Result">
+    <part name="parameters" element="tns:GetQAWorkforms_Result" />
+  </message>
   <message name="GetRecruitmentEmailAddress">
     <part name="parameters" element="tns:GetRecruitmentEmailAddress" />
   </message>
@@ -2202,6 +2301,12 @@
   </message>
   <message name="GetStaffProfileDetails_Result">
     <part name="parameters" element="tns:GetStaffProfileDetails_Result" />
+  </message>
+  <message name="GetUsers">
+    <part name="parameters" element="tns:GetUsers" />
+  </message>
+  <message name="GetUsers_Result">
+    <part name="parameters" element="tns:GetUsers_Result" />
   </message>
   <message name="GetVendorProfileDetails">
     <part name="parameters" element="tns:GetVendorProfileDetails" />
@@ -2596,6 +2701,10 @@
       <input name="CreateBidderAccount" message="tns:CreateBidderAccount" />
       <output name="CreateBidderAccount_Result" message="tns:CreateBidderAccount_Result" />
     </operation>
+    <operation name="CreateComplaint">
+      <input name="CreateComplaint" message="tns:CreateComplaint" />
+      <output name="CreateComplaint_Result" message="tns:CreateComplaint_Result" />
+    </operation>
     <operation name="CreateOnlineCustomer">
       <input name="CreateOnlineCustomer" message="tns:CreateOnlineCustomer" />
       <output name="CreateOnlineCustomer_Result" message="tns:CreateOnlineCustomer_Result" />
@@ -2660,9 +2769,9 @@
       <input name="GenerateTenderAwardLetter" message="tns:GenerateTenderAwardLetter" />
       <output name="GenerateTenderAwardLetter_Result" message="tns:GenerateTenderAwardLetter_Result" />
     </operation>
-    <operation name="GenerateWarehouseReceipt">
-      <input name="GenerateWarehouseReceipt" message="tns:GenerateWarehouseReceipt" />
-      <output name="GenerateWarehouseReceipt_Result" message="tns:GenerateWarehouseReceipt_Result" />
+    <operation name="Generatep9Report1">
+      <input name="Generatep9Report1" message="tns:Generatep9Report1" />
+      <output name="Generatep9Report1_Result" message="tns:Generatep9Report1_Result" />
     </operation>
     <operation name="Generatep9Report">
       <input name="Generatep9Report" message="tns:Generatep9Report" />
@@ -2692,6 +2801,10 @@
       <input name="GetBidderProfileDetails" message="tns:GetBidderProfileDetails" />
       <output name="GetBidderProfileDetails_Result" message="tns:GetBidderProfileDetails_Result" />
     </operation>
+    <operation name="GetComplaintsDetails">
+      <input name="GetComplaintsDetails" message="tns:GetComplaintsDetails" />
+      <output name="GetComplaintsDetails_Result" message="tns:GetComplaintsDetails_Result" />
+    </operation>
     <operation name="GetCurrentPassword">
       <input name="GetCurrentPassword" message="tns:GetCurrentPassword" />
       <output name="GetCurrentPassword_Result" message="tns:GetCurrentPassword_Result" />
@@ -2715,6 +2828,10 @@
     <operation name="GetMonthName">
       <input name="GetMonthName" message="tns:GetMonthName" />
       <output name="GetMonthName_Result" message="tns:GetMonthName_Result" />
+    </operation>
+    <operation name="GetMyComplaints">
+      <input name="GetMyComplaints" message="tns:GetMyComplaints" />
+      <output name="GetMyComplaints_Result" message="tns:GetMyComplaints_Result" />
     </operation>
     <operation name="GetMyStoreRequisitions">
       <input name="GetMyStoreRequisitions" message="tns:GetMyStoreRequisitions" />
@@ -2740,6 +2857,10 @@
       <input name="GetProfilePicture" message="tns:GetProfilePicture" />
       <output name="GetProfilePicture_Result" message="tns:GetProfilePicture_Result" />
     </operation>
+    <operation name="GetQAWorkforms">
+      <input name="GetQAWorkforms" message="tns:GetQAWorkforms" />
+      <output name="GetQAWorkforms_Result" message="tns:GetQAWorkforms_Result" />
+    </operation>
     <operation name="GetRecruitmentEmailAddress">
       <input name="GetRecruitmentEmailAddress" message="tns:GetRecruitmentEmailAddress" />
       <output name="GetRecruitmentEmailAddress_Result" message="tns:GetRecruitmentEmailAddress_Result" />
@@ -2759,6 +2880,10 @@
     <operation name="GetStaffProfileDetails">
       <input name="GetStaffProfileDetails" message="tns:GetStaffProfileDetails" />
       <output name="GetStaffProfileDetails_Result" message="tns:GetStaffProfileDetails_Result" />
+    </operation>
+    <operation name="GetUsers">
+      <input name="GetUsers" message="tns:GetUsers" />
+      <output name="GetUsers_Result" message="tns:GetUsers_Result" />
     </operation>
     <operation name="GetVendorProfileDetails">
       <input name="GetVendorProfileDetails" message="tns:GetVendorProfileDetails" />
@@ -3208,6 +3333,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="CreateComplaint">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:CreateComplaint" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateComplaint">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateComplaint_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="CreateOnlineCustomer">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:CreateOnlineCustomer" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="CreateOnlineCustomer">
@@ -3352,12 +3486,12 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
-    <operation name="GenerateWarehouseReceipt">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:GenerateWarehouseReceipt" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="GenerateWarehouseReceipt">
+    <operation name="Generatep9Report1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:Generatep9Report1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Generatep9Report1">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
-      <output name="GenerateWarehouseReceipt_Result">
+      <output name="Generatep9Report1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3424,6 +3558,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetComplaintsDetails">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetComplaintsDetails" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetComplaintsDetails">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetComplaintsDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetCurrentPassword">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetCurrentPassword" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetCurrentPassword">
@@ -3475,6 +3618,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetMonthName_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMyComplaints">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetMyComplaints" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyComplaints">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyComplaints_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3532,6 +3684,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetQAWorkforms">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetQAWorkforms" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetQAWorkforms">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetQAWorkforms_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetRecruitmentEmailAddress">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetRecruitmentEmailAddress" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetRecruitmentEmailAddress">
@@ -3574,6 +3735,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetStaffProfileDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetUsers">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetUsers" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetUsers">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetUsers_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

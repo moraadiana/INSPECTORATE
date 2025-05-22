@@ -7166,6 +7166,8 @@
     <Content Include="pages\Changepassword.aspx" />
     <Content Include="pages\ClaimLines.aspx" />
     <Content Include="pages\ClaimListing.aspx" />
+    <Content Include="pages\Complaint.aspx" />
+    <Content Include="pages\ComplaintListing.aspx" />
     <Content Include="pages\Dashboard.aspx" />
     <Content Include="pages\Downloads.aspx" />
     <Content Include="pages\ImprestAccounting.aspx" />
@@ -7190,6 +7192,8 @@
     <Content Include="pages\UploadFiles.aspx" />
     <Content Include="pages\VenueBooking.aspx" />
     <Content Include="pages\VenueListing.aspx" />
+    <Content Include="pages\WorkFormAttachments.aspx" />
+    <Content Include="pages\WorkformsListing.aspx" />
     <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="plugins\input-mask\phone-codes\phone-codes.json" />
     <Content Include="pages\Main.Master" />
@@ -7561,6 +7565,20 @@
     <Compile Include="pages\ClaimListing.aspx.designer.cs">
       <DependentUpon>ClaimListing.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\Complaint.aspx.cs">
+      <DependentUpon>Complaint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Complaint.aspx.designer.cs">
+      <DependentUpon>Complaint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\ComplaintListing.aspx.cs">
+      <DependentUpon>ComplaintListing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\ComplaintListing.aspx.designer.cs">
+      <DependentUpon>ComplaintListing.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7735,6 +7753,20 @@
     </Compile>
     <Compile Include="pages\VenueListing.aspx.designer.cs">
       <DependentUpon>VenueListing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\WorkFormAttachments.aspx.cs">
+      <DependentUpon>WorkFormAttachments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\WorkFormAttachments.aspx.designer.cs">
+      <DependentUpon>WorkFormAttachments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\WorkformsListing.aspx.cs">
+      <DependentUpon>WorkformsListing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\WorkformsListing.aspx.designer.cs">
+      <DependentUpon>WorkformsListing.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

@@ -87,6 +87,8 @@ namespace INSPECTORATEStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback CreateBidderAccountOperationCompleted;
         
+        private System.Threading.SendOrPostCallback CreateComplaintOperationCompleted;
+        
         private System.Threading.SendOrPostCallback CreateOnlineCustomerOperationCompleted;
         
         private System.Threading.SendOrPostCallback CreateRecruitmentAccountOperationCompleted;
@@ -119,7 +121,7 @@ namespace INSPECTORATEStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GenerateTenderAwardLetterOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GenerateWarehouseReceiptOperationCompleted;
+        private System.Threading.SendOrPostCallback Generatep9Report1OperationCompleted;
         
         private System.Threading.SendOrPostCallback Generatep9ReportOperationCompleted;
         
@@ -135,6 +137,8 @@ namespace INSPECTORATEStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GetBidderProfileDetailsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetComplaintsDetailsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetCurrentPasswordOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetCurrentRecruitmentPasswordOperationCompleted;
@@ -146,6 +150,8 @@ namespace INSPECTORATEStaff.NAVWS {
         private System.Threading.SendOrPostCallback GetLeaveDetailsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMonthNameOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetMyComplaintsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyStoreRequisitionsOperationCompleted;
         
@@ -159,6 +165,8 @@ namespace INSPECTORATEStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GetProfilePictureOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetQAWorkformsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetRecruitmentEmailAddressOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetStaffDetailsOperationCompleted;
@@ -168,6 +176,8 @@ namespace INSPECTORATEStaff.NAVWS {
         private System.Threading.SendOrPostCallback GetStaffMailOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetStaffProfileDetailsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetUsersOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetVendorProfileDetailsOperationCompleted;
         
@@ -387,6 +397,9 @@ namespace INSPECTORATEStaff.NAVWS {
         public event CreateBidderAccountCompletedEventHandler CreateBidderAccountCompleted;
         
         /// <remarks/>
+        public event CreateComplaintCompletedEventHandler CreateComplaintCompleted;
+        
+        /// <remarks/>
         public event CreateOnlineCustomerCompletedEventHandler CreateOnlineCustomerCompleted;
         
         /// <remarks/>
@@ -435,7 +448,7 @@ namespace INSPECTORATEStaff.NAVWS {
         public event GenerateTenderAwardLetterCompletedEventHandler GenerateTenderAwardLetterCompleted;
         
         /// <remarks/>
-        public event GenerateWarehouseReceiptCompletedEventHandler GenerateWarehouseReceiptCompleted;
+        public event Generatep9Report1CompletedEventHandler Generatep9Report1Completed;
         
         /// <remarks/>
         public event Generatep9ReportCompletedEventHandler Generatep9ReportCompleted;
@@ -459,6 +472,9 @@ namespace INSPECTORATEStaff.NAVWS {
         public event GetBidderProfileDetailsCompletedEventHandler GetBidderProfileDetailsCompleted;
         
         /// <remarks/>
+        public event GetComplaintsDetailsCompletedEventHandler GetComplaintsDetailsCompleted;
+        
+        /// <remarks/>
         public event GetCurrentPasswordCompletedEventHandler GetCurrentPasswordCompleted;
         
         /// <remarks/>
@@ -475,6 +491,9 @@ namespace INSPECTORATEStaff.NAVWS {
         
         /// <remarks/>
         public event GetMonthNameCompletedEventHandler GetMonthNameCompleted;
+        
+        /// <remarks/>
+        public event GetMyComplaintsCompletedEventHandler GetMyComplaintsCompleted;
         
         /// <remarks/>
         public event GetMyStoreRequisitionsCompletedEventHandler GetMyStoreRequisitionsCompleted;
@@ -495,6 +514,9 @@ namespace INSPECTORATEStaff.NAVWS {
         public event GetProfilePictureCompletedEventHandler GetProfilePictureCompleted;
         
         /// <remarks/>
+        public event GetQAWorkformsCompletedEventHandler GetQAWorkformsCompleted;
+        
+        /// <remarks/>
         public event GetRecruitmentEmailAddressCompletedEventHandler GetRecruitmentEmailAddressCompleted;
         
         /// <remarks/>
@@ -508,6 +530,9 @@ namespace INSPECTORATEStaff.NAVWS {
         
         /// <remarks/>
         public event GetStaffProfileDetailsCompletedEventHandler GetStaffProfileDetailsCompleted;
+        
+        /// <remarks/>
+        public event GetUsersCompletedEventHandler GetUsersCompleted;
         
         /// <remarks/>
         public event GetVendorProfileDetailsCompletedEventHandler GetVendorProfileDetailsCompleted;
@@ -1626,6 +1651,46 @@ namespace INSPECTORATEStaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:CreateComplaint", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="CreateComplaint_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string CreateComplaint(string employeeNo, string description, string resolutionNotes, string handledBy, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime resolutionDate, string resolutionFeedback) {
+            object[] results = this.Invoke("CreateComplaint", new object[] {
+                        employeeNo,
+                        description,
+                        resolutionNotes,
+                        handledBy,
+                        resolutionDate,
+                        resolutionFeedback});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CreateComplaintAsync(string employeeNo, string description, string resolutionNotes, string handledBy, System.DateTime resolutionDate, string resolutionFeedback) {
+            this.CreateComplaintAsync(employeeNo, description, resolutionNotes, handledBy, resolutionDate, resolutionFeedback, null);
+        }
+        
+        /// <remarks/>
+        public void CreateComplaintAsync(string employeeNo, string description, string resolutionNotes, string handledBy, System.DateTime resolutionDate, string resolutionFeedback, object userState) {
+            if ((this.CreateComplaintOperationCompleted == null)) {
+                this.CreateComplaintOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateComplaintOperationCompleted);
+            }
+            this.InvokeAsync("CreateComplaint", new object[] {
+                        employeeNo,
+                        description,
+                        resolutionNotes,
+                        handledBy,
+                        resolutionDate,
+                        resolutionFeedback}, this.CreateComplaintOperationCompleted, userState);
+        }
+        
+        private void OnCreateComplaintOperationCompleted(object arg) {
+            if ((this.CreateComplaintCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateComplaintCompleted(this, new CreateComplaintCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:CreateOnlineCustomer", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="CreateOnlineCustomer_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string CreateOnlineCustomer(string name, string email, string idNo, string phone, string address, string town, string password) {
@@ -2247,42 +2312,10 @@ namespace INSPECTORATEStaff.NAVWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:GenerateWarehouseReceipt", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="GenerateWarehouseReceipt_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void GenerateWarehouseReceipt(string path, string fileName, string pensionerNo) {
-            this.Invoke("GenerateWarehouseReceipt", new object[] {
-                        path,
-                        fileName,
-                        pensionerNo});
-        }
-        
-        /// <remarks/>
-        public void GenerateWarehouseReceiptAsync(string path, string fileName, string pensionerNo) {
-            this.GenerateWarehouseReceiptAsync(path, fileName, pensionerNo, null);
-        }
-        
-        /// <remarks/>
-        public void GenerateWarehouseReceiptAsync(string path, string fileName, string pensionerNo, object userState) {
-            if ((this.GenerateWarehouseReceiptOperationCompleted == null)) {
-                this.GenerateWarehouseReceiptOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGenerateWarehouseReceiptOperationCompleted);
-            }
-            this.InvokeAsync("GenerateWarehouseReceipt", new object[] {
-                        path,
-                        fileName,
-                        pensionerNo}, this.GenerateWarehouseReceiptOperationCompleted, userState);
-        }
-        
-        private void OnGenerateWarehouseReceiptOperationCompleted(object arg) {
-            if ((this.GenerateWarehouseReceiptCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GenerateWarehouseReceiptCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:Generatep9Report", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="Generatep9Report_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:Generatep9Report1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="Generatep9Report1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string Generatep9Report(int selectedPeriod, string employeeNo, string filenameFromApp) {
-            object[] results = this.Invoke("Generatep9Report", new object[] {
+        public string Generatep9Report1(int selectedPeriod, string employeeNo, string filenameFromApp) {
+            object[] results = this.Invoke("Generatep9Report1", new object[] {
                         selectedPeriod,
                         employeeNo,
                         filenameFromApp});
@@ -2290,19 +2323,56 @@ namespace INSPECTORATEStaff.NAVWS {
         }
         
         /// <remarks/>
-        public void Generatep9ReportAsync(int selectedPeriod, string employeeNo, string filenameFromApp) {
-            this.Generatep9ReportAsync(selectedPeriod, employeeNo, filenameFromApp, null);
+        public void Generatep9Report1Async(int selectedPeriod, string employeeNo, string filenameFromApp) {
+            this.Generatep9Report1Async(selectedPeriod, employeeNo, filenameFromApp, null);
         }
         
         /// <remarks/>
-        public void Generatep9ReportAsync(int selectedPeriod, string employeeNo, string filenameFromApp, object userState) {
+        public void Generatep9Report1Async(int selectedPeriod, string employeeNo, string filenameFromApp, object userState) {
+            if ((this.Generatep9Report1OperationCompleted == null)) {
+                this.Generatep9Report1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnGeneratep9Report1OperationCompleted);
+            }
+            this.InvokeAsync("Generatep9Report1", new object[] {
+                        selectedPeriod,
+                        employeeNo,
+                        filenameFromApp}, this.Generatep9Report1OperationCompleted, userState);
+        }
+        
+        private void OnGeneratep9Report1OperationCompleted(object arg) {
+            if ((this.Generatep9Report1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Generatep9Report1Completed(this, new Generatep9Report1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:Generatep9Report", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="Generatep9Report_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string Generatep9Report(int selectedPeriod, string employeeNo, string filenameFromApp, ref string bigtext) {
+            object[] results = this.Invoke("Generatep9Report", new object[] {
+                        selectedPeriod,
+                        employeeNo,
+                        filenameFromApp,
+                        bigtext});
+            bigtext = ((string)(results[1]));
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Generatep9ReportAsync(int selectedPeriod, string employeeNo, string filenameFromApp, string bigtext) {
+            this.Generatep9ReportAsync(selectedPeriod, employeeNo, filenameFromApp, bigtext, null);
+        }
+        
+        /// <remarks/>
+        public void Generatep9ReportAsync(int selectedPeriod, string employeeNo, string filenameFromApp, string bigtext, object userState) {
             if ((this.Generatep9ReportOperationCompleted == null)) {
                 this.Generatep9ReportOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGeneratep9ReportOperationCompleted);
             }
             this.InvokeAsync("Generatep9Report", new object[] {
                         selectedPeriod,
                         employeeNo,
-                        filenameFromApp}, this.Generatep9ReportOperationCompleted, userState);
+                        filenameFromApp,
+                        bigtext}, this.Generatep9ReportOperationCompleted, userState);
         }
         
         private void OnGeneratep9ReportOperationCompleted(object arg) {
@@ -2491,6 +2561,36 @@ namespace INSPECTORATEStaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetComplaintsDetails", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="GetComplaintsDetails_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetComplaintsDetails(string complaintNo) {
+            object[] results = this.Invoke("GetComplaintsDetails", new object[] {
+                        complaintNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetComplaintsDetailsAsync(string complaintNo) {
+            this.GetComplaintsDetailsAsync(complaintNo, null);
+        }
+        
+        /// <remarks/>
+        public void GetComplaintsDetailsAsync(string complaintNo, object userState) {
+            if ((this.GetComplaintsDetailsOperationCompleted == null)) {
+                this.GetComplaintsDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetComplaintsDetailsOperationCompleted);
+            }
+            this.InvokeAsync("GetComplaintsDetails", new object[] {
+                        complaintNo}, this.GetComplaintsDetailsOperationCompleted, userState);
+        }
+        
+        private void OnGetComplaintsDetailsOperationCompleted(object arg) {
+            if ((this.GetComplaintsDetailsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetComplaintsDetailsCompleted(this, new GetComplaintsDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetCurrentPassword", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="GetCurrentPassword_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetCurrentPassword(string username) {
@@ -2667,6 +2767,36 @@ namespace INSPECTORATEStaff.NAVWS {
             if ((this.GetMonthNameCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetMonthNameCompleted(this, new GetMonthNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetMyComplaints", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="GetMyComplaints_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetMyComplaints(string employeeNo) {
+            object[] results = this.Invoke("GetMyComplaints", new object[] {
+                        employeeNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMyComplaintsAsync(string employeeNo) {
+            this.GetMyComplaintsAsync(employeeNo, null);
+        }
+        
+        /// <remarks/>
+        public void GetMyComplaintsAsync(string employeeNo, object userState) {
+            if ((this.GetMyComplaintsOperationCompleted == null)) {
+                this.GetMyComplaintsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyComplaintsOperationCompleted);
+            }
+            this.InvokeAsync("GetMyComplaints", new object[] {
+                        employeeNo}, this.GetMyComplaintsOperationCompleted, userState);
+        }
+        
+        private void OnGetMyComplaintsOperationCompleted(object arg) {
+            if ((this.GetMyComplaintsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMyComplaintsCompleted(this, new GetMyComplaintsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2853,6 +2983,34 @@ namespace INSPECTORATEStaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetQAWorkforms", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="GetQAWorkforms_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetQAWorkforms() {
+            object[] results = this.Invoke("GetQAWorkforms", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetQAWorkformsAsync() {
+            this.GetQAWorkformsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetQAWorkformsAsync(object userState) {
+            if ((this.GetQAWorkformsOperationCompleted == null)) {
+                this.GetQAWorkformsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetQAWorkformsOperationCompleted);
+            }
+            this.InvokeAsync("GetQAWorkforms", new object[0], this.GetQAWorkformsOperationCompleted, userState);
+        }
+        
+        private void OnGetQAWorkformsOperationCompleted(object arg) {
+            if ((this.GetQAWorkformsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetQAWorkformsCompleted(this, new GetQAWorkformsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetRecruitmentEmailAddress", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="GetRecruitmentEmailAddress_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetRecruitmentEmailAddress(string username) {
@@ -2999,6 +3157,34 @@ namespace INSPECTORATEStaff.NAVWS {
             if ((this.GetStaffProfileDetailsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetStaffProfileDetailsCompleted(this, new GetStaffProfileDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:GetUsers", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="GetUsers_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetUsers() {
+            object[] results = this.Invoke("GetUsers", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetUsersAsync() {
+            this.GetUsersAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetUsersAsync(object userState) {
+            if ((this.GetUsersOperationCompleted == null)) {
+                this.GetUsersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUsersOperationCompleted);
+            }
+            this.InvokeAsync("GetUsers", new object[0], this.GetUsersOperationCompleted, userState);
+        }
+        
+        private void OnGetUsersOperationCompleted(object arg) {
+            if ((this.GetUsersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetUsersCompleted(this, new GetUsersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -5198,6 +5384,32 @@ namespace INSPECTORATEStaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void CreateComplaintCompletedEventHandler(object sender, CreateComplaintCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreateComplaintCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CreateComplaintCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void CreateOnlineCustomerCompletedEventHandler(object sender, CreateOnlineCustomerCompletedEventArgs e);
     
     /// <remarks/>
@@ -5528,7 +5740,29 @@ namespace INSPECTORATEStaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    public delegate void GenerateWarehouseReceiptCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void Generatep9Report1CompletedEventHandler(object sender, Generatep9Report1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Generatep9Report1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Generatep9Report1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
@@ -5552,6 +5786,14 @@ namespace INSPECTORATEStaff.NAVWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string bigtext {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
             }
         }
     }
@@ -5699,6 +5941,32 @@ namespace INSPECTORATEStaff.NAVWS {
         private object[] results;
         
         internal GetBidderProfileDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GetComplaintsDetailsCompletedEventHandler(object sender, GetComplaintsDetailsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetComplaintsDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetComplaintsDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -5870,6 +6138,32 @@ namespace INSPECTORATEStaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GetMyComplaintsCompletedEventHandler(object sender, GetMyComplaintsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMyComplaintsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMyComplaintsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetMyStoreRequisitionsCompletedEventHandler(object sender, GetMyStoreRequisitionsCompletedEventArgs e);
     
     /// <remarks/>
@@ -6026,6 +6320,32 @@ namespace INSPECTORATEStaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GetQAWorkformsCompletedEventHandler(object sender, GetQAWorkformsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetQAWorkformsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetQAWorkformsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetRecruitmentEmailAddressCompletedEventHandler(object sender, GetRecruitmentEmailAddressCompletedEventArgs e);
     
     /// <remarks/>
@@ -6141,6 +6461,32 @@ namespace INSPECTORATEStaff.NAVWS {
         private object[] results;
         
         internal GetStaffProfileDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GetUsersCompletedEventHandler(object sender, GetUsersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetUsersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetUsersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
