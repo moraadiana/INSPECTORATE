@@ -23,14 +23,14 @@ namespace INSPECTORATEStaff.pages
                     Response.Redirect("~/Default.aspx");
                     return;
                 }
-                // LoadStaffDepartmentDetails();
-                loadUsers();
 
+                
                 string approvalStatus = Request.QueryString["status"].Replace("%", " ");
                 string query = Request.QueryString["query"];
                 if (query == "New")
                 {
-                   
+                    lblApplicationDate.Text = DateTime.Now.ToString("dd MMM yyyy");
+                    details.Visible = false;
                 }
                 else if (query == "old")
                 {
@@ -39,24 +39,24 @@ namespace INSPECTORATEStaff.pages
                     if (!string.IsNullOrEmpty(response))
                     {
                         string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
-                        
+                        lblApplicationDate.Text = responseArr[1];
                         txtDescription.Text = responseArr[2];
-                        txtNotes.Text = responseArr[4];
-                        ddlHandledBy.Text = responseArr[5];
-                        txtFeedback.Text = responseArr[7];
+                        lblNotes.Text = responseArr[4];
+                        lblHandledBy.Text = responseArr[5];
+                        lblFeedback.Text = responseArr[7];
                         DateTime resDate;
                         if (DateTime.TryParseExact(
-                                responseArr[6],     
-                                "MM/dd/yy",          
+                                responseArr[6],
+                                "MM/dd/yy",
                                 CultureInfo.InvariantCulture,
                                 DateTimeStyles.None,
                                 out resDate))
                         {
-                            txtDate.Text = resDate.ToString("yyyy-MM-dd");
+                            lblDate.Text = resDate.ToString("yyyy-MM-dd");
                         }
                         else
                         {
-                            txtDate.Text = "Error";
+                            lblDate.Text = "Error";
                         }
 
 
@@ -73,44 +73,45 @@ namespace INSPECTORATEStaff.pages
                 if (approvalStatus == "Open" || approvalStatus == "Pending" || approvalStatus == "New")
                 {
                     lbtnSubmit.Visible = true;
-
+                    details.Visible = false;
                 }
 
                 else
                 {
                     lbtnSubmit.Visible = false;
+                    details.Visible = true;
 
                 }
             }
         }
-        private void loadUsers()
-        {
-            try
-            {
-                ddlHandledBy.Items.Clear();
-                ddlHandledBy.Items.Add("--Select--");
-                string response = webportals.GetUsers();
-                if (!string.IsNullOrEmpty(response))
-                {
-                    string[] usersArr = response.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+        //private void loadUsers()
+        //{
+        //    try
+        //    {
+        //        ddlHandledBy.Items.Clear();
+        //        ddlHandledBy.Items.Add("--Select--");
+        //        string response = webportals.GetUsers();
+        //        if (!string.IsNullOrEmpty(response))
+        //        {
+        //            string[] usersArr = response.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
 
-                    foreach (string users in usersArr)
-                    {
-                        ddlHandledBy.Items.Add(new ListItem(users));
-                    }
-                }
-                else
-                {
-                    ddlHandledBy.Items.Add(new ListItem("No users found"));
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-                ddlHandledBy.Items.Add(new ListItem("Error loading users"));
-            }
+        //            foreach (string users in usersArr)
+        //            {
+        //                ddlHandledBy.Items.Add(new ListItem(users));
+        //            }
+        //        }
+        //        else
+        //        {
+        //            ddlHandledBy.Items.Add(new ListItem("No users found"));
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Error: " + ex.Message);
+        //        ddlHandledBy.Items.Add(new ListItem("Error loading users"));
+        //    }
 
-        }
+        //}
         protected void lbtnSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -118,10 +119,10 @@ namespace INSPECTORATEStaff.pages
                 string username = Session["username"].ToString();
                 // string grevanceId = ddlLeaveType.SelectedValue;
                 string description = txtDescription.Text;
-                string reslnNote = txtNotes.Text;
-                string handledBy = ddlHandledBy.SelectedValue;
-                string date = txtDate.Text;
-                string feedback = txtFeedback.Text;
+                //string reslnNote = txtNotes.Text;
+                //string handledBy = ddlHandledBy.SelectedValue;
+                //string date = txtDate.Text;
+                //string feedback = txtFeedback.Text;
 
 
                
@@ -132,36 +133,8 @@ namespace INSPECTORATEStaff.pages
                     return;
                 }
 
-                if (string.IsNullOrEmpty(reslnNote))
-                {
-                    Message("Resolution Note cannot be null");
-                    return;
-                }
-
-                if (string.IsNullOrEmpty(handledBy))
-                {
-                    Message("Handled By cannot be null");
-                    return;
-                }
-
-                if (string.IsNullOrEmpty(date))
-                {
-                    Message("Date cannot be null");
-                   // txtAppliedDays.Focus();
-                    return;
-                }
-                if (string.IsNullOrEmpty(feedback))
-                {
-                    Message("Feedback cannot be null");
-                    return;
-                }
                
-
-                
-
-                DateTime rslnDate = Convert.ToDateTime(txtDate.Text);
-                // procedure CreateComplaint(EmployeeNo: Text; description: Text; resolutionNotes:text; handledBy: text; resolutionDate:Date; resolutionFeedback: Text) 
-                string response = webportals.CreateComplaint(username, description, reslnNote, handledBy, rslnDate, feedback);
+                string response = webportals.CreateComplaint(username, description);
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);

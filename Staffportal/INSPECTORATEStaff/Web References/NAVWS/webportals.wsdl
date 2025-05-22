@@ -449,10 +449,6 @@
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="description" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="resolutionNotes" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="handledBy" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="resolutionDate" type="date" />
-            <element minOccurs="1" maxOccurs="1" name="resolutionFeedback" type="string" />
           </sequence>
         </complexType>
       </element>

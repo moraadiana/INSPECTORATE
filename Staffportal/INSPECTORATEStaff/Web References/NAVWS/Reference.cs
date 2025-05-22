@@ -1653,34 +1653,26 @@ namespace INSPECTORATEStaff.NAVWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/WebPortals:CreateComplaint", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", ResponseElementName="CreateComplaint_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/WebPortals", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string CreateComplaint(string employeeNo, string description, string resolutionNotes, string handledBy, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime resolutionDate, string resolutionFeedback) {
+        public string CreateComplaint(string employeeNo, string description) {
             object[] results = this.Invoke("CreateComplaint", new object[] {
                         employeeNo,
-                        description,
-                        resolutionNotes,
-                        handledBy,
-                        resolutionDate,
-                        resolutionFeedback});
+                        description});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void CreateComplaintAsync(string employeeNo, string description, string resolutionNotes, string handledBy, System.DateTime resolutionDate, string resolutionFeedback) {
-            this.CreateComplaintAsync(employeeNo, description, resolutionNotes, handledBy, resolutionDate, resolutionFeedback, null);
+        public void CreateComplaintAsync(string employeeNo, string description) {
+            this.CreateComplaintAsync(employeeNo, description, null);
         }
         
         /// <remarks/>
-        public void CreateComplaintAsync(string employeeNo, string description, string resolutionNotes, string handledBy, System.DateTime resolutionDate, string resolutionFeedback, object userState) {
+        public void CreateComplaintAsync(string employeeNo, string description, object userState) {
             if ((this.CreateComplaintOperationCompleted == null)) {
                 this.CreateComplaintOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateComplaintOperationCompleted);
             }
             this.InvokeAsync("CreateComplaint", new object[] {
                         employeeNo,
-                        description,
-                        resolutionNotes,
-                        handledBy,
-                        resolutionDate,
-                        resolutionFeedback}, this.CreateComplaintOperationCompleted, userState);
+                        description}, this.CreateComplaintOperationCompleted, userState);
         }
         
         private void OnCreateComplaintOperationCompleted(object arg) {

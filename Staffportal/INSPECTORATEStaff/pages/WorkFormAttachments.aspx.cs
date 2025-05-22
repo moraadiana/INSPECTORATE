@@ -74,7 +74,7 @@ namespace INSPECTORATEStaff.pages
         protected void lbtnDownload_Click(object sender, EventArgs e)
         {
             LinkButton lbtn = (LinkButton)sender;
-            string fileName = lbtn.CommandArgument;
+            string fileName = lbtn.CommandArgument + ".pdf" ;
 
             // Assume all uploaded files are stored in "~/Uploads/"
             string filePath = Server.MapPath("~/Uploads/" + fileName);
